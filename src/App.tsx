@@ -1,6 +1,8 @@
 import React from 'react';
 import {MenuItemType} from "./types/modulesType";
-import {Header,Sidebar} from "./components/";
+import {Header} from "./components/";
+import {Sidebar} from "./components/Sidebar";
+import {SIDEBAR} from "./components/Sidebar/data";
 
 import './App.scss';
 
@@ -14,7 +16,9 @@ const HEADER_MENU:MenuItemType[] = [
 function App() {
   return (
     <div className="app">
-      <Sidebar/>
+
+    <Sidebar menu={SIDEBAR} />
+
       <div className="app-wrapper">
           <Header title="Website" btn="..." menu={HEADER_MENU}/>
       </div>
