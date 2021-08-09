@@ -1,7 +1,6 @@
 import React from 'react';
 import {MenuItemType} from "./types/modulesType";
-import {Header} from "./components/Header";
-import {Sidebar} from "./components/Sidebar";
+import {Header,Sidebar} from "./components/";
 
 import './App.scss';
 

@@ -26,4 +26,4 @@ const HeaderSettings = ({img}:HeaderSetProps): JSX.Element => {
     )
 }
 
-export default HeaderSettings
+export {HeaderSettings}

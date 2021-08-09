@@ -1,6 +1,6 @@
 import React from 'react';
 import {HeaderProps} from "../../interfaces/interfaceHeaderProps";
-import HeaderSettings from "./HeaderSettings";
+import {HeaderSettings} from "./HeaderSettings";
 import {MenInProject} from "../../types/modulesType";
 
 import './styles/Header.scss';
