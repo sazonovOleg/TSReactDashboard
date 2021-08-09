@@ -22,8 +22,8 @@ function App() {
 
       <div className="app-wrapper">
           <Header title="Website" btn="..." menu={HEADER_MENU}/>
+          <TasksList/>
       </div>
-        <TasksList/>
     </div>
   );
 }
