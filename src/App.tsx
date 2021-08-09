@@ -5,6 +5,7 @@ import {Sidebar} from "./components/Sidebar";
 import {SIDEBAR} from "./components/Sidebar/data";
 
 import './App.scss';
+import {TasksList} from "./components/TasksList";
 
 const HEADER_MENU:MenuItemType[] = [
     {title:'Tasks',url: '/'},
@@ -22,6 +23,7 @@ function App() {
       <div className="app-wrapper">
           <Header title="Website" btn="..." menu={HEADER_MENU}/>
       </div>
+        <TasksList/>
     </div>
   );
 }
