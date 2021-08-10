@@ -5,7 +5,7 @@ import projectFour from "../../assets/sidebar/projects/Icon-4.svg";
 import teamOne from "../../assets/sidebar/team/logo.svg";
 import teamTwo from "../../assets/sidebar/team/logo.svg";
 import teamThree from "../../assets/sidebar/team/logo.svg";
-import {SidebarMenuProps} from "./SidebarMenu";
+import {SidebarMenuProps} from "./SidebarMenu/SidebarMenuType";
 
 const SIDEBAR: SidebarMenuProps[] = [{
     title: 'MENU',

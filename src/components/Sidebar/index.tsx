@@ -1,12 +1,13 @@
 import React from 'react';
 
-import {SidebarProfile, Task} from '../'
-import {SidebarMenu, SidebarMenuProps} from "./SidebarMenu";
+import {SidebarProfile} from '../'
+import {SidebarMenu} from "./SidebarMenu";
+import {SidebarMenuProps} from "./SidebarMenu/SidebarMenuType";
+import {SidebarTask} from "./SidebarTask/SidebarTask";
 
-import {
-    SidebarProfileType,
-    TaskInfoType
-} from "../../types/modulesType";
+import {TaskInfoType} from "./SidebarTask/SidebarTaskType";
+import {SidebarProfileType} from "../../types/modulesType";
+
 
 import './styles/Sidebar.scss';
 
@@ -54,7 +55,7 @@ const Sidebar = ({menu}: SidebarProps): JSX.Element => {
                 position={SIDEBAR_PROFILE.position}
             />
 
-            <Task info={TASK_INFO}/>
+            <SidebarTask info={TASK_INFO}/>
 
             {menu && menu.map((item) => {
                 return (<SidebarMenu title={item.title} items={item.items}/>

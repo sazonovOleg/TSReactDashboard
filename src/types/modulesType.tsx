@@ -13,26 +13,6 @@ export type SidebarProfileType = {
     position:string
 }
 
-export type TaskInfoType = {
-    taskCount: number,
-    taskText: string
-}
-
-export type SideBarMenuType = {
-    title: string,
-    list?: SideBarMenuListType[]
-}
-
-export type SideBarMenuListType = {
-    name: string,
-    notifications?: number,
-}
-
-export type ProjectsMenuType = {
-    title: string,
-    list?: ProjectsMenuListType[],
-    btn: string
-}
 
 export type ProjectsMenuListType = {
     logo: string,
@@ -40,11 +20,6 @@ export type ProjectsMenuListType = {
     btn:string
 }
 
-export type ProjectsTeamType = {
-    title:string,
-    list?:ProjectsTeamListType[],
-    btn:string
-}
 
 export type ProjectsTeamListType = {
     name: string,

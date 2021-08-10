@@ -1,9 +1,9 @@
 import React from 'react';
 import {HeaderProps} from "../../interfaces/interfaceHeaderProps";
-import {HeaderSettings} from "./HeaderSettings";
+import {HeaderSettings} from "./HeaderSettings/HeaderSettings";
 import {MenInProject} from "../../types/modulesType";
 
-import './styles/Header.scss';
+import './styles/index.scss';
 
 import avatar from "../../assets/header/avatar.png";
 import avatar2 from "../../assets/header/avatar-2.png";

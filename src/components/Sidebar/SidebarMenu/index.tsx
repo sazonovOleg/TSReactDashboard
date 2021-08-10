@@ -1,19 +1,8 @@
 import React from 'react'
 
-import '../styles/Menu.scss'
+import {SidebarMenuProps} from "./SidebarMenuType";
 
-
-type SidebarMenuItem = {
-    title: string
-    notificationCount?: number
-    preview?: string
-    users?: string[]
-}
-
-export interface SidebarMenuProps {
-    title: string
-    items: SidebarMenuItem[]
-}
+import './style/style.scss'
 
 const SidebarMenu = ({title, items}: SidebarMenuProps): JSX.Element => {
     return (
@@ -30,8 +19,8 @@ const SidebarMenu = ({title, items}: SidebarMenuProps): JSX.Element => {
                             {Boolean(notificationCount) &&
                             <span className="menu-item--notifications">{notificationCount}</span>}
                             {Boolean(users?.length) &&
-                            <div>{users?.map((userAvatar, index) => <img key={userAvatar} src={userAvatar}
-                                                                         alt=""/>)}</div>}
+                            <div>{users?.map((userAvatar, index) =>
+                                <img key={userAvatar} src={userAvatar} alt=""/>)}</div>}
                         </li>
                     )
                 })}
