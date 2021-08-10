@@ -1,5 +1,5 @@
 import React from "react";
-import {HeaderSetProps} from "../../../interfaces/interfaceHeaderProps";
+import {HeaderSetProps} from "./HeaderSettingsType";
 import {HeaderButton} from "../HeaderButton/HeaderButton";
 
 import './styles/HeaderSettings.scss'

@@ -6,14 +6,14 @@ import {SidebarMenuProps} from "./SidebarMenu/SidebarMenuType";
 import {SidebarTask} from "./SidebarTask/SidebarTask";
 
 import {TaskInfoType} from "./SidebarTask/SidebarTaskType";
-import {SidebarProfileType} from "../../types/modulesType";
+import {HeaderProfileProps} from "./SidebarProfile/SidebarProfileType";
 
 
 import './styles/Sidebar.scss';
 
 import avatar from '../../assets/sidebar/avatar.png';
 
-const SIDEBAR_PROFILE: SidebarProfileType = {
+const SIDEBAR_PROFILE: HeaderProfileProps = {
     images: avatar,
     name: 'Emilee Simchenko',
     position: 'Product Owner'
