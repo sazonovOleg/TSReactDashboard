@@ -54,11 +54,9 @@ const Sidebar = ({menu}: SidebarProps): JSX.Element => {
                 name={SIDEBAR_PROFILE.name}
                 position={SIDEBAR_PROFILE.position}
             />
-
             <SidebarTask info={TASK_INFO}/>
-
             {menu && menu.map((item) => {
-                return (<SidebarMenu title={item.title} items={item.items}/>
+                return (<SidebarMenu title={item.title} items={item.items} key={item.title}/>
                 )
             })}
         </div>
