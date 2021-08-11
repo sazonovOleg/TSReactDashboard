@@ -1,5 +1,5 @@
 import React from 'react';
-import {HeaderSettings} from "./HeaderSettings/HeaderSettings";
+import {HeaderSettings} from "./HeaderSettings/";
 import {HeaderProps} from "./HeaderType";
 
 import {HEADER_MENU,MEN_IN_PROJECT} from "./data";

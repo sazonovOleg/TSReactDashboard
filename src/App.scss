@@ -10,6 +10,17 @@
     }
     &-container {
         padding: 1.8rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    &-title {
+        font-size: 26px;
+        line-height: 38px;
+        &--open {
+            display: inline-flex;
+            flex-direction: column;
+        }
     }
     &-task {
         max-width: 450px;

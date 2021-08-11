@@ -1,10 +1,10 @@
 import React from 'react';
 
-import {SidebarProfile} from '../'
+import {SidebarProfile} from './SidebarProfile/'
 import {SidebarMenu} from "./SidebarMenu";
-import {SidebarMenuProps} from "./SidebarMenu/SidebarMenuType";
-import {SidebarTask} from "./SidebarTask/SidebarTask";
+import {SidebarTask} from "./SidebarTask/";
 
+import {SidebarMenuProps} from "./SidebarMenu/SidebarMenuType";
 import {TaskInfoType} from "./SidebarTask/SidebarTaskType";
 import {HeaderProfileProps} from "./SidebarProfile/SidebarProfileType";
 

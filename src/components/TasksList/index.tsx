@@ -4,14 +4,14 @@ import classNames from "classnames";
 import {TasksListProps} from "./TasksListType";
 
 import './style/TasksList.scss';
-import {TasksButton} from "../TasksButton/TasksButton";
+import {TasksButton} from "./TasksButton/";
 
 
 const TasksList = ({title, items}: TasksListProps): JSX.Element => {
     return (
         <div className="tasks-list">
             <div className="tasks-list-wrap row row--jb">
-                <h2 className="tasks-list-title">
+                <h2 className="app-title">
                     {title}
                 </h2>
                 <TasksButton text="+ Add Task"/>
