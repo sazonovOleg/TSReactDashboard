@@ -4,7 +4,7 @@ import classNames from "classnames";
 import {TasksListProps} from "./TasksListType";
 
 import './style/TasksList.scss';
-import {TasksButton} from "../TasksButton/TasksButton";
+import {TasksButton} from "./TasksButton/";
 
 
 const TasksList = ({title, items}: TasksListProps): JSX.Element => {

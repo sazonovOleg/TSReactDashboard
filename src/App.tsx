@@ -1,5 +1,5 @@
 import React from 'react';
-import {Header} from "./components/";
+import {Header} from "./components/Header/";
 import {Sidebar} from "./components/Sidebar";
 import {TasksList} from "./components/TasksList";
 import {SIDEBAR} from "./components/Sidebar/data";
