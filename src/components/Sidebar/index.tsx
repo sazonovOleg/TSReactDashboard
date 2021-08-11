@@ -1,18 +1,19 @@
 import React from 'react';
 
-import {SidebarProfile, Task} from '../'
-import {SidebarMenu, SidebarMenuProps} from "./SidebarMenu";
+import {SidebarProfile} from '../'
+import {SidebarMenu} from "./SidebarMenu";
+import {SidebarMenuProps} from "./SidebarMenu/SidebarMenuType";
+import {SidebarTask} from "./SidebarTask/SidebarTask";
 
-import {
-    SidebarProfileType,
-    TaskInfoType
-} from "../../types/modulesType";
+import {TaskInfoType} from "./SidebarTask/SidebarTaskType";
+import {HeaderProfileProps} from "./SidebarProfile/SidebarProfileType";
+
 
 import './styles/Sidebar.scss';
 
 import avatar from '../../assets/sidebar/avatar.png';
 
-const SIDEBAR_PROFILE: SidebarProfileType = {
+const SIDEBAR_PROFILE: HeaderProfileProps = {
     images: avatar,
     name: 'Emilee Simchenko',
     position: 'Product Owner'
@@ -53,11 +54,9 @@ const Sidebar = ({menu}: SidebarProps): JSX.Element => {
                 name={SIDEBAR_PROFILE.name}
                 position={SIDEBAR_PROFILE.position}
             />
-
-            <Task info={TASK_INFO}/>
-
+            <SidebarTask info={TASK_INFO}/>
             {menu && menu.map((item) => {
-                return (<SidebarMenu title={item.title} items={item.items}/>
+                return (<SidebarMenu title={item.title} items={item.items} key={item.title}/>
                 )
             })}
         </div>

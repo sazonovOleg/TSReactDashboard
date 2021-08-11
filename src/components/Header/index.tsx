@@ -1,21 +1,13 @@
 import React from 'react';
-import {HeaderProps} from "../../interfaces/interfaceHeaderProps";
-import {HeaderSettings} from "./HeaderSettings";
-import {MenInProject} from "../../types/modulesType";
+import {HeaderSettings} from "./HeaderSettings/HeaderSettings";
+import {HeaderProps} from "./HeaderType";
 
-import './styles/Header.scss';
+import {HEADER_MENU,MEN_IN_PROJECT} from "./data";
 
-import avatar from "../../assets/header/avatar.png";
-import avatar2 from "../../assets/header/avatar-2.png";
-import avatar3 from "../../assets/header/avatar-3.png";
+import './styles/index.scss';
 
-const MEN_IN_PROJECT:MenInProject[] = [
-    {images: avatar},
-    {images: avatar2},
-    {images: avatar3}
-]
 
-const Header = ({title, menu, btn}: HeaderProps): JSX.Element => {
+const Header = ({title, btn}: HeaderProps): JSX.Element => {
     return (
         <header className="header">
             <div className="header-col">
@@ -41,8 +33,8 @@ const Header = ({title, menu, btn}: HeaderProps): JSX.Element => {
                 <div className="header-setup">
                     {btn}
                 </div>
-                {menu && <nav className="header-menu">
-                    {menu.map(({url, title}, index) => {
+                {HEADER_MENU && <nav className="header-menu">
+                    {HEADER_MENU.map(({url, title}, index) => {
                         return (
                             <a href={url} key={index}>{title}</a>
                         )

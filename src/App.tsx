@@ -1,29 +1,28 @@
 import React from 'react';
-import {MenuItemType} from "./types/modulesType";
 import {Header} from "./components/";
 import {Sidebar} from "./components/Sidebar";
+import {TasksList} from "./components/TasksList";
 import {SIDEBAR} from "./components/Sidebar/data";
+import {TASKS_LIST} from "./components/TasksList/data";
 
 import './App.scss';
 
-const HEADER_MENU:MenuItemType[] = [
-    {title:'Tasks',url: '/'},
-    {title:'Kanban', url:'/'},
-    {title:'Activity', url:'/'},
-    {title:'Calendar', url:'/'},
-    {title:'Files', url:'/'}];
-
 function App() {
-  return (
-    <div className="app">
-
-    <Sidebar menu={SIDEBAR} />
-
-      <div className="app-wrapper">
-          <Header title="Website" btn="..." menu={HEADER_MENU}/>
-      </div>
-    </div>
-  );
+    return (
+        <div className="app">
+            <Sidebar menu={SIDEBAR}/>
+            <div className="app-content">
+                <Header title="Website" btn="..."/>
+                <div className="app-container">
+                    <div className="app-task">
+                        {TASKS_LIST && TASKS_LIST.map((items) => {
+                            return (<TasksList title={items.title} items={items.items} key={items.title}/>)
+                        })}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default App;

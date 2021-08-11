@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+html,body {
+    width: 100%;
+    height: 100%;
+}
+
 body {
     margin: 0 auto;
     padding: 0;
@@ -35,4 +40,15 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
         left: 1.2rem;
         right: 1.2rem;
     };
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    &--jb {
+        justify-content: space-between;
+    }
+    &--ac {
+        align-items: center;
+    }
 }
