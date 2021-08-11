@@ -1,0 +1,52 @@
+.task-open {
+    max-width: 650px;
+    width: 100%;
+    padding: 1.8rem;
+    background-color: #fff;
+    border-radius: .3rem;
+    &-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &-by {
+        padding-bottom: 1.8rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.4rem;
+        color: #131313;
+    }
+    &-wrap {
+        align-items: center;
+    }
+    &-subtitle {
+        padding-bottom: .8rem;
+        font-size: 1rem;
+        font-weight: bold;
+        line-height: 1.2rem;
+    }
+    &-text {
+        font-size: .9rem;
+        line-height: 1.6rem;
+    }
+    &-preview {
+        margin-right: .4rem;
+    }
+    &-info {
+        padding-bottom: 1.8rem;
+        margin-bottom: 1.8rem;
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid #ECECEC;
+        .col {
+            display: flex;
+            flex-direction: column;
+            flex: auto;
+        }
+        .row {
+            min-height: 20px;
+            align-items: center;
+        }
+    }
+}
