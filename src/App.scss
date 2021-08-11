@@ -1,11 +1,23 @@
 .app {
     display: flex;
     flex-direction: row;
-    &-wrapper {
+    &-content {
         max-width: 100%;
         width: 100%;
         display: flex;
         flex-direction: column;
         background-color: #aaaba3;
+    }
+    &-container {
+        padding: 1.8rem;
+    }
+    &-task {
+        max-width: 450px;
+        width: 100%;
+        padding: 1.8rem;
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        border-radius: .3rem;
     }
 }

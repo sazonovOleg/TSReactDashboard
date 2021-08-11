@@ -41,3 +41,14 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
         right: 1.2rem;
     };
 }
+
+.row {
+    display: flex;
+    flex-direction: row;
+    &--jb {
+        justify-content: space-between;
+    }
+    &--ac {
+        align-items: center;
+    }
+}
