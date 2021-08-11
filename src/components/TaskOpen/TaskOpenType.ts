@@ -9,5 +9,6 @@ export type TaskOpenProps = {
     title: string,
     subtitle: string,
     header_items: TaskOpenItems[],
-    description_items: TaskOpenItems[]
+    description_items: TaskOpenItems[],
+    comment_items: TaskOpenItems[]
 }

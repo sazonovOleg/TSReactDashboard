@@ -26,6 +26,7 @@ function App() {
                         subtitle={TASK_OPEN.subtitle}
                         header_items={TASK_OPEN.header_items}
                         description_items={TASK_OPEN.description_items}
+                        comment_items={TASK_OPEN.comment_items}
                     />
                 </div>
             </div>

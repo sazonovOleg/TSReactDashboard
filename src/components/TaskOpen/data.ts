@@ -1,6 +1,7 @@
 import previewOne from "../../assets/sidebar/team/logo.svg";
 import previewTwo from "../../assets/sidebar/team/logo-2.svg";
 import previewThree from "../../assets/sidebar/team/logo-3.svg";
+import avatar from '../../assets/sidebar/avatar.png';
 import {TaskOpenProps} from "./TaskOpenType";
 
 
@@ -28,6 +29,10 @@ const TASK_OPEN:TaskOpenProps = {
     description_items: [{
         title: 'Description',
         text: 'Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.'
+    }],
+    comment_items:[{
+        title: 'Discussion',
+        preview: avatar
     }]
 }
 

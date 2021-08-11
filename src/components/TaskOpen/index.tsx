@@ -3,9 +3,10 @@ import React from 'react';
 import {TaskOpenProps} from "./TaskOpenType";
 
 import './style/TaskOpen.scss'
+import {TaskOpenComment} from "./TaskOpenCommment";
 
 
-const TaskOpen = ({title, subtitle, header_items, description_items}: TaskOpenProps): JSX.Element => {
+const TaskOpen = ({title, subtitle, header_items, description_items,comment_items}: TaskOpenProps): JSX.Element => {
     return (
         <div className="task-open">
             <div className="task-open-header">
@@ -41,7 +42,7 @@ const TaskOpen = ({title, subtitle, header_items, description_items}: TaskOpenPr
             </div>
             {description_items.map(({title, text}) => {
                 return (
-                    <div className="task-open-description">
+                    <div className="task-open-description" key={title}>
                         <h2 className="task-open-subtitle">
                             {title}
                         </h2>
@@ -51,11 +52,7 @@ const TaskOpen = ({title, subtitle, header_items, description_items}: TaskOpenPr
                     </div>
                 )
             })}
-            <div className="task-open-discussion">
-                <h2 className="task-open-subtitle">
-
-                </h2>
-            </div>
+            <TaskOpenComment items={comment_items}/>
         </div>
     );
 };
