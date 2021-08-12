@@ -18,6 +18,7 @@ const TASK_OPEN:TaskOpenProps = {
     },{
         title: 'Tag',
         text: 'Marketing',
+        color: 'purple'
     },{
         title: 'Followers',
         followers: [

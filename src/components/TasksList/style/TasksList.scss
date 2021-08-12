@@ -18,6 +18,24 @@
     &-preview {
         margin-right: .6rem;
     }
+    &-position {
+        padding: .4rem;
+        text-transform: uppercase;
+        line-height: 1.2rem;
+        border-radius: .4rem;
+        &--developement {
+            background-color: #FFF1E2;
+            color: #ED6400;
+        }
+        &--marketing {
+            background-color: #F5F0FF;
+            color: #764CED;
+        }
+        &--design {
+            background-color: #E3EFFF;
+            color: #1975D0;
+        }
+    }
     &-text {
         font-size: 18px;
         font-weight: bold;

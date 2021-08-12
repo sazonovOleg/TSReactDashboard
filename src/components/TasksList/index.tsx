@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from "classnames";
 
 import {TasksListProps} from "./TasksListType";
 
@@ -27,7 +26,8 @@ const TasksList = ({title, items}: TasksListProps): JSX.Element => {
                         </div>
                         <div className="tasks-list-wrap row row--ac">
                             <img className="tasks-list-preview" src={items.preview} alt=""/>
-                            <span className="tasks-list-position">{items.position}</span>
+                            <span
+                                className={'tasks-list-position' + ' ' + `tasks-list-position--${items.position}`}>{items.position}</span>
                         </div>
                     </div>
                 )
