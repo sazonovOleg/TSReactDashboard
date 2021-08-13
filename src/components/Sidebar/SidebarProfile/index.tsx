@@ -1,7 +1,7 @@
 import React from 'react';
 import {HeaderProfileProps} from "./SidebarProfileType";
 
-import './style/SidebarProfile.scss'
+import './style/SidebarProfile.scss';
 
 const SidebarProfile = ({name,images,position}:HeaderProfileProps):JSX.Element => {
     return (

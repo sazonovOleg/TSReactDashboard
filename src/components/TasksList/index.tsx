@@ -1,12 +1,17 @@
 import React from 'react';
 
-import {TasksListProps} from "./TasksListType";
 
 import './style/TasksList.scss';
 import {TasksButton} from "./TasksButton/";
+import {TaskType} from "../TaskOpen/TaskOpenType";
+
+interface TasksListProps {
+    tasks: TaskType[]
+    title: string
+}
 
 
-const TasksList = ({title, items}: TasksListProps): JSX.Element => {
+const TasksList = ({tasks, title}: TasksListProps): JSX.Element => {
     return (
         <div className="tasks-list">
             <div className="tasks-list-wrap row row--jb">
@@ -15,19 +20,19 @@ const TasksList = ({title, items}: TasksListProps): JSX.Element => {
                 </h2>
                 <TasksButton text="+ Add Task"/>
             </div>
-            {items && items.map((items) => {
+            {tasks.map((task) => {
                 return (
-                    <div className="tasks-list-col" key={items.text}>
+                    <div className="tasks-list-col" key={task.title}>
                         <div className="tasks-list-wrap row">
-                            <input type="checkbox" checked={items.checkbox} className="tasks-list-checkbox"/>
+                            <input type="checkbox" checked={task.isDone} className="tasks-list-checkbox"/>
                             <label className="tasks-list-text">
-                                {items.text}
+                                {task.title}
                             </label>
                         </div>
                         <div className="tasks-list-wrap row row--ac">
-                            <img className="tasks-list-preview" src={items.preview} alt=""/>
-                            <span
-                                className={'tasks-list-position' + ' ' + `tasks-list-position--${items.position}`}>{items.position}</span>
+                            <img className="tasks-list-preview" src={task.author} alt=""/>
+                            {task.tag.map((tag) => <span className={'tasks-list-position'}>{tag}</span>
+                            )}
                         </div>
                     </div>
                 )

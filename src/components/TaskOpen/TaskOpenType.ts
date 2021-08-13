@@ -1,28 +1,26 @@
-export interface TaskOpenItems {
-    title: string,
-    preview?: string,
-    text?:string,
-    color?: string,
-    followers?:string[]
-}
-
-export interface TaskCommentsProps {
-    preview: string,
-    first_name: string,
-    last_name: string,
+export type CommentType = {
+    name: string,
     position: string,
-    date: string,
-    text: string
+    createdAt: string,
+    avatar: string,
+    comment: string
 }
 
-export type TaskCommentsType = {
-    comments: TaskCommentsProps[]
+export enum TASK_CATEGORY {
+    TODO = 'TODO',
+    BACKLOG = 'BACKLOG'
 }
 
-export type TaskOpenProps = {
+export type TaskType = {
+    isDone: boolean,
     title: string,
-    subtitle: string,
-    header_items: TaskOpenItems[],
-    description_items: TaskOpenItems[],
-    comment_items: TaskOpenItems[]
+    author: string,
+    createdAt: string,
+    assignTo: string,
+    dueOn: string,
+    tag:string[],
+    followers: string[]
+    description: string
+    comments: CommentType[]
+    category: TASK_CATEGORY
 }

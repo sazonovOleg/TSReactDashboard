@@ -1,31 +1,29 @@
 import React from 'react';
-import {TaskCommentsProps} from "../TaskOpenType";
+import {CommentType} from "../TaskOpenType";
 
 import '../TaskAddedComment/style/TaskAddedComment.scss';
 
 interface TaskAddedCommentProps {
-    comments?:TaskCommentsProps[]
+    comments: CommentType[]
 }
 
 const TaskAddedComment = ({comments}: TaskAddedCommentProps): JSX.Element => {
-    console.log(comments)
   return (
       <div className="task-added-comment">
-          {comments?.map(({preview,first_name,last_name,position,date,text})=> {
+          {comments?.map(comment => {
               return(
-                  <div className="comment" key={first_name}>
-                      <img className="comment-preview" src={preview} alt=""/>
+                  <div className="comment" key={comment.name}>
+                      <img className="comment-preview" src={comment.avatar} alt=""/>
                       <div className="comment-wrapper">
                           <div className="comment-header">
                               <div className="comment-info">
-                                  <span className="comment-name comment-name--first">{first_name + ' '}</span>
-                                  <span className="comment-name comment-name--last">{last_name},</span>
-                                  {' ' + position}
+                                  <span className="comment-name comment-name--first">{comment.name}</span>
+                                  {' ' + comment.position}
                               </div>
-                              <span className="comment-date">{date}</span>
+                              <span className="comment-date">{comment.createdAt}</span>
                           </div>
                           <p className="comment-text">
-                              {text}
+                              {comment.comment}
                           </p>
                       </div>
                   </div>

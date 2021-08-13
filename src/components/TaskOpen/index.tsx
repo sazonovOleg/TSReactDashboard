@@ -1,18 +1,22 @@
 import React from 'react';
 
-import {TaskOpenProps} from "./TaskOpenType";
+import { TaskType} from "./TaskOpenType";
 
 import './style/TaskOpen.scss'
-import {TaskOpenComment} from "./TaskOpenCommment";
+import {TaskComment} from "./TaskOpenCommment";
 
+interface TaskOpenProps {
+    task: TaskType
+}
 
-const TaskOpen = ({title, subtitle, header_items, description_items,comment_items}: TaskOpenProps): JSX.Element => {
+const TaskOpen = ({task}: TaskOpenProps): JSX.Element => {
     return (
         <div className="task-open">
             <div className="task-open-header">
                 <h2 className="app-title app-title--open">
-                    {title}
-                    <span className="task-open-by">{subtitle}</span>
+                    {task.title}
+                    <span className="task-open-by">{task.author}</span>
+                    <span className="task-open-by">{task.createdAt}</span>
                 </h2>
                 <div className="task-open-wrap row">
                     <input type="checkbox" className="task-open-checkbox"/>
@@ -22,37 +26,55 @@ const TaskOpen = ({title, subtitle, header_items, description_items,comment_item
                 </div>
             </div>
             <div className="task-open-info">
-                {header_items.map(({title, preview, text, followers,color}) => {
-                    return (
-                        <div className="col" key={title}>
+
+                        <div className="col">
                             <h3 className="task-open-subtitle">
-                                {title}
+                                Assign To
                             </h3>
                             <div className="row">
-                                {Boolean(preview) && <img src={preview} alt={preview} className="task-open-preview"/>}
-                                <p className="task-open-text" color={color}>{text}</p>
-                                {Boolean(followers?.length) &&
-                                <div>{followers?.map((followersAvatar, index) =>
-                                    <img className="menu-user-avatar" key={followersAvatar} src={followersAvatar}
-                                         alt=""/>)}</div>}
+                                {task.author}
                             </div>
                         </div>
-                    )
-                })}
+
+                <div className="col">
+                    <h3 className="task-open-subtitle">
+                        Due On
+                    </h3>
+                    <div className="row">
+                        {task.dueOn}
+                    </div>
+                </div>
+
+
+                <div className="col">
+                    <h3 className="task-open-subtitle">
+                        Tag
+                    </h3>
+                    <div className="row">
+                        {task.tag.map((tag) => <span>{tag}</span>)}
+                    </div>
+                </div>
+
+                <div className="col">
+                    <h3 className="task-open-subtitle">
+                        Followers
+                    </h3>
+                    <div className="row">
+                        {task.followers.map((follower) => <img src={follower}/>)}
+                    </div>
+                </div>
             </div>
-            {description_items.map(({title, text}) => {
-                return (
-                    <div className="task-open-description" key={title}>
+
+                    <div className="task-open-description" >
                         <h2 className="task-open-subtitle">
-                            {title}
+                            Description
                         </h2>
                         <p className="task-open-text">
-                            {text}
+                            {task.description}
                         </p>
                     </div>
-                )
-            })}
-            <TaskOpenComment items={comment_items}/>
+
+            <TaskComment comments={task.comments}/>
         </div>
     );
 };
