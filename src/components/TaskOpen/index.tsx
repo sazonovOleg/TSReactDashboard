@@ -7,6 +7,7 @@ import {TaskComment} from "./TaskOpenCommment";
 
 interface TaskOpenProps {
     task: TaskType
+
 }
 
 const TaskOpen = ({task}: TaskOpenProps): JSX.Element => {

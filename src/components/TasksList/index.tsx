@@ -8,10 +8,11 @@ import {TaskType} from "../TaskOpen/TaskOpenType";
 interface TasksListProps {
     tasks: TaskType[]
     title: string
+    onTaskClick: (task: TaskType) => void
 }
 
 
-const TasksList = ({tasks, title}: TasksListProps): JSX.Element => {
+const TasksList = ({tasks, title, onTaskClick}: TasksListProps): JSX.Element => {
     return (
         <div className="tasks-list">
             <div className="tasks-list-wrap row row--jb">
@@ -25,7 +26,7 @@ const TasksList = ({tasks, title}: TasksListProps): JSX.Element => {
                     <div className="tasks-list-col" key={task.title}>
                         <div className="tasks-list-wrap row">
                             <input type="checkbox" checked={task.isDone} className="tasks-list-checkbox"/>
-                            <label className="tasks-list-text">
+                            <label className="tasks-list-text" onClick={() => onTaskClick(task)}>
                                 {task.title}
                             </label>
                         </div>

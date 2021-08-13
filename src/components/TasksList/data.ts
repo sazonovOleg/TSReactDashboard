@@ -3,7 +3,7 @@ import {TASK_CATEGORY, TaskType} from "../TaskOpen/TaskOpenType";
 const TASKS_LIST: TaskType[] = [{
     category: TASK_CATEGORY.BACKLOG,
     isDone: false,
-    title: 'Find top 5 customer requests',
+    title: 'Find top 5 customer requests 1',
     author: 'Kristin A',
     createdAt: 'yesterday at 12:41pm',
     assignTo: 'Linzell Bowman',
@@ -27,7 +27,7 @@ const TASKS_LIST: TaskType[] = [{
 }, {
     category: TASK_CATEGORY.BACKLOG,
     isDone: false,
-    title: 'Find top 5 customer requests',
+    title: 'Find top 5 customer requests 2',
     author: 'Kristin A',
     createdAt: 'yesterday at 12:41pm',
     assignTo: 'Linzell Bowman',
@@ -51,7 +51,7 @@ const TASKS_LIST: TaskType[] = [{
 }, {
     category: TASK_CATEGORY.BACKLOG,
     isDone: false,
-    title: 'Find top 5 customer requests',
+    title: 'Find top 5 customer requests 3',
     author: 'Kristin A',
     createdAt: 'yesterday at 12:41pm',
     assignTo: 'Linzell Bowman',
@@ -63,7 +63,7 @@ const TASKS_LIST: TaskType[] = [{
 }, {
     category: TASK_CATEGORY.TODO,
     isDone: false,
-    title: 'Find top 5 customer requests',
+    title: 'Find top 5 customer requests 4',
     author: 'Kristin A',
     createdAt: 'yesterday at 12:41pm',
     assignTo: 'Linzell Bowman',
@@ -75,7 +75,7 @@ const TASKS_LIST: TaskType[] = [{
 }, {
     category: TASK_CATEGORY.TODO,
     isDone: false,
-    title: 'Find top 5 customer requests',
+    title: 'Find top 5 customer requests 5',
     author: 'Kristin A',
     createdAt: 'yesterday at 12:41pm',
     assignTo: 'Linzell Bowman',
