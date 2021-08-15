@@ -2,7 +2,7 @@ import React from 'react';
 
 
 import './style/TasksList.scss';
-import {TasksButton} from "./TasksButton/";
+import {TasksButton} from "./TasksButton";
 import {TaskType} from "../TaskOpen/TaskOpenType";
 
 interface TasksListProps {

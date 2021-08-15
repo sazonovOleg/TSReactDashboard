@@ -1,8 +1,8 @@
 import {TASK_CATEGORY, TaskType} from "../TaskOpen/TaskOpenType";
 
-import avatar1 from '../../assets/taskslist/preview.svg';
-import avatar2 from '../../assets/taskslist/preview-2.svg';
-import avatar3 from '../../assets/taskslist/preview-3.svg';
+import avatar1 from '../../../assets/taskslist/preview.svg';
+import avatar2 from '../../../assets/taskslist/preview-2.svg';
+import avatar3 from '../../../assets/taskslist/preview-3.svg';
 
 const TASKS_LIST: TaskType[] = [{
     category: TASK_CATEGORY.BACKLOG,
