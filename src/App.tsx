@@ -1,15 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Header} from "./components/Header/";
 import {Sidebar} from "./components/Sidebar";
 import {TasksList} from "./components/TasksList";
 import {TaskOpen} from "./components/TaskOpen";
+import {TASK_CATEGORY, TaskType} from "./components/TaskOpen/TaskOpenType";
 import {SIDEBAR} from "./components/Sidebar/data";
 import {TASKS_LIST} from "./components/TasksList/data";
-import {TASK_OPEN} from "./components/TaskOpen/data";
 
 import './App.scss';
 
 function App() {
+    const [openedTask, setOpenedTask] = useState<TaskType>(TASKS_LIST[0]);
+
+    const todoTasks = TASKS_LIST.filter((task) => task.category === TASK_CATEGORY.TODO);
+    const backlogTasks = TASKS_LIST.filter((task) => task.category === TASK_CATEGORY.BACKLOG);
+
     return (
         <div className="app">
             <Sidebar menu={SIDEBAR}/>
@@ -17,16 +22,14 @@ function App() {
                 <Header title="Website" btn="..."/>
                 <div className="app-container">
                     <div className="app-task">
-                        {TASKS_LIST && TASKS_LIST.map((items) => {
-                            return (<TasksList title={items.title} items={items.items} key={items.title}/>)
-                        })}
+                        <TasksList title={'BACKLOG'} tasks={backlogTasks} onTaskClick={(task => {
+                            setOpenedTask(task)
+                        })}/>
+                        <TasksList title={'TODO'} tasks={todoTasks} onTaskClick={(task => {
+                            setOpenedTask(task)
+                        })}/>
                     </div>
-                    <TaskOpen
-                        title={TASK_OPEN.title}
-                        subtitle={TASK_OPEN.subtitle}
-                        header_items={TASK_OPEN.header_items}
-                        description_items={TASK_OPEN.description_items}
-                    />
+                    <TaskOpen task={openedTask} />
                 </div>
             </div>
         </div>

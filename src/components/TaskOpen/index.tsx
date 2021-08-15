@@ -1,17 +1,24 @@
 import React from 'react';
 
-import {TaskOpenProps} from "./TaskOpenType";
+import {TaskType} from "./TaskOpenType";
 
 import './style/TaskOpen.scss'
+import {TaskComment} from "./TaskOpenCommment";
 
+interface TaskOpenProps {
+    task: TaskType
+}
 
-const TaskOpen = ({title, subtitle, header_items, description_items}: TaskOpenProps): JSX.Element => {
+const TaskOpen = ({task}: TaskOpenProps): JSX.Element => {
     return (
         <div className="task-open">
             <div className="task-open-header">
                 <h2 className="app-title app-title--open">
-                    {title}
-                    <span className="task-open-by">{subtitle}</span>
+                    {task.title}
+                    <div className="wrap">
+                        <span className="task-open-by">{task.author}</span>
+                        <span className="task-open-by">{' ' + task.createdAt}</span>
+                    </div>
                 </h2>
                 <div className="task-open-wrap row">
                     <input type="checkbox" className="task-open-checkbox"/>
@@ -21,41 +28,53 @@ const TaskOpen = ({title, subtitle, header_items, description_items}: TaskOpenPr
                 </div>
             </div>
             <div className="task-open-info">
-                {header_items.map(({title, preview, text, followers}) => {
-                    return (
-                        <div className="col" key={title}>
-                            <h3 className="task-open-subtitle">
-                                {title}
-                            </h3>
-                            <div className="row">
-                                {Boolean(preview) && <img src={preview} alt={preview} className="task-open-preview"/>}
-                                <p className="task-open-text">{text}</p>
-                                {Boolean(followers?.length) &&
-                                <div>{followers?.map((followersAvatar, index) =>
-                                    <img className="menu-user-avatar" key={followersAvatar} src={followersAvatar}
-                                         alt=""/>)}</div>}
-                            </div>
-                        </div>
-                    )
-                })}
-            </div>
-            {description_items.map(({title, text}) => {
-                return (
-                    <div className="task-open-description">
-                        <h2 className="task-open-subtitle">
-                            {title}
-                        </h2>
-                        <p className="task-open-text">
-                            {text}
-                        </p>
-                    </div>
-                )
-            })}
-            <div className="task-open-discussion">
-                <h2 className="task-open-subtitle">
 
-                </h2>
+                <div className="col">
+                    <h3 className="task-open-subtitle">
+                        Assign To
+                    </h3>
+                    <div className="row">
+                        <img src={task.avatar} alt=""/>
+                        {task.author}
+                    </div>
+                </div>
+
+                <div className="col">
+                    <h3 className="task-open-subtitle">
+                        Due On
+                    </h3>
+                    <div className="row">
+                        {task.dueOn}
+                    </div>
+                </div>
+
+                <div className="col">
+                    <h3 className="task-open-subtitle">
+                        Tag
+                    </h3>
+                    {task.tag.map((tag) => <span className={"task-open-tag" + ' ' + `task-open-tag--${tag}`}>{tag}</span>)}
+                </div>
+
+                <div className="col">
+                    <h3 className="task-open-subtitle">
+                        Followers
+                    </h3>
+                    <div className="row">
+                        {task.followers.map((follower) => <img src={follower}/>)}
+                    </div>
+                </div>
             </div>
+
+            <div className="task-open-description">
+                <h2 className="task-open-subtitle">
+                    Description
+                </h2>
+                <p className="task-open-text">
+                    {task.description}
+                </p>
+            </div>
+
+            <TaskComment comments={task.comments}/>
         </div>
     );
 };

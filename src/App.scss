@@ -17,6 +17,7 @@
     &-title {
         font-size: 26px;
         line-height: 38px;
+        width: 100%;
         &--open {
             display: inline-flex;
             flex-direction: column;
@@ -26,6 +27,7 @@
         max-width: 450px;
         width: 100%;
         padding: 1.8rem;
+        margin-right: 1.6rem;
         display: flex;
         flex-direction: column;
         background-color: #fff;

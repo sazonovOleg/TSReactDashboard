@@ -13,7 +13,7 @@ import './styles/Sidebar.scss';
 
 import avatar from '../../assets/sidebar/avatar.png';
 
-const SIDEBAR_PROFILE: HeaderProfileProps = {
+export const SIDEBAR_PROFILE: HeaderProfileProps = {
     images: avatar,
     name: 'Emilee Simchenko',
     position: 'Product Owner'
