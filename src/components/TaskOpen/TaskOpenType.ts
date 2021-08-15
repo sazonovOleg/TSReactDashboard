@@ -15,6 +15,7 @@ export type TaskType = {
     isDone: boolean,
     title: string,
     author: string,
+    avatar: string,
     createdAt: string,
     assignTo: string,
     dueOn: string,

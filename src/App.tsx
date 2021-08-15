@@ -3,18 +3,17 @@ import {Header} from "./components/Header/";
 import {Sidebar} from "./components/Sidebar";
 import {TasksList} from "./components/TasksList";
 import {TaskOpen} from "./components/TaskOpen";
+import {TASK_CATEGORY, TaskType} from "./components/TaskOpen/TaskOpenType";
 import {SIDEBAR} from "./components/Sidebar/data";
 import {TASKS_LIST} from "./components/TasksList/data";
 
 import './App.scss';
-import {TASK_CATEGORY, TaskType} from "./components/TaskOpen/TaskOpenType";
 
 function App() {
-    const [openedTask, setOpenedTask] = useState<TaskType>(TASKS_LIST[0])
+    const [openedTask, setOpenedTask] = useState<TaskType>(TASKS_LIST[0]);
 
-    const todoTasks = TASKS_LIST.filter((task) => task.category === TASK_CATEGORY.TODO)
-    const backlogTasks = TASKS_LIST.filter((task) => task.category === TASK_CATEGORY.BACKLOG)
-
+    const todoTasks = TASKS_LIST.filter((task) => task.category === TASK_CATEGORY.TODO);
+    const backlogTasks = TASKS_LIST.filter((task) => task.category === TASK_CATEGORY.BACKLOG);
 
     return (
         <div className="app">
@@ -23,10 +22,10 @@ function App() {
                 <Header title="Website" btn="..."/>
                 <div className="app-container">
                     <div className="app-task">
-                        <TasksList title={'TODO'} tasks={todoTasks} onTaskClick={(task => {
+                        <TasksList title={'BACKLOG'} tasks={backlogTasks} onTaskClick={(task => {
                             setOpenedTask(task)
                         })}/>
-                        <TasksList title={'BACKLOG'} tasks={backlogTasks} onTaskClick={(task => {
+                        <TasksList title={'TODO'} tasks={todoTasks} onTaskClick={(task => {
                             setOpenedTask(task)
                         })}/>
                     </div>

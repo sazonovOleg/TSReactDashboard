@@ -11,7 +11,6 @@ interface TasksListProps {
     onTaskClick: (task: TaskType) => void
 }
 
-
 const TasksList = ({tasks, title, onTaskClick}: TasksListProps): JSX.Element => {
     return (
         <div className="tasks-list">
@@ -31,9 +30,8 @@ const TasksList = ({tasks, title, onTaskClick}: TasksListProps): JSX.Element => 
                             </label>
                         </div>
                         <div className="tasks-list-wrap row row--ac">
-                            <img className="tasks-list-preview" src={task.author} alt=""/>
-                            {task.tag.map((tag) => <span className={'tasks-list-position'}>{tag}</span>
-                            )}
+                            <img className="tasks-list-preview" src={task.avatar} alt=""/>
+                            {task.tag.map((tag) => <span className={'tasks-list-position' + ' ' + `tasks-list-position--${tag}`}>{tag}</span>)}
                         </div>
                     </div>
                 )

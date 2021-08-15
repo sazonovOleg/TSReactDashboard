@@ -1,13 +1,12 @@
 import React from 'react';
 
-import { TaskType} from "./TaskOpenType";
+import {TaskType} from "./TaskOpenType";
 
 import './style/TaskOpen.scss'
 import {TaskComment} from "./TaskOpenCommment";
 
 interface TaskOpenProps {
     task: TaskType
-
 }
 
 const TaskOpen = ({task}: TaskOpenProps): JSX.Element => {
@@ -16,8 +15,10 @@ const TaskOpen = ({task}: TaskOpenProps): JSX.Element => {
             <div className="task-open-header">
                 <h2 className="app-title app-title--open">
                     {task.title}
-                    <span className="task-open-by">{task.author}</span>
-                    <span className="task-open-by">{task.createdAt}</span>
+                    <div className="wrap">
+                        <span className="task-open-by">{task.author}</span>
+                        <span className="task-open-by">{' ' + task.createdAt}</span>
+                    </div>
                 </h2>
                 <div className="task-open-wrap row">
                     <input type="checkbox" className="task-open-checkbox"/>
@@ -28,14 +29,15 @@ const TaskOpen = ({task}: TaskOpenProps): JSX.Element => {
             </div>
             <div className="task-open-info">
 
-                        <div className="col">
-                            <h3 className="task-open-subtitle">
-                                Assign To
-                            </h3>
-                            <div className="row">
-                                {task.author}
-                            </div>
-                        </div>
+                <div className="col">
+                    <h3 className="task-open-subtitle">
+                        Assign To
+                    </h3>
+                    <div className="row">
+                        <img src={task.avatar} alt=""/>
+                        {task.author}
+                    </div>
+                </div>
 
                 <div className="col">
                     <h3 className="task-open-subtitle">
@@ -46,14 +48,11 @@ const TaskOpen = ({task}: TaskOpenProps): JSX.Element => {
                     </div>
                 </div>
 
-
                 <div className="col">
                     <h3 className="task-open-subtitle">
                         Tag
                     </h3>
-                    <div className="row">
-                        {task.tag.map((tag) => <span>{tag}</span>)}
-                    </div>
+                    {task.tag.map((tag) => <span className={"task-open-tag" + ' ' + `task-open-tag--${tag}`}>{tag}</span>)}
                 </div>
 
                 <div className="col">
@@ -66,14 +65,14 @@ const TaskOpen = ({task}: TaskOpenProps): JSX.Element => {
                 </div>
             </div>
 
-                    <div className="task-open-description" >
-                        <h2 className="task-open-subtitle">
-                            Description
-                        </h2>
-                        <p className="task-open-text">
-                            {task.description}
-                        </p>
-                    </div>
+            <div className="task-open-description">
+                <h2 className="task-open-subtitle">
+                    Description
+                </h2>
+                <p className="task-open-text">
+                    {task.description}
+                </p>
+            </div>
 
             <TaskComment comments={task.comments}/>
         </div>
