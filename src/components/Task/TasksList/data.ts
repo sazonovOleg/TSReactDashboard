@@ -3,6 +3,8 @@ import {TASK_CATEGORY, TaskType} from "../TaskOpen/TaskOpenType";
 import avatar1 from '../../../assets/taskslist/preview.svg';
 import avatar2 from '../../../assets/taskslist/preview-2.svg';
 import avatar3 from '../../../assets/taskslist/preview-3.svg';
+import commentAva1 from '../../../assets/comments/taskopen/preview-1.png'
+import commentAva2 from '../../../assets/comments/taskopen/preview-2.png'
 
 const TASKS_LIST: TaskType[] = [{
     category: TASK_CATEGORY.BACKLOG,
@@ -13,13 +15,13 @@ const TASKS_LIST: TaskType[] = [{
     createdAt: 'yesterday at 12:41pm',
     assignTo: 'Linzell Bowman',
     comments: [{
-        avatar: avatar1,
+        avatar: commentAva1,
         name: 'Helena',
         position: 'Designer',
         createdAt: 'Yesterday at 12:37pm',
         comment: 'During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes',
     }, {
-        avatar: avatar2,
+        avatar: commentAva2,
         name: 'Prescott',
         position: 'Developer',
         createdAt: 'Yesterday at 12:37pm',
@@ -57,7 +59,7 @@ const TASKS_LIST: TaskType[] = [{
     tag: ['design']
 }, {
     category: TASK_CATEGORY.TODO,
-    isDone: false,
+    isDone: true,
     title: 'An option to search in current projects or in all projects',
     author: 'Kristin A',
     avatar: avatar1,
@@ -83,7 +85,7 @@ const TASKS_LIST: TaskType[] = [{
     tag: ['marketing']
 }, {
     category: TASK_CATEGORY.TODO,
-    isDone: false,
+    isDone: true,
     title: 'Listing on Product Hunt so that we can reach as many potential users',
     author: 'Foma',
     avatar: avatar3,

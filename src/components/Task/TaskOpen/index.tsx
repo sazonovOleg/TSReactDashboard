@@ -6,10 +6,11 @@ import './style/TaskOpen.scss'
 import {TaskComment} from "./TaskOpenCommment";
 
 interface TaskOpenProps {
-    task: TaskType
+    task: TaskType,
+    checked?: boolean
 }
 
-const TaskOpen = ({task}: TaskOpenProps): JSX.Element => {
+const TaskOpen = ({task,checked}: TaskOpenProps): JSX.Element => {
     return (
         <div className="task-open">
             <div className="task-open-header">
@@ -21,7 +22,7 @@ const TaskOpen = ({task}: TaskOpenProps): JSX.Element => {
                     </div>
                 </h2>
                 <div className="task-open-wrap row">
-                    <input type="checkbox" className="task-open-checkbox"/>
+                    <input type="checkbox" checked={checked} className="task-open-checkbox"/>
                     <a className="task-open-set">
                         ...
                     </a>
@@ -52,7 +53,7 @@ const TaskOpen = ({task}: TaskOpenProps): JSX.Element => {
                     <h3 className="task-open-subtitle">
                         Tag
                     </h3>
-                    {task.tag.map((tag) => <span className={"task-open-tag" + ' ' + `task-open-tag--${tag}`}>{tag}</span>)}
+                    {task.tag.map((tag) => <span key={tag} className={"task-open-tag" + ' ' + `task-open-tag--${tag}`}>{tag}</span>)}
                 </div>
 
                 <div className="col">
@@ -60,7 +61,7 @@ const TaskOpen = ({task}: TaskOpenProps): JSX.Element => {
                         Followers
                     </h3>
                     <div className="row">
-                        {task.followers.map((follower) => <img src={follower}/>)}
+                        {task.followers.map((follower) => <img key={follower} src={follower}/>)}
                     </div>
                 </div>
             </div>
