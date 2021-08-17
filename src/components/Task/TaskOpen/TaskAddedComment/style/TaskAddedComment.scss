@@ -9,9 +9,11 @@
         align-items: center;
         border-radius: .4rem;
         &-preview {
+            max-width: 53px;
             z-index: 2;
         }
         &-wrapper {
+            width: 100%;
             margin-left: -.9rem;
             padding: 1.4rem 1.8rem;
             background-color: #F7F6F3;

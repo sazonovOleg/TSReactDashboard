@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import './style/TasksList.scss';
 import {TasksButton} from "./TasksButton";
@@ -12,8 +12,8 @@ interface TasksListProps {
 }
 
 const TasksList = ({tasks, title, onTaskClick}: TasksListProps): JSX.Element => {
-    const [checked, setChecked] = useState<TaskType[]>(tasks);
-    const [selectedName, setSelectedName] = useState<TaskType["title"]>(' ');
+    const [checked, setChecked] = React.useState<TaskType[]>(tasks);
+    const [selectedName, setSelectedName] = React.useState<TaskType["title"]>(' ');
 
     const handleChange = () => {
         setChecked(items =>

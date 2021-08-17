@@ -1,9 +1,9 @@
 export type CommentType = {
     name: string,
     position: string,
-    createdAt: string,
+    createdAt: string | number
     avatar: string,
-    comment: string
+    comment: string | undefined
 }
 
 export enum TASK_CATEGORY {
