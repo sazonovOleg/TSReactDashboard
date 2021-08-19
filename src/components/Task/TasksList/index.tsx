@@ -17,7 +17,7 @@ interface TasksListProps {
 }
 
 const TasksList = ({tasks, title, onTaskClick, isOpenTaskId, onTaskChecked, onTaskCreated}: TasksListProps): JSX.Element => {
-    const [selectedName, setSelectedName] = React.useState<TaskType["title"]>(' ');
+    const [selectedTitle, setActiveTitle] = React.useState<TaskType["title"]>(' ');
     const [isShowModal, setShowModal] = useState<boolean>(false)
     const createTask = (task:TaskType) => {
         onTaskCreated(task);
@@ -54,7 +54,7 @@ const TasksList = ({tasks, title, onTaskClick, isOpenTaskId, onTaskChecked, onTa
                             />
                             <label className="tasks-list-text"
                                    onClick={() => onTaskClick(task)}
-                                   onChange={() => {setSelectedName(task.title)}}>
+                                   onChange={() => {setActiveTitle(task.title)}}>
 
                                 {task.title}
                             </label>

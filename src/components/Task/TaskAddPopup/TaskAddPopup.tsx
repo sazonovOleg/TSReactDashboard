@@ -15,7 +15,7 @@ const TaskAddPopup = ({title, onClickCreateTask, onClose}: TaskAddPopupProps): J
 
     const newAddedTask: TaskType = {
         id: Date.now(),
-        category: TASK_CATEGORY.BACKLOG,
+        category: title,
         isDone: false,
         title:taskTitle,
         author: SIDEBAR_PROFILE.name,

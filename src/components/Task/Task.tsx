@@ -50,14 +50,15 @@ const Task = (): JSX.Element => {
                            onTaskChecked={handleDone}
                            onTaskCreated={createNewTask}
                 />
-                {/*<TasksList title={'TODO'}*/}
-                {/*           isOpenTaskId={openedTask.id}*/}
-                {/*           tasks={todoTasks}*/}
-                {/*           onTaskClick={(task => {*/}
-                {/*               setOpenedTask(task)*/}
-                {/*           })}*/}
-                {/*           onTaskChecked={handleDone}*/}
-                {/*/>*/}
+                <TasksList title={'TODO'}
+                           isOpenTaskId={openedTask.id}
+                           tasks={todoTasks}
+                           onTaskClick={(task => {
+                               setOpenedTask(task)
+                           })}
+                           onTaskChecked={handleDone}
+                           onTaskCreated={createNewTask}
+                />
             </div>
             <TaskOpen task={openedTask} onTaskChecked={handleDone}/>
         </div>

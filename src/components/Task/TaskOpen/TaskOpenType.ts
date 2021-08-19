@@ -23,7 +23,7 @@ export type TaskType = {
     followers: string[]
     description: string | undefined
     comments: CommentType[]
-    category: TASK_CATEGORY
+    category: TASK_CATEGORY | string
     id:number
     isOpened: boolean
 }
