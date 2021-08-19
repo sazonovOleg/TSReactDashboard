@@ -1,52 +1,61 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-import './style/TasksList.scss';
+import {TaskAddPopup} from "../TaskAddPopup/TaskAddPopup";
 import {TasksButton} from "./TasksButton";
 import {TaskType} from "../TaskOpen/TaskOpenType";
+
+import './style/TasksList.scss';
 
 interface TasksListProps {
     tasks: TaskType[],
     title: string,
     onTaskClick: (task: TaskType) => void,
-    handleChange?: () => void,
+    clickCheckbox?: () => void,
+    isOpenTaskId: number
+    onTaskChecked:(task:TaskType) => void,
+    onTaskCreated:(task:TaskType) => void
 }
 
-const TasksList = ({tasks, title, onTaskClick}: TasksListProps): JSX.Element => {
-    const [checked, setChecked] = React.useState<TaskType[]>(tasks);
+const TasksList = ({tasks, title, onTaskClick, isOpenTaskId, onTaskChecked, onTaskCreated}: TasksListProps): JSX.Element => {
     const [selectedName, setSelectedName] = React.useState<TaskType["title"]>(' ');
+    const [isShowModal, setShowModal] = useState<boolean>(false)
+    const createTask = (task:TaskType) => {
+        onTaskCreated(task);
+    }
 
-    const handleChange = () => {
-        setChecked(items =>
-            items.map(item => ({
-                ...item,
-                isDone: !item.isDone
-            }))
-        );
-    };
+    const handleDone = (task:TaskType): void => {
+        const newTask: TaskType = {
+            ...task,
+            isDone: !task.isDone
+        }
 
-    console.log(checked)
-
+        onTaskChecked(newTask)
+    }
+    
     return (
         <div className="tasks-list">
             <div className="tasks-list-wrap row row--jb">
                 <h2 className="app-title">
                     {title}
                 </h2>
-                <TasksButton text="+ Add Task"/>
+                <TasksButton text="+ Add Task" onClick={()=> {
+                    setShowModal(true)
+                }}/>
             </div>
-            {checked.map((task) => {
+            {tasks.map((task) => {
                 return (
-                    <div className={"tasks-list-col" + ' ' + `${selectedName === task.title ? "active" : " "}`}
+                    <div className={"tasks-list-col" + ' ' + `${isOpenTaskId === task.id ? "active" : " "}`}
                          key={task.title}>
                         <div className="tasks-list-wrap row">
+                            <input type="checkbox"
+                                   onChange={() => handleDone(task)}
+                                   checked={task.isDone}
+                                   className="tasks-list-checkbox"
+                            />
                             <label className="tasks-list-text"
                                    onClick={() => onTaskClick(task)}
                                    onChange={() => {setSelectedName(task.title)}}>
-                                <input type="checkbox"
-                                       onChange={handleChange}
-                                       checked={task.isDone}
-                                       className="tasks-list-checkbox"
-                                />
+
                                 {task.title}
                             </label>
                         </div>
@@ -57,6 +66,11 @@ const TasksList = ({tasks, title, onTaskClick}: TasksListProps): JSX.Element => 
                     </div>
                 )
             })}
+            {isShowModal && (
+                <TaskAddPopup onClickCreateTask={createTask} title={title} onClose={() => {
+                    setShowModal(false)
+                }}/>
+            )}
         </div>
     )
 };

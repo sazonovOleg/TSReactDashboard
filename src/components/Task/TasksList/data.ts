@@ -7,6 +7,7 @@ import commentAva1 from '../../../assets/comments/taskopen/preview-1.png'
 import commentAva2 from '../../../assets/comments/taskopen/preview-2.png'
 
 const TASKS_LIST: TaskType[] = [{
+    id: 1,
     category: TASK_CATEGORY.BACKLOG,
     isDone: true,
     title: 'E-mail after registration so that I can confirm my address',
@@ -29,9 +30,11 @@ const TASKS_LIST: TaskType[] = [{
     }],
     description: 'Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.',
     dueOn: 'Tue, Dec 25',
-    followers: [avatar1,avatar2,avatar3],
-    tag: ['development']
+    followers: [avatar1, avatar2, avatar3],
+    tag: ['development'],
+    isOpened: true
 }, {
+    id: 2,
     category: TASK_CATEGORY.BACKLOG,
     isDone: false,
     title: 'Two-factor authentication to make my private data more secure ',
@@ -42,9 +45,12 @@ const TASKS_LIST: TaskType[] = [{
     comments: [],
     description: 'Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.',
     dueOn: 'Tue, Dec 25',
-    followers: [avatar1,avatar2,avatar3],
-    tag: ['marketing']
+    followers: [avatar1, avatar2, avatar3],
+    tag: ['marketing'],
+    isOpened: false
+
 }, {
+    id: 3,
     category: TASK_CATEGORY.BACKLOG,
     isDone: false,
     title: 'Find top 5 customers and get reviews from them',
@@ -55,9 +61,12 @@ const TASKS_LIST: TaskType[] = [{
     comments: [],
     description: 'Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.',
     dueOn: 'Tue, Dec 25',
-    followers: [avatar1,avatar2,avatar3],
-    tag: ['design']
+    followers: [avatar1, avatar2, avatar3],
+    tag: ['design'],
+    isOpened: false
+
 }, {
+    id: 4,
     category: TASK_CATEGORY.TODO,
     isDone: true,
     title: 'An option to search in current projects or in all projects',
@@ -68,9 +77,11 @@ const TASKS_LIST: TaskType[] = [{
     comments: [],
     description: 'Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.',
     dueOn: 'Tue, Dec 25',
-    followers: [avatar1,avatar2,avatar3],
-    tag: ['development']
+    followers: [avatar1, avatar2, avatar3],
+    tag: ['development'],
+    isOpened: false
 }, {
+    id: 5,
     category: TASK_CATEGORY.TODO,
     isDone: false,
     title: 'Account for teams and personal in bottom style',
@@ -81,9 +92,12 @@ const TASKS_LIST: TaskType[] = [{
     comments: [],
     description: 'Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.',
     dueOn: 'Tue, Dec 25',
-    followers: [avatar1,avatar2,avatar3],
-    tag: ['marketing']
+    followers: [avatar1, avatar2, avatar3],
+    tag: ['marketing'],
+    isOpened: false
+
 }, {
+    id: 6,
     category: TASK_CATEGORY.TODO,
     isDone: true,
     title: 'Listing on Product Hunt so that we can reach as many potential users',
@@ -94,8 +108,9 @@ const TASKS_LIST: TaskType[] = [{
     comments: [],
     description: 'Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.',
     dueOn: 'Tue, Dec 25',
-    followers: [avatar1,avatar2,avatar3],
-    tag: ['design']
+    followers: [avatar1, avatar2, avatar3],
+    tag: ['design'],
+    isOpened: false
 }]
 
 export {TASKS_LIST}

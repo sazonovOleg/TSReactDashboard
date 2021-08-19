@@ -7,10 +7,20 @@ import {TaskComment} from "./TaskOpenCommment";
 
 interface TaskOpenProps {
     task: TaskType,
-    checked?: boolean
+    onTaskChecked: (task:TaskType) => void
 }
 
-const TaskOpen = ({task,checked}: TaskOpenProps): JSX.Element => {
+const TaskOpen = ({task, onTaskChecked}: TaskOpenProps): JSX.Element => {
+
+    const handleDone = (task:TaskType): void => {
+        const newTask: TaskType = {
+            ...task,
+            isDone: !task.isDone
+        }
+
+        onTaskChecked(newTask)
+    }
+
     return (
         <div className="task-open">
             <div className="task-open-header">
@@ -22,7 +32,7 @@ const TaskOpen = ({task,checked}: TaskOpenProps): JSX.Element => {
                     </div>
                 </h2>
                 <div className="task-open-wrap row">
-                    <input type="checkbox" checked={checked} className="task-open-checkbox"/>
+                    <input type="checkbox" checked={task.isDone} onChange={() => handleDone(task)} className="task-open-checkbox"/>
                     <a className="task-open-set">
                         ...
                     </a>
