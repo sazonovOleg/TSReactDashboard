@@ -6,10 +6,21 @@ import './style/TaskOpen.scss'
 import {TaskComment} from "./TaskOpenCommment";
 
 interface TaskOpenProps {
-    task: TaskType
+    task: TaskType,
+    onTaskChecked: (task:TaskType) => void
 }
 
-const TaskOpen = ({task}: TaskOpenProps): JSX.Element => {
+const TaskOpen = ({task, onTaskChecked}: TaskOpenProps): JSX.Element => {
+
+    const handleDone = (task:TaskType): void => {
+        const newTask: TaskType = {
+            ...task,
+            isDone: !task.isDone
+        }
+
+        onTaskChecked(newTask)
+    }
+
     return (
         <div className="task-open">
             <div className="task-open-header">
@@ -21,7 +32,7 @@ const TaskOpen = ({task}: TaskOpenProps): JSX.Element => {
                     </div>
                 </h2>
                 <div className="task-open-wrap row">
-                    <input type="checkbox" className="task-open-checkbox"/>
+                    <input type="checkbox" checked={task.isDone} onChange={() => handleDone(task)} className="task-open-checkbox"/>
                     <a className="task-open-set">
                         ...
                     </a>
@@ -52,7 +63,7 @@ const TaskOpen = ({task}: TaskOpenProps): JSX.Element => {
                     <h3 className="task-open-subtitle">
                         Tag
                     </h3>
-                    {task.tag.map((tag) => <span className={"task-open-tag" + ' ' + `task-open-tag--${tag}`}>{tag}</span>)}
+                    {task.tag.map((tag) => <span key={tag} className={"task-open-tag" + ' ' + `task-open-tag--${tag}`}>{tag}</span>)}
                 </div>
 
                 <div className="col">
@@ -60,7 +71,7 @@ const TaskOpen = ({task}: TaskOpenProps): JSX.Element => {
                         Followers
                     </h3>
                     <div className="row">
-                        {task.followers.map((follower) => <img src={follower}/>)}
+                        {task.followers.map((follower) => <img key={follower} src={follower}/>)}
                     </div>
                 </div>
             </div>
