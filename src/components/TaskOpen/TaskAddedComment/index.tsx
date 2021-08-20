@@ -1,7 +1,7 @@
 import React from 'react';
 import {CommentType} from "../TaskOpenType";
 
-import './style/TaskAddedComment.scss';
+import '../TaskAddedComment/style/TaskAddedComment.scss';
 
 interface TaskAddedCommentProps {
     comments: CommentType[]

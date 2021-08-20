@@ -1,9 +1,9 @@
 export type CommentType = {
     name: string,
     position: string,
-    createdAt: string | number
+    createdAt: string,
     avatar: string,
-    comment: string | undefined
+    comment: string
 }
 
 export enum TASK_CATEGORY {
@@ -13,7 +13,7 @@ export enum TASK_CATEGORY {
 
 export type TaskType = {
     isDone: boolean,
-    title: string | undefined,
+    title: string,
     author: string,
     avatar: string,
     createdAt: string,
@@ -21,9 +21,7 @@ export type TaskType = {
     dueOn: string,
     tag:string[],
     followers: string[]
-    description: string | undefined
+    description: string
     comments: CommentType[]
-    category: TASK_CATEGORY | string
-    id:number
-    isOpened: boolean
+    category: TASK_CATEGORY
 }
