@@ -4,12 +4,11 @@ import './style/TasksButton.scss'
 
 interface Props {
     text:string
-    onClick: () => void
 }
 
-const  TasksButton= ({text, onClick}: Props): JSX.Element => {
+const  TasksButton= ({text}: Props): JSX.Element => {
   return (
-      <button onClick={onClick} className="tasks-button">
+      <button className="tasks-button">
           {text}
       </button>
   );
