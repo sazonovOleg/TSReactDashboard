@@ -17,12 +17,25 @@
         overflow: hidden;
     }
     &-title {
+        width: 100%;
         font-size: 26px;
         line-height: 38px;
-        width: 100%;
+        font-weight: bold;
+        resize: vertical;
+        min-height: max-content;
+        outline: none;
+        border: 1px solid rgba(0, 0, 0, 0);
+        transition: .15s all ease;
+        border-radius: .4rem;
+        &:hover {
+            border: 1px solid rgba(0, 0, 0, 0.29);
+        }
         &--open {
             display: inline-flex;
             flex-direction: column;
+        }
+        &:focus {
+            border-color: #000;
         }
     }
     &-task {

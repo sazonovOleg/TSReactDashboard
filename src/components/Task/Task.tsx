@@ -40,6 +40,18 @@ const Task = (): JSX.Element => {
         setTasks(newTasks);
     }
 
+    const changeTaskInfo = (newTaskInfo: TaskType) => {
+        const newTasks = tasks.map((task) => {
+            if (task.id === newTaskInfo.id) {
+                return newTaskInfo
+            }
+            return task
+        })
+
+        setTasks(newTasks)
+    }
+
+
     return (
         <div className="app-container">
             <div className="app-task">
@@ -58,7 +70,7 @@ const Task = (): JSX.Element => {
                            onTaskCreated={createNewTask}
                 />
             </div>
-            <TaskOpen task={openedTask} onTaskChecked={handleDone}/>
+            <TaskOpen task={openedTask} onTaskChecked={handleDone} titleRename={changeTaskInfo}/>
         </div>
     );
 };

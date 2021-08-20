@@ -5,6 +5,7 @@ import {SidebarMenuProps} from "./SidebarMenuType";
 import './style/SidebarMenu.scss'
 
 const SidebarMenu = ({title, items}: SidebarMenuProps): JSX.Element => {
+    //TODO кнопки добавить проект и добавить команду
     return (
         <nav className="menu container">
             <h2 className="menu-title">

@@ -6,7 +6,7 @@
     border-radius: .3rem;
     &-header {
         display: flex;
-        flex-direction: row;
+        flex-flow: row wrap;
         align-items: flex-start;
         justify-content: space-between;
     }
@@ -47,11 +47,41 @@
         text-transform: uppercase;
     }
     &-text {
+        padding: .2rem;
+        width: 100%;
         font-size: .9rem;
-        line-height: 1.6rem;
+        line-height: 1.4rem;
+        resize: vertical;
+        word-spacing: .0005rem;
+        min-height: 180px;
+        border: 1px solid rgba(0, 0, 0, 0);
+        transition: .15s all ease;
+        border-radius: .4rem;
+        &:hover {
+            border: 1px solid rgba(0, 0, 0, 0.29);
+        }
     }
     &-preview {
         margin-right: .4rem;
+    }
+    .wrap {
+        position: relative;
+        &:focus {
+            .change-rename {
+                opacity: 1;
+            }
+        }
+    }
+    .change-rename {
+        position: absolute;
+        right: 0;
+        bottom: .3rem;
+        font-size: 1.4rem;
+        cursor: pointer;
+        opacity: .55;
+        &:hover {
+            opacity: 1;
+        }
     }
     &-info {
         padding-bottom: 1.8rem;
