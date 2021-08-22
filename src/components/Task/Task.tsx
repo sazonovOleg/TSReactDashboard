@@ -20,7 +20,6 @@ const Task = (): JSX.Element => {
             }
             return task
         })
-
         setTasks(newTasks)
     }
 
@@ -31,7 +30,6 @@ const Task = (): JSX.Element => {
                 isOpened: openedTask.id === task.id
             }
         })
-
         setTasks(newTasks)
     }
 
@@ -47,10 +45,8 @@ const Task = (): JSX.Element => {
             }
             return task
         })
-
         setTasks(newTasks)
     }
-
 
     return (
         <div className="app-container">

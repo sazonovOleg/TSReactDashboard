@@ -87,6 +87,7 @@
         }
     }
     &-info {
+        position: relative;
         padding-bottom: 1.8rem;
         margin-bottom: 1.8rem;
         display: flex;
@@ -100,6 +101,46 @@
         .row {
             min-height: 20px;
             align-items: center;
+        }
+    }
+    .follower {
+        &-add {
+            width: 1.4rem;
+            height: 1.4rem;
+            background-color: #EAEAEA;
+            border-radius: 50%;
+            color: #9B9B9B;
+            font-size: 1.25rem;
+            font-weight: bold;
+            cursor: pointer;
+            &:hover {
+                color: #5b5b5b;
+            }
+        }
+        &-wrap {
+            width: 100%;
+            height: max-content;
+            padding: 1rem;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(194, 194, 194, 0.85);
+            img {
+                opacity: .8;
+                max-width: 20px;
+                cursor: pointer;
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+        &-close {
+            position: absolute;
+            right: .41rem;
+            top: .11rem;
+            font-weight: bold;
+            font-size: 1.3rem;
+            cursor: pointer;
         }
     }
 }

@@ -35,6 +35,11 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
     display: block;
 }
 
+button {
+    border: none;
+    background: none;
+}
+
 .container {
     padding: {
         left: 1.2rem;
@@ -118,3 +123,4 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
         height: 50px;
     }
 }
+

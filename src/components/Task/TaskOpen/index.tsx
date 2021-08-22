@@ -1,9 +1,13 @@
 import React from 'react';
 
+import {TaskComment} from "./TaskOpenCommment";
 import {TaskType} from "./TaskOpenType";
 
 import './style/TaskOpen.scss'
-import {TaskComment} from "./TaskOpenCommment";
+
+import avatar1 from "../../../assets/taskslist/preview.svg";
+import avatar2 from "../../../assets/taskslist/preview-2.svg";
+import avatar3 from "../../../assets/taskslist/preview-3.svg";
 
 interface TaskOpenProps {
     task: TaskType,
@@ -14,6 +18,11 @@ interface TaskOpenProps {
 const TaskOpen = ({task, onTaskChecked, renameTaskInfo}: TaskOpenProps): JSX.Element => {
     const [defaultTitle, setNewTitles] = React.useState(task.title);
     const [defaultDescription, setNewDescription] = React.useState(task.description);
+    const [isShowFollowers, setShowFollowers] = React.useState<boolean>(false)
+    const [addedFollower, addNewFollower] = React.useState<number>()
+
+    //TODO заменить на реальный массив
+    const allFollowers: string[] = [avatar1, avatar2, avatar3];
 
     const handleDone = (task: TaskType): void => {
         const newTask: TaskType = {
@@ -30,6 +39,14 @@ const TaskOpen = ({task, onTaskChecked, renameTaskInfo}: TaskOpenProps): JSX.Ele
             description: defaultDescription
         }
         renameTaskInfo(newTask)
+    }
+
+    const setFollowers = () => {
+        setShowFollowers(!isShowFollowers)
+    }
+
+    const addNewFollowers = (follower: string) => {
+        addNewFollower(task.followers.push(follower))
     }
 
     React.useEffect(() => {
@@ -97,8 +114,15 @@ const TaskOpen = ({task, onTaskChecked, renameTaskInfo}: TaskOpenProps): JSX.Ele
                     </h3>
                     <div className="row">
                         {task.followers.map((follower) => <img key={follower} src={follower}/>)}
+                        <button className="follower-add" onClick={setFollowers}>+</button>
                     </div>
                 </div>
+
+                {isShowFollowers &&
+                <div className="follower-wrap">{allFollowers.map((followers, index) =>
+                    <img key={followers} onClick={() => addNewFollowers(followers)} src={followers}/>)}
+                    <span className="follower-close" onClick={setFollowers}>&times;</span>
+                </div>}
             </div>
 
             <div className="task-open-description">

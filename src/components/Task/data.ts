@@ -30,7 +30,7 @@ const TASKS_LIST: TaskType[] = [{
     }],
     description: 'Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.',
     dueOn: 'Tue, Dec 25',
-    followers: [avatar1, avatar2, avatar3],
+    followers: [avatar1],
     tag: ['development'],
     isOpened: true
 }, {
@@ -45,7 +45,7 @@ const TASKS_LIST: TaskType[] = [{
     comments: [],
     description: 'Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.',
     dueOn: 'Tue, Dec 25',
-    followers: [avatar1, avatar2, avatar3],
+    followers: [avatar1, avatar2],
     tag: ['marketing'],
     isOpened: false
 
@@ -61,7 +61,7 @@ const TASKS_LIST: TaskType[] = [{
     comments: [],
     description: 'Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.',
     dueOn: 'Tue, Dec 25',
-    followers: [avatar1, avatar2, avatar3],
+    followers: [],
     tag: ['design'],
     isOpened: false
 
@@ -77,7 +77,7 @@ const TASKS_LIST: TaskType[] = [{
     comments: [],
     description: 'Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.',
     dueOn: 'Tue, Dec 25',
-    followers: [avatar1, avatar2, avatar3],
+    followers: [avatar1],
     tag: ['development'],
     isOpened: false
 }, {
@@ -92,7 +92,7 @@ const TASKS_LIST: TaskType[] = [{
     comments: [],
     description: 'Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.',
     dueOn: 'Tue, Dec 25',
-    followers: [avatar1, avatar2, avatar3],
+    followers: [],
     tag: ['marketing'],
     isOpened: false
 
@@ -108,7 +108,7 @@ const TASKS_LIST: TaskType[] = [{
     comments: [],
     description: 'Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.',
     dueOn: 'Tue, Dec 25',
-    followers: [avatar1, avatar2, avatar3],
+    followers: [],
     tag: ['design'],
     isOpened: false
 }]
