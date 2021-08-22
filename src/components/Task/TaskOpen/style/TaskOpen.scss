@@ -9,6 +9,9 @@
         flex-flow: row wrap;
         align-items: flex-start;
         justify-content: space-between;
+        .wrap{
+            width: 100%;
+        }
     }
     &-by {
         padding-bottom: 1.8rem;

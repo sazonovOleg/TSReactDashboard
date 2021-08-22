@@ -8,29 +8,28 @@ import {TaskComment} from "./TaskOpenCommment";
 interface TaskOpenProps {
     task: TaskType,
     onTaskChecked: (task: TaskType) => void
-    titleRename: (task: TaskType) => void
+    renameTaskInfo: (task: TaskType) => void
 }
 
-const TaskOpen = ({task, onTaskChecked, titleRename}: TaskOpenProps): JSX.Element => {
+const TaskOpen = ({task, onTaskChecked, renameTaskInfo}: TaskOpenProps): JSX.Element => {
     const [defaultTitle, setNewTitles] = React.useState(task.title);
     const [defaultDescription, setNewDescription] = React.useState(task.description);
 
     const handleDone = (task: TaskType): void => {
         const newTask: TaskType = {
             ...task,
-            isDone: !task.isDone,
-            title: defaultTitle
+            isDone: !task.isDone
         }
         onTaskChecked(newTask)
     }
 
-    const setNewTitle = (task: TaskType): void => {
+    const setNewInfo = (task: TaskType): void => {
         const newTask: TaskType = {
             ...task,
             title: defaultTitle,
             description: defaultDescription
         }
-        titleRename(newTask)
+        renameTaskInfo(newTask)
     }
 
     React.useEffect(() => {
@@ -47,7 +46,7 @@ const TaskOpen = ({task, onTaskChecked, titleRename}: TaskOpenProps): JSX.Elemen
                                   value={defaultTitle}
                                   onChange={event => setNewTitles(event.target.value)}
                         />
-                        <a className="change-rename" onClick={() => setNewTitle(task)}>&#9998;</a>
+                        <a className="change-rename" onClick={() => setNewInfo(task)}>&#9998;</a>
                     </div>
                     <div className="task-open-wrap row">
                         <input type="checkbox" checked={task.isDone} onChange={() => handleDone(task)}
@@ -58,7 +57,7 @@ const TaskOpen = ({task, onTaskChecked, titleRename}: TaskOpenProps): JSX.Elemen
                         </div>
                     </div>
                 </h2>
-                <div className="wrap">
+                <div className="row">
                     <span className="task-open-by">{task.author}</span>
                     <span className="task-open-by">{' ' + task.createdAt}</span>
                 </div>
@@ -110,7 +109,7 @@ const TaskOpen = ({task, onTaskChecked, titleRename}: TaskOpenProps): JSX.Elemen
                     <textarea className="task-open-text" value={defaultDescription}
                               onChange={event => setNewDescription(event.target.value)}
                     />
-                    <a className="change-rename" onClick={() => setNewTitle(task)}>&#9998;</a>
+                    <a className="change-rename" onClick={() => setNewInfo(task)}>&#9998;</a>
                 </div>
             </div>
 

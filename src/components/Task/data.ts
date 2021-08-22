@@ -1,10 +1,10 @@
-import {TASK_CATEGORY, TaskType} from "../TaskOpen/TaskOpenType";
+import {TASK_CATEGORY, TaskType} from "./TaskOpen/TaskOpenType";
 
-import avatar1 from '../../../assets/taskslist/preview.svg';
-import avatar2 from '../../../assets/taskslist/preview-2.svg';
-import avatar3 from '../../../assets/taskslist/preview-3.svg';
-import commentAva1 from '../../../assets/comments/taskopen/preview-1.png'
-import commentAva2 from '../../../assets/comments/taskopen/preview-2.png'
+import avatar1 from '../../assets/taskslist/preview.svg';
+import avatar2 from '../../assets/taskslist/preview-2.svg';
+import avatar3 from '../../assets/taskslist/preview-3.svg';
+import commentAva1 from '../../assets/comments/taskopen/preview-1.png'
+import commentAva2 from '../../assets/comments/taskopen/preview-2.png'
 
 const TASKS_LIST: TaskType[] = [{
     id: 1,
@@ -68,7 +68,7 @@ const TASKS_LIST: TaskType[] = [{
 }, {
     id: 4,
     category: TASK_CATEGORY.TODO,
-    isDone: true,
+    isDone: false,
     title: 'An option to search in current projects or in all projects',
     author: 'Kristin A',
     avatar: avatar1,
@@ -99,7 +99,7 @@ const TASKS_LIST: TaskType[] = [{
 }, {
     id: 6,
     category: TASK_CATEGORY.TODO,
-    isDone: true,
+    isDone: false,
     title: 'Listing on Product Hunt so that we can reach as many potential users',
     author: 'Foma',
     avatar: avatar3,
