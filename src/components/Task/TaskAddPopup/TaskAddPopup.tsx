@@ -2,6 +2,7 @@ import React, {useRef, useState} from 'react';
 import './style/TaskAddPopup.scss';
 import {TASK_CATEGORY, TaskType} from "../TaskOpen/TaskOpenType";
 import {SIDEBAR_PROFILE} from "../../Sidebar";
+import {TasksButton} from "../TasksButton";
 
 interface TaskAddPopupProps {
     title: string,
@@ -59,14 +60,12 @@ const TaskAddPopup = ({title, onClickCreateTask, onClose}: TaskAddPopupProps): J
                             value={description}
                             className="form-input form-input--textarea"/>
                     </div>
-                    <button
+                    <TasksButton
+                        text={'Create Task'}
+                        onClick={() => {onClickCreateTask(newAddedTask)
+                            onClose()}}
                         disabled={!Boolean(taskTitle) || !Boolean(description)}
-                        onClick={() => {
-                            onClickCreateTask(newAddedTask)
-                            onClose()}
-                        }>
-                        Create Task
-                    </button>
+                    />
                 </div>
             </div>
         </div>

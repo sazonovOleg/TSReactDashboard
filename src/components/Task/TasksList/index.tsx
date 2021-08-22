@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 import {TaskAddPopup} from "../TaskAddPopup/TaskAddPopup";
-import {TasksButton} from "./TasksButton";
+import {TasksButton} from "../TasksButton";
 import {TaskType} from "../TaskOpen/TaskOpenType";
 
 import './style/TasksList.scss';
@@ -49,7 +49,7 @@ const TasksList = ({tasks, title, isOpenTaskId, onTaskClick, onTaskChecked, onTa
                             <input type="checkbox"
                                    onChange={() => handleDone(task)}
                                    checked={task.isDone}
-                                   className="tasks-list-checkbox"
+                                   className="checkbox"
                             />
                             <label className="tasks-list-text"
                                    onClick={() => onTaskClick(task)}

@@ -49,17 +49,18 @@ const TaskOpen = ({task, onTaskChecked, titleRename}: TaskOpenProps): JSX.Elemen
                         />
                         <a className="change-rename" onClick={() => setNewTitle(task)}>&#9998;</a>
                     </div>
+                    <div className="task-open-wrap row">
+                        <input type="checkbox" checked={task.isDone} onChange={() => handleDone(task)}
+                               className="checkbox checkbox--xl"/>
+                        <label></label>
+                        <div className="btn-set">
+                            <span>...</span>
+                        </div>
+                    </div>
                 </h2>
                 <div className="wrap">
                     <span className="task-open-by">{task.author}</span>
                     <span className="task-open-by">{' ' + task.createdAt}</span>
-                </div>
-                <div className="task-open-wrap row">
-                    <input type="checkbox" checked={task.isDone} onChange={() => handleDone(task)}
-                           className="task-open-checkbox"/>
-                    <a className="task-open-set">
-                        ...
-                    </a>
                 </div>
             </div>
             <div className="task-open-info">
