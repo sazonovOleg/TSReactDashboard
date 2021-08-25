@@ -4,8 +4,8 @@ import './style/TasksButton.scss'
 
 interface TasksButtonProps {
     text:string
-    onClick: () => void
-    disabled?: any
+    onClick?: () => void
+    disabled?: boolean
 }
 
 const  TasksButton= ({text, onClick, disabled}: TasksButtonProps): JSX.Element => {

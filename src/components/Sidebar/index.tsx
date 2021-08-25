@@ -25,10 +25,12 @@ const TASK_INFO: TaskInfoType[] = [
 ]
 
 interface SidebarProps {
-    menu:  SidebarMenuProps[]
+    menu:  SidebarMenuProps[],
+    showSidebar: () => void
 }
 
-const Sidebar = ({menu}: SidebarProps): JSX.Element => {
+const Sidebar = ({menu, showSidebar}: SidebarProps): JSX.Element => {
+
     return (
         <div className="sidebar">
             <div className="sidebar-header container">
@@ -40,6 +42,7 @@ const Sidebar = ({menu}: SidebarProps): JSX.Element => {
                               fill="#FFC200"/>
                     </svg>
                     PROJECTUS
+                    <span>click me</span>
                 </h1>
                 <div className="sidebar-search">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -56,7 +59,13 @@ const Sidebar = ({menu}: SidebarProps): JSX.Element => {
             />
             <SidebarTask info={TASK_INFO}/>
             {menu && menu.map((item) => {
-                return (<SidebarMenu title={item.title} items={item.items} key={item.title}/>
+                return (<SidebarMenu
+                        title={item.title}
+                        items={item.items}
+                        key={item.title}
+                        button={item.button}
+                        addButton={showSidebar}
+                    />
                 )
             })}
         </div>

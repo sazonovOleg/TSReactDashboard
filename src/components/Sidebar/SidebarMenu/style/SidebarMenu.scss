@@ -18,6 +18,15 @@
         flex-direction: column;
     }
 
+    &-btn {
+        cursor: pointer;
+        color: #FFC200;
+        opacity: .75;
+        &:hover {
+            opacity: 1;
+        }
+    }
+
     &-item {
         padding-bottom: 1.2rem;
         display: inline-flex;

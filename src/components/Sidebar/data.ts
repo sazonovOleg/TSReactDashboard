@@ -21,6 +21,7 @@ const SIDEBAR: SidebarMenuProps[] = [{
         {preview: projectTwo, title: 'CRM System'},
         {preview: projectThree, title: 'Website Redesign'},
         {preview: projectFour, title: 'Communication Tool'},],
+    button: '+ Add a Project',
 },
     {
         title: 'Teams',
@@ -50,6 +51,7 @@ const SIDEBAR: SidebarMenuProps[] = [{
                 ]
             },
         ],
+        button: '+ Add a Team',
     }]
 
 export {SIDEBAR}

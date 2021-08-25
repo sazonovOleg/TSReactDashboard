@@ -31,8 +31,6 @@ const TaskAddPopup = ({title, onClickCreateTask, onClose}: TaskAddPopupProps): J
         isOpened: false
     }
 
-    console.log(newAddedTask)
-
     return (
         <div className="task-popup">
             <div className="task-popup-container">
