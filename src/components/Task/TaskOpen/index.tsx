@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {TaskComment} from "./TaskOpenCommment";
 import {TaskType} from "./TaskOpenType";
@@ -20,6 +20,8 @@ const TaskOpen = ({task, onTaskChecked, renameTaskInfo}: TaskOpenProps): JSX.Ele
     const [defaultDescription, setNewDescription] = React.useState(task.description);
     const [isShowFollowers, setShowFollowers] = React.useState<boolean>(false)
     const [addedFollower, addNewFollower] = React.useState<number>()
+    const [isEditDescription, setIsEditDescription] = useState<boolean>(false);
+
 
     //TODO заменить на реальный массив
     const allFollowers: string[] = [avatar1, avatar2, avatar3];
@@ -39,6 +41,7 @@ const TaskOpen = ({task, onTaskChecked, renameTaskInfo}: TaskOpenProps): JSX.Ele
             description: defaultDescription
         }
         renameTaskInfo(newTask)
+        setIsEditDescription(false)
     }
 
     const setFollowers = () => {
@@ -130,9 +133,17 @@ const TaskOpen = ({task, onTaskChecked, renameTaskInfo}: TaskOpenProps): JSX.Ele
                     Description
                 </h2>
                 <div className="wrap">
-                    <textarea className="task-open-text" value={defaultDescription}
-                              onChange={event => setNewDescription(event.target.value)}
-                    />
+                    {isEditDescription ? (
+                        <textarea className="task-open-text" value={defaultDescription}
+                                  onChange={event => {
+                                      setNewDescription(event.target.value)
+                                  }}
+                        />
+                    ) : <div onClick={() => {
+                        setIsEditDescription(true)}
+                    }>{defaultDescription}</div>}
+
+
                     <a className="change-rename" onClick={() => setNewInfo(task)}>&#9998;</a>
                 </div>
             </div>

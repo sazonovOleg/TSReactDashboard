@@ -6,6 +6,7 @@ import {TaskAddedComment} from "../TaskAddedComment";
 import {SIDEBAR_PROFILE} from "../../../Sidebar";
 
 import avatar from '../../../../assets/sidebar/avatar.png';
+import {Button, BUTTON_STYLE} from "../../../Button";
 
 interface TaskCommentProps {
     comments: CommentType[]
@@ -50,11 +51,14 @@ const TaskComment = ({comments}: TaskCommentProps): JSX.Element => {
                     <img className="task-open-comment-preview task-open-comment-preview--form" src={avatar} alt=""/>
                     <textarea ref={inputRef} className="task-open-input"/>
                 </div>
-                <button
-                    onClick={addNewComment}
-                    className="btn">
-                    + Add comment
-                </button>
+
+                <div>
+                    <Button
+                        onClick={addNewComment}
+                        variant={BUTTON_STYLE.SUCCESS}>
+                        + Add comment
+                    </Button>
+                </div>
             </div>
             <TaskAddedComment comments={comments}/>
         </div>

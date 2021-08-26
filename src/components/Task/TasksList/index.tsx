@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 
 import {TaskAddPopup} from "../TaskAddPopup/TaskAddPopup";
-import {TasksButton} from "../TasksButton";
 import {TaskType} from "../TaskOpen/TaskOpenType";
 
 import './style/TasksList.scss';
+import {Button, BUTTON_STYLE} from "../../Button";
 
 interface TasksListProps {
     tasks: TaskType[],
@@ -37,9 +37,9 @@ const TasksList = ({tasks, title, isOpenTaskId, onTaskClick, onTaskChecked, onTa
                 <h2 className="app-title">
                     {title}
                 </h2>
-                <TasksButton text="+ Add Task" onClick={()=> {
+                <Button onClick={() => {
                     setShowModal(true)
-                }}/>
+                }} variant={BUTTON_STYLE.SUCCESS}>+ Add Task</Button>
             </div>
             {tasks.map((task) => {
                 return (
