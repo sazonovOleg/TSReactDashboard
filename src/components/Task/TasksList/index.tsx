@@ -44,14 +44,14 @@ const TasksList = ({tasks, title, isOpenTaskId, onTaskClick, onTaskChecked, onTa
             {tasks.map((task) => {
                 return (
                     <div className={"tasks-list-col" + ' ' + `${isOpenTaskId === task.id ? "active" : " "}`}
-                         key={task.title}>
+                         key={task.title}
+                         onClick={() => onTaskClick(task)}>
                         <div className="tasks-list-wrap row">
                             <input type="checkbox"
                                    onChange={() => handleDone(task)}
                                    checked={task.isDone}
                                    className="checkbox"/>
                             <label className="tasks-list-text"
-                                   onClick={() => onTaskClick(task)}
                                    onChange={() => {setActiveTitle(task.title)}}>
                                 {task.title}
                             </label>

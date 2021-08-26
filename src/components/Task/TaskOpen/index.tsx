@@ -52,6 +52,11 @@ const TaskOpen = ({task, onTaskChecked, renameTaskInfo}: TaskOpenProps): JSX.Ele
         addNewFollower(task.followers.push(follower))
     }
 
+    const handleKeyboardEvent = (event: React.KeyboardEvent):any => {
+        setNewInfo(task)
+        // TODO разобраться с onKeyDown={event => handleKeyboardEvent(event)}
+    }
+
     React.useEffect(() => {
         setNewTitles(task.title)
         setNewDescription(task.description)
@@ -65,6 +70,7 @@ const TaskOpen = ({task, onTaskChecked, renameTaskInfo}: TaskOpenProps): JSX.Ele
                         <textarea className="app-title"
                                   value={defaultTitle}
                                   onChange={event => setNewTitles(event.target.value)}
+                                  onKeyDown={event => handleKeyboardEvent(event)}
                         />
                         <a className="change-rename" onClick={() => setNewInfo(task)}>&#9998;</a>
                     </div>
@@ -137,8 +143,7 @@ const TaskOpen = ({task, onTaskChecked, renameTaskInfo}: TaskOpenProps): JSX.Ele
                         <textarea className="task-open-text" value={defaultDescription}
                                   onChange={event => {
                                       setNewDescription(event.target.value)
-                                  }}
-                        />
+                                  }}/>
                     ) : <div onClick={() => {
                         setIsEditDescription(true)}
                     }>{defaultDescription}</div>}
