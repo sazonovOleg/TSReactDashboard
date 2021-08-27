@@ -49,42 +49,8 @@
         line-height: 1.2rem;
         text-transform: uppercase;
     }
-    &-text {
-        padding: .2rem;
-        width: 100%;
-        font-size: .9rem;
-        line-height: 1.4rem;
-        resize: vertical;
-        word-spacing: .0005rem;
-        min-height: 180px;
-        border: 1px solid rgba(0, 0, 0, 0);
-        transition: .15s all ease;
-        border-radius: .4rem;
-        &:hover {
-            border: 1px solid rgba(0, 0, 0, 0.29);
-        }
-    }
     &-preview {
         margin-right: .4rem;
-    }
-    .wrap {
-        position: relative;
-        &:focus {
-            .change-rename {
-                opacity: 1;
-            }
-        }
-    }
-    .change-rename {
-        position: absolute;
-        right: 0;
-        bottom: .3rem;
-        font-size: 1.4rem;
-        cursor: pointer;
-        opacity: .55;
-        &:hover {
-            opacity: 1;
-        }
     }
     &-info {
         position: relative;
@@ -141,6 +107,58 @@
             font-weight: bold;
             font-size: 1.3rem;
             cursor: pointer;
+        }
+    }
+    .change-rename {
+        font-size: 1.4rem;
+        cursor: pointer;
+        opacity: .75;
+        &:hover {
+            opacity: 1;
+        }
+    }
+    .description {
+        &-text {
+            width: 100%;
+            font-size: 1rem;
+            line-height: 1.4rem;
+            word-spacing: .0005rem;
+            border: 1px solid rgba(255, 255, 255, 0.29);
+            border-radius: 10px;
+            &:hover {
+                border: 1px solid rgba(0, 0, 0, 0.29);
+            }
+            &--textarea {
+                min-height: 180px;
+                resize: none;
+                border: none;
+                &:hover {
+                    border: none;
+                }
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+        .column {
+            position: relative;
+
+            &:focus {
+                .change-rename {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .edit-panel {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        border-radius: .4rem;
+        transition: .4s all ease;
+        border: 1px solid rgba(0, 0, 0, 0.29);
+        &:hover {
+            border: 1px solid rgba(0, 0, 0, 0.29);
         }
     }
 }
