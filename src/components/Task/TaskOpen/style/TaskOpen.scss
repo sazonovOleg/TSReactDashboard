@@ -1,17 +1,19 @@
 .task-open {
     max-width: 650px;
     width: 100%;
+    height: max-content;
     padding: 1.8rem;
     background-color: #fff;
     border-radius: .3rem;
     &-header {
         display: flex;
-        flex-flow: row wrap;
+        flex-flow: row;
         align-items: flex-start;
         justify-content: space-between;
-        .wrap{
-            width: 100%;
-        }
+    }
+    &-title {
+        resize: none;
+        flex: auto;
     }
     &-by {
         padding-bottom: 1.8rem;
@@ -110,6 +112,7 @@
         }
     }
     .change-rename {
+        padding-top: 1.5rem;
         font-size: 1.4rem;
         cursor: pointer;
         opacity: .75;
@@ -157,6 +160,16 @@
         border-radius: .4rem;
         transition: .4s all ease;
         border: 1px solid rgba(0, 0, 0, 0.29);
+        &-title {
+            width: 100%;
+            min-height: max-content;
+            font-size: 26px;
+            line-height: 38px;
+            font-weight: bold;
+            border: none;
+            resize: none;
+            outline: none;
+        }
         &:hover {
             border: 1px solid rgba(0, 0, 0, 0.29);
         }

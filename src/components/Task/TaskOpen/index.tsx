@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import { TaskComment } from './TaskOpenCommment'
 import { TaskType } from './TaskOpenType'
@@ -20,8 +20,8 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
     const [defaultDescription, setNewDescription] = React.useState(task.description)
     const [isShowFollowers, setShowFollowers] = React.useState<boolean>(false)
     const [addedFollower, addNewFollower] = React.useState<number>()
-    const [isEditDescription, setIsEditDescription] = useState<boolean>(false)
-
+    const [isEditTitle, setIsEditTitle] = React.useState<boolean>(false)
+    const [isEditDescription, setIsEditDescription] = React.useState<boolean>(false)
 
     //TODO заменить на реальный массив
     const allFollowers: string[] = [avatar1, avatar2, avatar3]
@@ -42,6 +42,7 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
         }
         renameTaskInfo(newTask)
         setIsEditDescription(false)
+        setIsEditTitle(false)
     }
 
     const setFollowers = () => {
@@ -52,10 +53,10 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
         addNewFollower(task.followers.push(follower))
     }
 
-    const handleKeyboardEvent = (event: React.KeyboardEvent): any => {
-        setNewInfo(task)
-        // TODO разобраться с onKeyDown={event => handleKeyboardEvent(event)}
-    }
+    //TODO разобратсья по нажатию на клавишу enter
+    // const handleKeyboardEvent = (event: React.KeyboardEvent): any => {
+    //     setNewInfo(task)
+    // }
 
     React.useEffect(() => {
         setNewTitles(task.title)
@@ -64,15 +65,19 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
 
     return (
         <div className='task-open'>
-            <div className='task-open-header'>
-                <h2 className='app-title app-title--open'>
-                    <div className='wrap'>
-                        <textarea className='app-title'
-                                  value={defaultTitle}
-                                  onChange={event => setNewTitles(event.target.value)}
-                                  onKeyDown={event => handleKeyboardEvent(event)}
-                        />
-                        <a className='change-rename' onClick={() => setNewInfo(task)}>&#9998;</a>
+            <div className='column'>
+                <div className='task-open-header'>
+                    <div className='task-open-title'>
+                        {isEditTitle ? (
+                            <div className="edit-panel">
+                            <textarea className='edit-panel-title'
+                                      value={defaultTitle}
+                                      onChange={event => setNewTitles(event.target.value)} />
+                            <a className='change-rename' onClick={() => setNewInfo(task)}>Save</a>
+                        </div>) :
+                            <h2 className='app-title'
+                                onClick={() => setIsEditTitle(true)}>
+                                {defaultTitle}</h2>}
                     </div>
                     <div className='task-open-wrap row'>
                         <input type='checkbox' checked={task.isDone} onChange={() => handleDone(task)}
@@ -82,7 +87,7 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
                             <span>...</span>
                         </div>
                     </div>
-                </h2>
+                </div>
                 <div className='row'>
                     <span className='task-open-by'>{task.author}</span>
                     <span className='task-open-by'>{' ' + task.createdAt}</span>
@@ -143,9 +148,7 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
                         <div className="edit-panel">
                             <textarea className='description-text description-text--textarea'
                                       value={defaultDescription}
-                                      onChange={event => {setNewDescription(event.target.value)
-                                      }}
-                            />
+                                      onChange={event => {setNewDescription(event.target.value)}} />
                             <a className='change-rename' onClick={() => setNewInfo(task)}>Save</a>
                         </div>) :
                         <div className="description-text" onClick={() => {

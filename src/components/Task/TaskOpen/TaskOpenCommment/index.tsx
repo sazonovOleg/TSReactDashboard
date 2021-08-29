@@ -38,8 +38,23 @@ const TaskComment = ({comments}: TaskCommentProps): JSX.Element => {
         }
         else {
             inputRef.current?.classList.add('warning')
+            setTimeout(() => inputRef.current?.classList.remove('warning'), 2500)
         }
     };
+
+    const resizeInputComment = () => {
+        inputRef.current?.classList.add('size')
+    }
+
+    const handleOutsideClick = (e:any) => {
+        if (!e.path.includes(inputRef.current)) {
+            inputRef.current?.classList.remove('size')
+        }
+    }
+
+    React.useEffect(() => {
+        document.body.addEventListener('click', handleOutsideClick);
+    },[])
 
     return (
         <div className="task-open-comment">
@@ -49,10 +64,10 @@ const TaskComment = ({comments}: TaskCommentProps): JSX.Element => {
                 </h2>
                 <div className="wrap">
                     <img className="task-open-comment-preview task-open-comment-preview--form" src={avatar} alt=""/>
-                    <textarea ref={inputRef} className="task-open-input"/>
+                    <textarea ref={inputRef} onClick={resizeInputComment} className="task-open-input"/>
                 </div>
 
-                <div>
+                <div className="comment-btn">
                     <Button
                         onClick={addNewComment}
                         variant={BUTTON_STYLE.SUCCESS}>
