@@ -22,6 +22,8 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
     const [addedFollower, addNewFollower] = React.useState<number>()
     const [isEditTitle, setIsEditTitle] = React.useState<boolean>(false)
     const [isEditDescription, setIsEditDescription] = React.useState<boolean>(false)
+    const titleRef = React.useRef<HTMLDivElement>(null)
+    const descriptionRef = React.useRef<HTMLHeadingElement>(null)
 
     //TODO заменить на реальный массив
     const allFollowers: string[] = [avatar1, avatar2, avatar3]
@@ -41,8 +43,10 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
             description: defaultDescription,
         }
         renameTaskInfo(newTask)
-        setIsEditDescription(false)
-        setIsEditTitle(false)
+        setTimeout(() => {
+            setIsEditTitle(false)
+            setIsEditDescription(false)
+        }, 50)
     }
 
     const setFollowers = () => {
@@ -58,16 +62,27 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
     //     setNewInfo(task)
     // }
 
+    //TODO подрефакторить
+    const titleOutsideClick = (e:any) => {
+        !e.path.includes(titleRef.current) ? setIsEditTitle(false) : setIsEditTitle(true)
+    }
+
+    const descriptionOutsideClick = (e:any) => {
+        !e.path.includes(descriptionRef.current) ? setIsEditDescription(false) : setIsEditDescription(true)
+    }
+
     React.useEffect(() => {
         setNewTitles(task.title)
         setNewDescription(task.description)
-    }, [task.title])
+        document.body.addEventListener('click', titleOutsideClick);
+        document.body.addEventListener('click', descriptionOutsideClick);
+    }, [isEditTitle, isEditDescription])
 
     return (
         <div className='task-open'>
             <div className='column'>
                 <div className='task-open-header'>
-                    <div className='task-open-title'>
+                    <div ref={titleRef} className='task-open-title'>
                         {isEditTitle ? (
                             <div className="edit-panel">
                             <textarea className='edit-panel-title'
@@ -143,7 +158,7 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
                 <h2 className='task-open-subtitle'>
                     Description
                 </h2>
-                <div className='column'>
+                <div ref={descriptionRef} className='column'>
                     {isEditDescription ? (
                         <div className="edit-panel">
                             <textarea className='description-text description-text--textarea'
