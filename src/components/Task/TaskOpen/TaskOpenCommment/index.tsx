@@ -38,7 +38,7 @@ const TaskComment = ({comments}: TaskCommentProps): JSX.Element => {
         }
         else {
             inputRef.current?.classList.add('warning')
-            setTimeout(() => inputRef.current?.classList.remove('warning'), 2500)
+            setTimeout(() => inputRef.current?.classList.remove('warning'), 750)
         }
     };
 

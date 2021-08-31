@@ -49,13 +49,9 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
         }, 50)
     }
 
-    const setFollowers = () => {
-        setShowFollowers(!isShowFollowers)
-    }
+    const setFollowers = () => setShowFollowers(!isShowFollowers)
 
-    const addNewFollowers = (follower: string) => {
-        addNewFollower(task.followers.push(follower))
-    }
+    const addNewFollowers = (follower: string) => addNewFollower(task.followers.push(follower))
 
     //TODO разобратсья по нажатию на клавишу enter
     // const handleKeyboardEvent = (event: React.KeyboardEvent): any => {
@@ -63,13 +59,13 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
     // }
 
     //TODO подрефакторить
-    const titleOutsideClick = (e:any) => {
-        !e.path.includes(titleRef.current) ? setIsEditTitle(false) : setIsEditTitle(true)
-    }
+    const titleOutsideClick = (e:any) => !e.path.includes(titleRef.current)
+        ? setIsEditTitle(false)
+        : setIsEditTitle(true)
 
-    const descriptionOutsideClick = (e:any) => {
-        !e.path.includes(descriptionRef.current) ? setIsEditDescription(false) : setIsEditDescription(true)
-    }
+    const descriptionOutsideClick = (e:any) => !e.path.includes(descriptionRef.current)
+        ? setIsEditDescription(false)
+        : setIsEditDescription(true)
 
     React.useEffect(() => {
         setNewTitles(task.title)
@@ -166,9 +162,7 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
                                       onChange={event => {setNewDescription(event.target.value)}} />
                             <a className='change-rename' onClick={() => setNewInfo(task)}>Save</a>
                         </div>) :
-                        <div className="description-text" onClick={() => {
-                        setIsEditDescription(true)
-                    }
+                        <div className="description-text" onClick={() => setIsEditDescription(true)
                     }>{defaultDescription}</div>}
                 </div>
             </div>

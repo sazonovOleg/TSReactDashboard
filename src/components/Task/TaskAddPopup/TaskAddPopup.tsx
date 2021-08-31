@@ -1,6 +1,6 @@
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import './style/TaskAddPopup.scss';
-import {TASK_CATEGORY, TaskType} from "../TaskOpen/TaskOpenType";
+import {TaskType} from "../TaskOpen/TaskOpenType";
 import {SIDEBAR_PROFILE} from "../../Sidebar";
 import {TasksButton} from "../TasksButton";
 
