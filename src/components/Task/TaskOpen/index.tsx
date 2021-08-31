@@ -76,7 +76,7 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
         setNewDescription(task.description)
         document.body.addEventListener('click', titleOutsideClick);
         document.body.addEventListener('click', descriptionOutsideClick);
-    }, [isEditTitle, isEditDescription])
+    }, [task.title, task.description, isEditTitle, isEditDescription])
 
     return (
         <div className='task-open'>
