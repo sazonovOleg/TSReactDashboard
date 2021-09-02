@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 
 import {TaskAddPopup} from "../TaskAddPopup/TaskAddPopup";
-import {TasksButton} from "./TasksButton";
 import {TaskType} from "../TaskOpen/TaskOpenType";
 
 import './style/TasksList.scss';
+import {Button, BUTTON_STYLE} from "../../Button";
 
 interface TasksListProps {
     tasks: TaskType[],
@@ -37,22 +37,21 @@ const TasksList = ({tasks, title, isOpenTaskId, onTaskClick, onTaskChecked, onTa
                 <h2 className="app-title">
                     {title}
                 </h2>
-                <TasksButton text="+ Add Task" onClick={()=> {
+                <Button onClick={() => {
                     setShowModal(true)
-                }}/>
+                }} variant={BUTTON_STYLE.SUCCESS}>+ Add Task</Button>
             </div>
             {tasks.map((task) => {
                 return (
                     <div className={"tasks-list-col" + ' ' + `${isOpenTaskId === task.id ? "active" : " "}`}
-                         key={task.title}>
+                         key={task.title}
+                         onClick={() => onTaskClick(task)}>
                         <div className="tasks-list-wrap row">
                             <input type="checkbox"
                                    onChange={() => handleDone(task)}
                                    checked={task.isDone}
-                                   className="tasks-list-checkbox"
-                            />
+                                   className="checkbox"/>
                             <label className="tasks-list-text"
-                                   onClick={() => onTaskClick(task)}
                                    onChange={() => {setActiveTitle(task.title)}}>
                                 {task.title}
                             </label>

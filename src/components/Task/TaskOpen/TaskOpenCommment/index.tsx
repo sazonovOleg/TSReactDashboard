@@ -6,6 +6,7 @@ import {TaskAddedComment} from "../TaskAddedComment";
 import {SIDEBAR_PROFILE} from "../../../Sidebar";
 
 import avatar from '../../../../assets/sidebar/avatar.png';
+import {Button, BUTTON_STYLE} from "../../../Button";
 
 interface TaskCommentProps {
     comments: CommentType[]
@@ -37,8 +38,23 @@ const TaskComment = ({comments}: TaskCommentProps): JSX.Element => {
         }
         else {
             inputRef.current?.classList.add('warning')
+            setTimeout(() => inputRef.current?.classList.remove('warning'), 750)
         }
     };
+
+    const resizeInputComment = () => {
+        inputRef.current?.classList.add('size')
+    }
+
+    const handleOutsideClick = (e:any) => {
+        if (!e.path.includes(inputRef.current)) {
+            inputRef.current?.classList.remove('size')
+        }
+    }
+
+    React.useEffect(() => {
+        document.body.addEventListener('click', handleOutsideClick);
+    },[])
 
     return (
         <div className="task-open-comment">
@@ -48,13 +64,16 @@ const TaskComment = ({comments}: TaskCommentProps): JSX.Element => {
                 </h2>
                 <div className="wrap">
                     <img className="task-open-comment-preview task-open-comment-preview--form" src={avatar} alt=""/>
-                    <textarea ref={inputRef} className="task-open-input"/>
+                    <textarea ref={inputRef} onClick={resizeInputComment} className="task-open-input"/>
                 </div>
-                <button
-                    onClick={addNewComment}
-                    className="btn">
-                    + Add comment
-                </button>
+
+                <div className="comment-btn">
+                    <Button
+                        onClick={addNewComment}
+                        variant={BUTTON_STYLE.SUCCESS}>
+                        + Add comment
+                    </Button>
+                </div>
             </div>
             <TaskAddedComment comments={comments}/>
         </div>

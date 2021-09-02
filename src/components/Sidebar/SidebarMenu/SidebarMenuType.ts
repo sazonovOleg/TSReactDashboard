@@ -7,5 +7,7 @@ type SidebarMenuItem = {
 
 export interface SidebarMenuProps {
     title: string
-    items: SidebarMenuItem[]
+    items: SidebarMenuItem[],
+    button?: string,
+    addButton?: () => void
 }

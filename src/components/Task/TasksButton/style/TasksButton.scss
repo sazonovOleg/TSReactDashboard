@@ -1,7 +1,8 @@
 .tasks-button {
     max-width: 110px;
     width: 100%;
-    background-color: #CEF9C6;
+    padding: .7rem;
+    background-color: #a7ff96;
     border-radius: 1.2rem;
     border:none;
     font-weight: bold;
@@ -9,6 +10,12 @@
     cursor: pointer;
     transition: .4s all ease-in;
     &:hover {
-        background-color: #a7ff96;
+        background-color: #70ff50;
+    }
+    &[disabled] {
+        opacity: 0.4;
+        &:hover {
+            opacity: 0.4;
+        }
     }
 }

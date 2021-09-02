@@ -3,9 +3,19 @@ export type MenuItemType = {
     url:string
 }
 
-export interface HeaderProps {
+export type TitleItemType = {
     title:string,
-    HEADER_MENU?:MenuItemType[],
-    btn:string
+    logo:string
 }
 
+export interface HeaderProps {
+    HEADER_MENU?:MenuItemType[],
+}
+
+export type MenInProject = {
+    images:string
+}
+
+export interface HeaderSetProps {
+    img?:MenInProject[]
+}

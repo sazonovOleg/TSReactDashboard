@@ -4,7 +4,7 @@ import {SidebarMenuProps} from "./SidebarMenuType";
 
 import './style/SidebarMenu.scss'
 
-const SidebarMenu = ({title, items}: SidebarMenuProps): JSX.Element => {
+const SidebarMenu = ({title, items, button, addButton}: SidebarMenuProps): JSX.Element => {
     return (
         <nav className="menu container">
             <h2 className="menu-title">
@@ -25,6 +25,7 @@ const SidebarMenu = ({title, items}: SidebarMenuProps): JSX.Element => {
                     )
                 })}
             </ul>
+            {button && <button onClick={addButton} className="menu-btn">{button}</button>}
         </nav>
     )
 }

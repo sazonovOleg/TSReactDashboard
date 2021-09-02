@@ -6,16 +6,23 @@ import {Task} from "./components/Task/Task";
 import {SIDEBAR} from "./components/Sidebar/data";
 
 import './App.scss';
+import {SidebarPopup} from "./components/Sidebar/SidebarPopup/SidebarPopup";
 
 function App() {
+    const [sidebarPopup, setShowSidebarPopup] = React.useState<boolean>(true)
+
+    const setSidebarPopup = () => {
+        setShowSidebarPopup(!sidebarPopup)
+    }
 
     return (
         <div className="app">
-            <Sidebar menu={SIDEBAR}/>
+            <Sidebar showSidebar={setSidebarPopup} menu={SIDEBAR}/>
             <div className="app-content">
-                <Header title="Website" btn="..."/>
+                <Header/>
                 <Task/>
             </div>
+            {!sidebarPopup && <SidebarPopup showSidebar={setSidebarPopup}/>}
         </div>
     );
 }

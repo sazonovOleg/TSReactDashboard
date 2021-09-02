@@ -1,9 +1,12 @@
-import {MenInProject} from "./HeaderSettings/HeaderSettingsType";
-import {MenuItemType} from "./HeaderType";
+import {MenuItemType, MenInProject, TitleItemType} from "./HeaderType";
 
 import avatar from "../../assets/header/avatar.png";
 import avatar2 from "../../assets/header/avatar-2.png";
 import avatar3 from "../../assets/header/avatar-3.png";
+
+import websiteLogo from "../../assets/logos/website-logo.svg"
+
+export const TITLE_INFO:TitleItemType = {title:'Website', logo: websiteLogo}
 
 export const HEADER_MENU:MenuItemType[] = [
     {title:'Tasks',url: '/'},

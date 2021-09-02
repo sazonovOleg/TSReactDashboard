@@ -4,7 +4,7 @@ import {TasksList} from "./TasksList";
 import {TaskOpen} from "./TaskOpen";
 
 import {TASK_CATEGORY, TaskType} from "./TaskOpen/TaskOpenType";
-import {TASKS_LIST} from "./TasksList/data";
+import {TASKS_LIST} from "./data";
 
 const Task = (): JSX.Element => {
     const [tasks, setTasks] = useState<TaskType[]>(TASKS_LIST)
@@ -20,7 +20,6 @@ const Task = (): JSX.Element => {
             }
             return task
         })
-
         setTasks(newTasks)
     }
 
@@ -31,13 +30,22 @@ const Task = (): JSX.Element => {
                 isOpened: openedTask.id === task.id
             }
         })
-
         setTasks(newTasks)
     }
 
     const createNewTask = (newTask:TaskType) => {
         const newTasks = [newTask, ...tasks];
         setTasks(newTasks);
+    }
+
+    const changeTaskInfo = (newTaskInfo: TaskType) => {
+        const newTasks = tasks.map((task) => {
+            if (task.id === newTaskInfo.id) {
+                return newTaskInfo
+            }
+            return task
+        })
+        setTasks(newTasks)
     }
 
     return (
@@ -58,7 +66,7 @@ const Task = (): JSX.Element => {
                            onTaskCreated={createNewTask}
                 />
             </div>
-            <TaskOpen task={openedTask} onTaskChecked={handleDone}/>
+            <TaskOpen task={openedTask} onTaskChecked={handleDone} renameTaskInfo={changeTaskInfo}/>
         </div>
     );
 };
