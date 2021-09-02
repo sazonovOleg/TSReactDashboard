@@ -1,15 +1,1 @@
-.header-settings {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
 
-    & > button {
-        margin-left: 10px;
-    }
-
-    &-ava {
-        margin: 0 .4rem;
-    }
-}
