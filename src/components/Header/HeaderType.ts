@@ -9,9 +9,7 @@ export type TitleItemType = {
 }
 
 export interface HeaderProps {
-    title:string,
     HEADER_MENU?:MenuItemType[],
-    btn:string
 }
 
 export type MenInProject = {

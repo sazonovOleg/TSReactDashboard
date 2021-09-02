@@ -19,7 +19,7 @@ function App() {
         <div className="app">
             <Sidebar showSidebar={setSidebarPopup} menu={SIDEBAR}/>
             <div className="app-content">
-                <Header title="Website" btn="..."/>
+                <Header/>
                 <Task/>
             </div>
             {!sidebarPopup && <SidebarPopup showSidebar={setSidebarPopup}/>}

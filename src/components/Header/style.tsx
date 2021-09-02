@@ -6,17 +6,6 @@ const StyledHeader = styled.header`
   display: flex;
   flex-direction: row;
   background-color: #fff;
-
-  &-setup {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #EAEAEA;
-    text-align: center;
-  }
 `
 
 const StyledHeaderTitle = styled.title`
@@ -53,4 +42,15 @@ const StyledLogo = styled.img`
   margin-right: 1.5rem;
 `
 
-export { StyledHeader, StyledHeaderMenu, StyledHeaderTitle, StyledCol, StyledLogo }
+const StyledHeaderSetup = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #EAEAEA;
+  text-align: center;
+`
+
+export { StyledHeader, StyledHeaderMenu, StyledHeaderTitle, StyledCol, StyledLogo ,StyledHeaderSetup}

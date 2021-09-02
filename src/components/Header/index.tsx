@@ -1,13 +1,17 @@
 import React from 'react';
 import {HeaderSettings} from "./HeaderSettings/";
-import {HeaderProps} from "./HeaderType";
 
 import {HEADER_MENU,MEN_IN_PROJECT,TITLE_INFO} from "./data";
 
-import { StyledCol, StyledHeader, StyledHeaderMenu, StyledHeaderTitle, StyledLogo } from './style'
+import { StyledCol, StyledHeader, StyledHeaderMenu, StyledHeaderSetup, StyledHeaderTitle, StyledLogo } from './style'
 
+const Header = (): JSX.Element => {
+    const [title, setNewTitle] = React.useState(TITLE_INFO.title)
 
-const Header = ({title, btn}: HeaderProps): JSX.Element => {
+    const clickTitle = () => {
+        setNewTitle('Новый Тайтл')
+    }
+
     return (
         <StyledHeader>
             <StyledCol>
@@ -15,9 +19,9 @@ const Header = ({title, btn}: HeaderProps): JSX.Element => {
                     <StyledLogo src={TITLE_INFO.logo} alt='logo' className="logo" />
                     {title}
                 </StyledHeaderTitle>
-                <div className="header-setup">
-                    {btn}
-                </div>
+                <StyledHeaderSetup onClick={clickTitle}>
+                    ...
+                </StyledHeaderSetup>
                 {HEADER_MENU && <StyledHeaderMenu>
                     {HEADER_MENU.map(({url, title}, index) => {
                         return (
