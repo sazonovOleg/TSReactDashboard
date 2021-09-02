@@ -3,8 +3,6 @@ import {Header} from "./components/Header/";
 import {Sidebar} from "./components/Sidebar";
 import {Task} from "./components/Task/Task";
 
-import {SIDEBAR} from "./components/Sidebar/data";
-
 import './App.scss';
 import {SidebarPopup} from "./components/Sidebar/SidebarPopup/SidebarPopup";
 
@@ -17,7 +15,7 @@ function App() {
 
     return (
         <div className="app">
-            <Sidebar showSidebar={setSidebarPopup} menu={SIDEBAR}/>
+            <Sidebar showSidebar={setSidebarPopup}/>
             <div className="app-content">
                 <Header/>
                 <Task/>

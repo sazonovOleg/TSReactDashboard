@@ -4,15 +4,16 @@ import {SidebarProfile} from './SidebarProfile/'
 import {SidebarMenu} from "./SidebarMenu";
 import {SidebarTask} from "./SidebarTask/";
 
-import {SidebarMenuProps} from "./SidebarMenu/SidebarMenuType";
 import {TaskInfoType} from "./SidebarTask/SidebarTaskType";
 import {HeaderProfileProps} from "./SidebarProfile/SidebarProfileType";
 
+import {SIDEBAR} from './data'
 
 import './styles/Sidebar.scss';
 
 import avatar from '../../assets/sidebar/avatar.png';
 
+//TODO отрефакторить код
 export const SIDEBAR_PROFILE: HeaderProfileProps = {
     images: avatar,
     name: 'Emilee Simchenko',
@@ -25,11 +26,10 @@ const TASK_INFO: TaskInfoType[] = [
 ]
 
 interface SidebarProps {
-    menu:  SidebarMenuProps[],
     showSidebar: () => void
 }
 
-const Sidebar = ({menu, showSidebar}: SidebarProps): JSX.Element => {
+const Sidebar = ({showSidebar}: SidebarProps): JSX.Element => {
 
     return (
         <div className="sidebar">
@@ -58,7 +58,7 @@ const Sidebar = ({menu, showSidebar}: SidebarProps): JSX.Element => {
                 position={SIDEBAR_PROFILE.position}
             />
             <SidebarTask info={TASK_INFO}/>
-            {menu && menu.map((item) => {
+            {SIDEBAR && SIDEBAR.map((item) => {
                 return (<SidebarMenu
                         title={item.title}
                         items={item.items}
