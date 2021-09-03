@@ -3,7 +3,7 @@ import React from 'react';
 import './style/TaskOpenComment.scss';
 import {CommentType} from "../TaskOpenType";
 import {TaskAddedComment} from "../TaskAddedComment";
-import {SIDEBAR_PROFILE} from "../../../Sidebar";
+import {SIDEBAR_PROFILE} from '../../../Sidebar/data'
 
 import avatar from '../../../../assets/sidebar/avatar.png';
 import {Button, BUTTON_STYLE} from "../../../Button";

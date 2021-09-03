@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './style/TaskAddPopup.scss';
 import {TaskType} from "../TaskOpen/TaskOpenType";
-import {SIDEBAR_PROFILE} from "../../Sidebar";
+import {SIDEBAR_PROFILE} from "../../Sidebar/data";
 import {TasksButton} from "../TasksButton";
 
 interface TaskAddPopupProps {
