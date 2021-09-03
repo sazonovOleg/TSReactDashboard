@@ -2,31 +2,31 @@ import React from 'react'
 
 import {SidebarMenuProps} from "./SidebarMenuType";
 
-import './style/SidebarMenu.scss'
+import { StyledMenu, StyledTitle, StyledList, StyledListItem, StyledBtn } from './style'
 
 const SidebarMenu = ({title, items, button, addButton}: SidebarMenuProps): JSX.Element => {
     return (
-        <nav className="menu container">
-            <h2 className="menu-title">
+        <StyledMenu className="container">
+            <StyledTitle>
                 {title}
-            </h2>
-            <ul className="menu-list">
+            </StyledTitle>
+            <StyledList>
                 {items.map(({title, notificationCount, preview, users}, index) => {
                     return (
-                        <li className="menu-item" key={title}>
-                            {Boolean(preview) && <img className="menu-preview" src={preview} alt="preview"/>}
+                        <StyledListItem key={title}>
+                            {Boolean(preview) && <img className="preview" src={preview} alt="preview"/>}
                             {title}
                             {Boolean(notificationCount) &&
-                            <span className="menu-item--notifications">{notificationCount}</span>}
+                            <span className="notifications">{notificationCount}</span>}
                             {Boolean(users?.length) &&
                             <div>{users?.map((userAvatar, index) =>
-                                <img className="menu-user-avatar" key={userAvatar} src={userAvatar} alt=""/>)}</div>}
-                        </li>
+                                <img className="user-avatar" key={userAvatar} src={userAvatar} alt=""/>)}</div>}
+                        </StyledListItem>
                     )
                 })}
-            </ul>
-            {button && <button onClick={addButton} className="menu-btn">{button}</button>}
-        </nav>
+            </StyledList>
+            {button && <StyledBtn onClick={addButton}>{button}</StyledBtn>}
+        </StyledMenu>
     )
 }
 

@@ -1,25 +1,20 @@
-import React from "react";
-import {SidebarTaskProps} from "./SidebarTaskType";
+import React from 'react'
+import { SidebarTaskProps } from './SidebarTaskType'
+import { StyledTaskInfo, TaskInfoTitle, TaskInfoText } from './style'
 
-import './style/SidebarTask.scss'
-
-const SidebarTask = ({info}: SidebarTaskProps): JSX.Element => {
+const SidebarTask = ({ info }: SidebarTaskProps): JSX.Element => {
     return (
-        <div className="sidebar-task container">
-            {info?.map(({taskCount, taskText,}, index) => {
+        <StyledTaskInfo className='container'>
+            {info?.map(({ taskCount, taskText }, index) => {
                 return (
-                    <div className="sidebar-task-col" key={index}>
-                        <h2 className="sidebar-task-title">
-                            {taskCount}
-                        </h2>
-                        <p className="sidebar-task-text">
-                            {taskText}
-                        </p>
+                    <div className='col' key={index}>
+                        <TaskInfoTitle>{taskCount}</TaskInfoTitle>
+                        <TaskInfoText>{taskText}</TaskInfoText>
                     </div>
                 )
             })}
-        </div>
+        </StyledTaskInfo>
     )
 }
 
-export {SidebarTask};
+export { SidebarTask }
