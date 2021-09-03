@@ -6,8 +6,7 @@ import {SidebarTask} from "./SidebarTask";
 
 import { SIDEBAR, SIDEBAR_PROFILE, SIDEBAR_TASK_INFO } from './data'
 
-import './styles/Sidebar.scss';
-import { SearchIcon, SidebarLogo, SidebarWrap } from './style'
+import { SearchIcon, SidebarLogo, SidebarTitle, SidebarWrap, SidebarHeader } from './style'
 
 import sidebarLogo from '../../assets/logos/sidebar-logo.svg'
 import searchIcon from '../../assets/sidebar/icon-search.svg'
@@ -22,15 +21,15 @@ const Sidebar = ({showSidebar}: SidebarProps): JSX.Element => {
 
     return (
         <SidebarWrap>
-            <div className="sidebar-header container">
-                <h1 className="sidebar-title">
+            <SidebarHeader className="container">
+                <SidebarTitle>
                     <SidebarLogo src={sidebarLogo} alt='logo' />
                     PROJECTUS
-                </h1>
-                <div className="sidebar-search">
+                </SidebarTitle>
+                <div className="search">
                     <SearchIcon src={searchIcon}/>
                 </div>
-            </div>
+            </SidebarHeader>
             <SidebarProfile
                 images={SIDEBAR_PROFILE.images}
                 name={SIDEBAR_PROFILE.name}
