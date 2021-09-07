@@ -8,7 +8,7 @@ const StyledHeader = styled.header`
   background-color: #fff;
 `
 
-const StyledHeaderTitle = styled.title`
+const StyledHeaderTitle = styled.h2`
   display: inline-flex;
   align-items: center;
   font-style: normal;

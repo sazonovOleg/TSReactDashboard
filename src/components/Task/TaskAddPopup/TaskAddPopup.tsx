@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
-import './style/TaskAddPopup.scss';
 import {TaskType} from "../TaskOpen/TaskOpenType";
 import {SIDEBAR_PROFILE} from "../../Sidebar/data";
 import {TasksButton} from "../TasksButton";
+import './style/TaskAddPopup.scss';
+
+import {StyledPopup, StyledPopupContainer} from './style'
+import { StyledCol } from '../../../commonStyled/StyledCol'
 
 interface TaskAddPopupProps {
     title: string,
@@ -14,6 +17,7 @@ const TaskAddPopup = ({title, onClickCreateTask, onClose}: TaskAddPopupProps): J
     const [taskTitle, setTitle] = useState<string>('')
     const [description, setDescription] = useState<string>('')
 
+    //ToDo переписать таску
     const newAddedTask: TaskType = {
         id: Date.now(),
         category: title,
@@ -32,14 +36,14 @@ const TaskAddPopup = ({title, onClickCreateTask, onClose}: TaskAddPopupProps): J
     }
 
     return (
-        <div className="task-popup">
-            <div className="task-popup-container">
+        <StyledPopup>
+            <StyledPopupContainer>
                 <h2 className="task-popup-title">
                     {title}
                 </h2>
-                <span className="task-popup-close" onClick={onClose}>&times;</span>
+                <span className="close" onClick={onClose}>&times;</span>
                 <div className="form">
-                    <div className="form-col">
+                    <StyledCol>
                         <h3 className="form-title">
                             Title
                         </h3>
@@ -48,8 +52,8 @@ const TaskAddPopup = ({title, onClickCreateTask, onClose}: TaskAddPopupProps): J
                             value={taskTitle}
                             type="text"
                             className="form-input form-input--title"/>
-                    </div>
-                    <div className="form-col">
+                    </StyledCol>
+                    <StyledCol>
                         <h3 className="form-title">
                             Description
                         </h3>
@@ -57,7 +61,7 @@ const TaskAddPopup = ({title, onClickCreateTask, onClose}: TaskAddPopupProps): J
                             onChange={(event => setDescription(event.target.value))}
                             value={description}
                             className="form-input form-input--textarea"/>
-                    </div>
+                    </StyledCol>
                     <TasksButton
                         text={'Create Task'}
                         onClick={() => {onClickCreateTask(newAddedTask)
@@ -65,8 +69,8 @@ const TaskAddPopup = ({title, onClickCreateTask, onClose}: TaskAddPopupProps): J
                         disabled={!Boolean(taskTitle) || !Boolean(description)}
                     />
                 </div>
-            </div>
-        </div>
+            </StyledPopupContainer>
+        </StyledPopup>
     );
 };
 

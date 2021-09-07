@@ -3,7 +3,13 @@ import { HeaderSettings } from './HeaderSettings/'
 
 import { HEADER_MENU, MEN_IN_PROJECT, TITLE_INFO } from './data'
 
-import { StyledCol, StyledHeader, StyledHeaderMenu, StyledHeaderSetup, StyledHeaderTitle, StyledLogo } from './style'
+import {
+    StyledCol,
+    StyledHeader,
+    StyledHeaderMenu,
+    StyledHeaderSetup,
+    StyledHeaderTitle,
+    StyledLogo } from './style'
 
 const Header = (): JSX.Element => {
     const [title, setNewTitle] = React.useState(TITLE_INFO.title)
