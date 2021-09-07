@@ -10,14 +10,6 @@
         flex-direction: column;
         background-color: #aaaba3;
     }
-    &-container {
-        height: 100%;
-        position: relative;
-        padding: 1.8rem;
-        display: flex;
-        flex-direction: row;
-        overflow-y: scroll;
-    }
     &-title {
         width: 100%;
         min-height: max-content;
@@ -41,16 +33,5 @@
         &:focus {
             border-color: #000;
         }
-    }
-    &-task {
-        max-width: 450px;
-        width: 100%;
-        height: max-content;
-        padding: 1.8rem;
-        margin-right: 1.6rem;
-        display: flex;
-        flex-direction: column;
-        background-color: #fff;
-        border-radius: .3rem;
     }
 }

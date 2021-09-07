@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const StyledHeader = styled.header`
+const StyledHeader = styled.section`
   padding: 2.2rem 2rem .8rem;
   width: 100%;
   display: flex;

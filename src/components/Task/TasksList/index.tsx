@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-
-import {TaskAddPopup} from "../TaskAddPopup/TaskAddPopup";
+import {Index} from "../TaskAddPopup/";
 import {TaskType} from "../TaskOpen/TaskOpenType";
-
 import './style/TasksList.scss';
 import {Button, BUTTON_STYLE} from "../../Button";
 
@@ -64,7 +62,7 @@ const TasksList = ({tasks, title, isOpenTaskId, onTaskClick, onTaskChecked, onTa
                 )
             })}
             {isShowModal && (
-                <TaskAddPopup onClickCreateTask={createTask} title={title} onClose={() => {
+                <Index onClickCreateTask={createTask} title={title} onClose={() => {
                     setShowModal(false)
                 }}/>
             )}

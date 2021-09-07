@@ -1,7 +1,5 @@
 import React from 'react'
-
 import {SidebarMenuProps} from "./SidebarMenuType";
-
 import { StyledMenu, StyledTitle, StyledList, StyledListItem, StyledBtn } from './style'
 
 const SidebarMenu = ({title, items, button, addButton}: SidebarMenuProps): JSX.Element => {

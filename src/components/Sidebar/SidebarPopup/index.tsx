@@ -1,7 +1,5 @@
 import React from 'react';
-
 import {TasksButton} from "../../Task/TasksButton";
-
 import {StyledPopup, StyledTitle, StyledClose} from './style'
 
 interface SidebarPopupProps {

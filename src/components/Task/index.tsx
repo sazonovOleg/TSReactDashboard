@@ -1,17 +1,16 @@
-import React, {useState} from 'react';
-
-import {TasksList} from "./TasksList";
-import {TaskOpen} from "./TaskOpen";
-
-import {TASK_CATEGORY, TaskType} from "./TaskOpen/TaskOpenType";
-import {TASKS_LIST} from "./data";
+import React from 'react'
+import { TasksList } from './TasksList'
+import { TaskOpen } from './TaskOpen'
+import { TASK_CATEGORY, TaskType } from './TaskOpen/TaskOpenType'
+import { TASKS_LIST } from './data'
+import { StyledProject, StyledProjectWrap } from './style'
 
 const Task = (): JSX.Element => {
-    const [tasks, setTasks] = useState<TaskType[]>(TASKS_LIST)
+    const [tasks, setTasks] = React.useState<TaskType[]>(TASKS_LIST)
 
     const openedTask = tasks.find(task => task.isOpened) || TASKS_LIST[0]
-    const todoTasks = tasks.filter((task) => task.category === TASK_CATEGORY.TODO);
-    const backlogTasks = tasks.filter((task) => task.category === TASK_CATEGORY.BACKLOG);
+    const todoTasks = tasks.filter((task) => task.category === TASK_CATEGORY.TODO)
+    const backlogTasks = tasks.filter((task) => task.category === TASK_CATEGORY.BACKLOG)
 
     const handleDone = (checkedTask: TaskType) => {
         const newTasks = tasks.map((task) => {
@@ -27,15 +26,15 @@ const Task = (): JSX.Element => {
         const newTasks = tasks.map((task) => {
             return {
                 ...task,
-                isOpened: openedTask.id === task.id
+                isOpened: openedTask.id === task.id,
             }
         })
         setTasks(newTasks)
     }
 
-    const createNewTask = (newTask:TaskType) => {
-        const newTasks = [newTask, ...tasks];
-        setTasks(newTasks);
+    const createNewTask = (newTask: TaskType) => {
+        const newTasks = [newTask, ...tasks]
+        setTasks(newTasks)
     }
 
     const changeTaskInfo = (newTaskInfo: TaskType) => {
@@ -49,8 +48,8 @@ const Task = (): JSX.Element => {
     }
 
     return (
-        <div className="app-container">
-            <div className="app-task">
+        <StyledProject>
+            <StyledProjectWrap>
                 <TasksList title={'BACKLOG'}
                            isOpenTaskId={openedTask.id}
                            tasks={backlogTasks}
@@ -65,10 +64,10 @@ const Task = (): JSX.Element => {
                            onTaskChecked={handleDone}
                            onTaskCreated={createNewTask}
                 />
-            </div>
-            <TaskOpen task={openedTask} onTaskChecked={handleDone} renameTaskInfo={changeTaskInfo}/>
-        </div>
-    );
-};
+            </StyledProjectWrap>
+            <TaskOpen task={openedTask} onTaskChecked={handleDone} renameTaskInfo={changeTaskInfo} />
+        </StyledProject>
+    )
+}
 
-export {Task};
+export { Task }

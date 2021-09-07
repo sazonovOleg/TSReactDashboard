@@ -1,10 +1,10 @@
 import React from 'react';
 import {Header} from "./components/Header/";
 import {Sidebar} from "./components/Sidebar";
-import {Task} from "./components/Task/Task";
+import {Task} from "./components/Task/";
 
 import './App.scss';
-import {SidebarPopup} from "./components/Sidebar/SidebarPopup/SidebarPopup";
+import {SidebarPopup} from "./components/Sidebar/SidebarPopup/";
 
 function App() {
     const [sidebarPopup, setShowSidebarPopup] = React.useState<boolean>(true)
