@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {TaskType} from "../TaskOpen/TaskOpenType";
 import {SIDEBAR_PROFILE} from "../../Sidebar/data";
-import {TasksButton} from "../TasksButton";
 
 import { StyledForm, StyledPopup, StyledPopupContainer } from './style'
 import { StyledColumn } from '../../../commonStyled/StyledCol'
+import { Button } from '../../Button'
 
 interface TaskAddPopupProps {
     title: string,
@@ -61,12 +61,12 @@ const Index = ({title, onClickCreateTask, onClose}: TaskAddPopupProps): JSX.Elem
                             value={description}
                             className="form-input form-input--textarea"/>
                     </StyledColumn>
-                    <TasksButton
-                        text={'Create Task'}
+                    <Button
                         onClick={() => {onClickCreateTask(newAddedTask)
                             onClose()}}
-                        disabled={!Boolean(taskTitle) || !Boolean(description)}
-                    />
+                        disabled={!Boolean(taskTitle) || !Boolean(description)}>
+                        Create Task
+                    </Button>
                 </StyledForm>
             </StyledPopupContainer>
         </StyledPopup>

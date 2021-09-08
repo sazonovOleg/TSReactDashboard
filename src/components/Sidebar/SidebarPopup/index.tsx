@@ -1,5 +1,5 @@
 import React from 'react';
-import {TasksButton} from "../../Task/TasksButton";
+import { Button } from '../../Button'
 import {StyledPopup, StyledTitle, StyledClose} from './style'
 
 interface SidebarPopupProps {
@@ -7,7 +7,6 @@ interface SidebarPopupProps {
 }
 
 const SidebarPopup = ({showSidebar}: SidebarPopupProps): JSX.Element => {
-    const text = 'Create Team'
 
   return (
       <StyledPopup>
@@ -26,7 +25,9 @@ const SidebarPopup = ({showSidebar}: SidebarPopupProps): JSX.Element => {
                   </p>
                   <input className="popup-input" type="text"/>
               </div>
-              <TasksButton text={text}/>
+              <Button onClick={() => console.log()}>
+                  Create Team
+              </Button>
           </div>
       </StyledPopup>
   );
