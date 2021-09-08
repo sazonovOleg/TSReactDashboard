@@ -24,7 +24,7 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
     const [isEditDescription, setIsEditDescription] = React.useState<boolean>(false)
     const titleRef = React.useRef<HTMLDivElement>(null)
     const descriptionRef = React.useRef<HTMLHeadingElement>(null)
-
+    console.log('TaskOpen isEditTitle', isEditTitle)
     //TODO заменить на реальный массив
     const allFollowers: string[] = [avatar1, avatar2, avatar3]
 
@@ -36,43 +36,47 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
         onTaskChecked(newTask)
     }
 
-    const setNewInfo = (task: TaskType): void => {
+
+    const setNewInfo = (): void => {
         const newTask: TaskType = {
             ...task,
             title: defaultTitle,
             description: defaultDescription,
         }
+
+        setIsEditTitle(false)
+        setIsEditDescription(false)
         renameTaskInfo(newTask)
-        setTimeout(() => {
-            setIsEditTitle(false)
-            setIsEditDescription(false)
-        }, 50)
+
     }
 
     const setFollowers = () => setShowFollowers(!isShowFollowers)
 
     const addNewFollowers = (follower: string) => addNewFollower(task.followers.push(follower))
 
-    //TODO разобратсья по нажатию на клавишу enter
-    // const handleKeyboardEvent = (event: React.KeyboardEvent): any => {
-    //     setNewInfo(task)
-    // }
+    const handleKeyboardEvent = (event: any) => event.key === 'Enter' ? setNewInfo() : null
 
     //TODO подрефакторить
-    const titleOutsideClick = (e:any) => !e.path.includes(titleRef.current)
-        ? setIsEditTitle(false)
+    const titleOutsideClick = (e:any) => !e.path.includes(titleRef.current) ? setIsEditTitle(false)
         : setIsEditTitle(true)
 
-    const descriptionOutsideClick = (e:any) => !e.path.includes(descriptionRef.current)
-        ? setIsEditDescription(false)
+    const descriptionOutsideClick = (e:any) => !e.path.includes(descriptionRef.current) ? setIsEditDescription(false)
         : setIsEditDescription(true)
 
     React.useEffect(() => {
         setNewTitles(task.title)
         setNewDescription(task.description)
+    }, [task])
+
+    React.useEffect(()=>{
         document.body.addEventListener('click', titleOutsideClick);
         document.body.addEventListener('click', descriptionOutsideClick);
-    }, [task.title, task.description, isEditTitle, isEditDescription])
+
+        return () => {
+            document.body.removeEventListener('click', titleOutsideClick);
+            document.body.removeEventListener('click', descriptionOutsideClick);
+        }
+    },[])
 
     return (
         <div className='task-open'>
@@ -83,16 +87,21 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
                             <div className="edit-panel">
                             <textarea className='edit-panel-title'
                                       value={defaultTitle}
-                                      onChange={event => setNewTitles(event.target.value)} />
-                            <a className='change-rename' onClick={() => setNewInfo(task)}>Save</a>
+                                      onChange={event => setNewTitles(event.target.value)}
+                                      onKeyUp={event => handleKeyboardEvent(event)}
+                            />
+                            <a className='change-rename' onClick={setNewInfo}>Save</a>
                         </div>) :
                             <h2 className='app-title'
                                 onClick={() => setIsEditTitle(true)}>
                                 {defaultTitle}</h2>}
                     </div>
                     <div className='task-open-wrap row'>
-                        <input type='checkbox' checked={task.isDone} onChange={() => handleDone(task)}
-                               className='checkbox checkbox--xl' />
+                        <input
+                            className='checkbox checkbox--xl'
+                            type='checkbox'
+                            checked={task.isDone}
+                            onChange={() => handleDone(task)} />
                         <label></label>
                         <div className='btn-set'>
                             <span>...</span>
@@ -157,10 +166,13 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
                 <div ref={descriptionRef} className='column'>
                     {isEditDescription ? (
                         <div className="edit-panel">
-                            <textarea className='description-text description-text--textarea'
-                                      value={defaultDescription}
-                                      onChange={event => {setNewDescription(event.target.value)}} />
-                            <a className='change-rename' onClick={() => setNewInfo(task)}>Save</a>
+                            <textarea
+                                className='description-text description-text--textarea'
+                                value={defaultDescription}
+                                onChange={event => {setNewDescription(event.target.value)}}
+                                onKeyUp={event => handleKeyboardEvent(event)}
+                            />
+                            <a className='change-rename' onClick={setNewInfo}>Save</a>
                         </div>) :
                         <div className="description-text" onClick={() => setIsEditDescription(true)
                     }>{defaultDescription}</div>}
