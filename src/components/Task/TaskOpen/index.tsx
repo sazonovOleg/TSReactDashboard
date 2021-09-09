@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
 import { TaskComment } from './TaskOpenCommment'
 import { TaskType } from './TaskOpenType'
@@ -16,15 +16,32 @@ interface TaskOpenProps {
 }
 
 const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.Element => {
-    const [defaultTitle, setNewTitles] = React.useState(task.title)
-    const [defaultDescription, setNewDescription] = React.useState(task.description)
+    const [defaultTitle, setNewTitles] = React.useState<string>('')
+    const [defaultDescription, setNewDescription] = React.useState('')
     const [isShowFollowers, setShowFollowers] = React.useState<boolean>(false)
     const [addedFollower, addNewFollower] = React.useState<number>()
     const [isEditTitle, setIsEditTitle] = React.useState<boolean>(false)
     const [isEditDescription, setIsEditDescription] = React.useState<boolean>(false)
     const titleRef = React.useRef<HTMLDivElement>(null)
     const descriptionRef = React.useRef<HTMLHeadingElement>(null)
-    console.log('TaskOpen isEditTitle', isEditTitle)
+
+    const [keysHistory, setKeysHistory] = useState<string[]>([])
+
+
+
+    useEffect(() => {
+
+        const result = keysHistory.join('')
+
+        const isEnterShiftTaped: boolean = result.includes("ControlEnter") || result.includes("EnterControl")
+
+        if(isEnterShiftTaped) {
+            setNewInfo()
+            setKeysHistory([])
+        }
+    }, [keysHistory])
+
+
     //TODO заменить на реальный массив
     const allFollowers: string[] = [avatar1, avatar2, avatar3]
 
@@ -54,7 +71,10 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
 
     const addNewFollowers = (follower: string) => addNewFollower(task.followers.push(follower))
 
-    const handleKeyboardEvent = (event: any) => event.key === 'Enter' ? setNewInfo() : null
+    const handleKeyboardEvent = (event: any) => {
+
+        setKeysHistory([...keysHistory, event.key])
+    }
 
     //TODO подрефакторить
     const titleOutsideClick = (e:any) => !e.path.includes(titleRef.current) ? setIsEditTitle(false)
@@ -63,9 +83,9 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
     const descriptionOutsideClick = (e:any) => !e.path.includes(descriptionRef.current) ? setIsEditDescription(false)
         : setIsEditDescription(true)
 
-    React.useEffect(() => {
-        setNewTitles(task.title)
-        setNewDescription(task.description)
+    useEffect(() => {
+        setNewTitles(task.title || '')
+        setNewDescription(task.description || '')
     }, [task])
 
     React.useEffect(()=>{
@@ -93,8 +113,9 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
                             <a className='change-rename' onClick={setNewInfo}>Save</a>
                         </div>) :
                             <h2 className='app-title'
-                                onClick={() => setIsEditTitle(true)}>
-                                {defaultTitle}</h2>}
+                                dangerouslySetInnerHTML={{__html: defaultTitle}}
+                                onClick={() => setIsEditTitle(true)}/>
+                        }
                     </div>
                     <div className='task-open-wrap row'>
                         <input
@@ -153,7 +174,7 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
                 </div>
 
                 {isShowFollowers &&
-                <div className='follower-wrap'>{allFollowers.map((followers, index) =>
+                <div className='follower-wrap'>{allFollowers.map((followers) =>
                     <img key={followers} onClick={() => addNewFollowers(followers)} src={followers} />)}
                     <span className='follower-close' onClick={setFollowers}>&times;</span>
                 </div>}
