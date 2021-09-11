@@ -13,8 +13,7 @@ const SidebarHeader = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding: 2rem 1.2rem;
 `
 
 const SidebarLogo = styled.img`

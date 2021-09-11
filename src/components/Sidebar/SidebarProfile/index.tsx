@@ -1,22 +1,22 @@
 import React from 'react';
 import {HeaderProfileProps} from "./SidebarProfileType";
-import {StyledSidebarProfile, Avatar} from './style'
+import { StyledSidebarProfile, Avatar, StyledName, StyledSetup, StyledPosition, StyledWrap } from './style'
 
 const SidebarProfile = ({name,images,position}:HeaderProfileProps):JSX.Element => {
     return (
-        <StyledSidebarProfile className="container">
+        <StyledSidebarProfile>
             <Avatar src={images} alt="ava" />
-            <div className="sidebar-wrap">
-                <p className="sidebar-name">
+            <StyledWrap>
+                <StyledName>
                     {name}
-                </p>
-                <p className="sidebar-profile-position">
+                </StyledName>
+                <StyledPosition>
                     {position}
-                </p>
-            </div>
-            <div className="sidebar-setup">
+                </StyledPosition>
+            </StyledWrap>
+            <StyledSetup>
                 ...
-            </div>
+            </StyledSetup>
         </StyledSidebarProfile>
     )
 }

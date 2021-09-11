@@ -21,7 +21,7 @@ const Sidebar = ({showSidebar}: SidebarProps): JSX.Element => {
 
     return (
         <SidebarWrap>
-            <SidebarHeader className="container">
+            <SidebarHeader>
                 <SidebarTitle>
                     <SidebarLogo src={sidebarLogo} alt='logo' />
                     PROJECTUS

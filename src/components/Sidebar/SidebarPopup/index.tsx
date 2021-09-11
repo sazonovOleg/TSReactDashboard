@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '../../Button'
-import {StyledPopup, StyledTitle, StyledClose} from './style'
+import { StyledPopup, StyledTitle, StyledClose, StyledColumn, StyledWrapper, StyledInput, StyledText } from './style'
 
 interface SidebarPopupProps {
     showSidebar: () => void
@@ -10,25 +10,25 @@ const SidebarPopup = ({showSidebar}: SidebarPopupProps): JSX.Element => {
 
   return (
       <StyledPopup>
-          <div className="column">
+          <StyledColumn>
               <StyledTitle>
                   Add a New Team
               </StyledTitle>
               <StyledClose onClick={showSidebar}>&times;</StyledClose>
-              <div className="wrapper">
-                  <p className="text">
+              <StyledWrapper>
+                  <StyledText>
                       Name
-                  </p>
-                  <input className="popup-input" type="text"/>
-                  <p className="text">
+                  </StyledText>
+                  <StyledInput type="text"/>
+                  <StyledText>
                       Members
-                  </p>
-                  <input className="popup-input" type="text"/>
-              </div>
+                  </StyledText>
+                  <StyledInput type="text"/>
+              </StyledWrapper>
               <Button onClick={() => console.log()}>
                   Create Team
               </Button>
-          </div>
+          </StyledColumn>
       </StyledPopup>
   );
 };

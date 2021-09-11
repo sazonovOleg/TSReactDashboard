@@ -6,7 +6,15 @@ import { SIDEBAR_PROFILE } from '../../../Sidebar/data'
 import avatar from '../../../../assets/sidebar/avatar.png'
 import { Button, BUTTON_STYLE } from '../../../Button'
 
-import { StyledBlock, StyledWrap, StyledTextarea, StyledSubtitle, StyledPreview, StyledBtnWrap } from './style'
+import {
+    StyledBlock,
+    StyledWrap,
+    StyledTextarea,
+    StyledSubtitle,
+    StyledPreview,
+    StyledBtnWrap,
+    StyledColumn,
+} from './style'
 
 interface TaskCommentProps {
     comments: CommentType[]
@@ -55,7 +63,7 @@ const TaskComment = ({ comments }: TaskCommentProps): JSX.Element => {
 
     return (
         <StyledBlock>
-            <div className='column'>
+            <StyledColumn>
                 <StyledSubtitle>
                     Discussion
                 </StyledSubtitle>
@@ -71,7 +79,7 @@ const TaskComment = ({ comments }: TaskCommentProps): JSX.Element => {
                         + Add comment
                     </Button>
                 </StyledBtnWrap>
-            </div>
+            </StyledColumn>
             <TaskAddedComment comments={comments} />
         </StyledBlock>
     )

@@ -1,15 +1,15 @@
 import styled from 'styled-components'
 
-const StyledBlock = styled.section`
+export const StyledBlock = styled.section`
   padding-top: 1rem;
 `
 
-const StyledWrap = styled.div`
+export const StyledWrap = styled.div`
   display: flex;
   align-items: center;
 `
 
-const StyledTextarea = styled.textarea`
+export const StyledTextarea = styled.textarea`
   padding: 1rem;
   width: 100%;
   font-size: .85rem;
@@ -30,17 +30,17 @@ const StyledTextarea = styled.textarea`
   }
 `
 
-const StyledBtnWrap = styled.button`
+export const StyledBtnWrap = styled.button`
   padding-top: 1rem;
   align-self: flex-end;
 `
 
-const StyledPreview = styled.img`
+export const StyledPreview = styled.img`
   max-width: 48px;
   margin-right: .8rem;
 `
 
-const StyledSubtitle = styled.h2`
+export const StyledSubtitle = styled.h2`
   padding-bottom: .8rem;
   font-size: 1rem;
   font-weight: bold;
@@ -48,4 +48,7 @@ const StyledSubtitle = styled.h2`
   text-transform: uppercase;
 `
 
-export { StyledBlock, StyledWrap, StyledTextarea, StyledBtnWrap, StyledPreview, StyledSubtitle }
+export const StyledColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`
