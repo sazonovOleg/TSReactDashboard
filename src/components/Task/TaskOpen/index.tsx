@@ -22,7 +22,7 @@ import {
     StyledRow,
     StyledDescription,
     StyledDescriptionText,
-    StyledDescriptionTextarea,
+    StyledDescriptionTextarea, StyledCheckbox,
 } from './style'
 
 import avatar1 from '../../../assets/taskslist/preview.svg'
@@ -125,8 +125,7 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
                     </StyledHeaderWrap>
                     <StyledRow>
                         {/*TODO вынести в отдельный компонент checkbox*/}
-                        <input
-                            className='checkbox checkbox--xl'
+                        <StyledCheckbox
                             type='checkbox'
                             checked={task.isDone}
                             onChange={() => handleDone(task)} />

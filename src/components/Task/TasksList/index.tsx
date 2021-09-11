@@ -3,7 +3,16 @@ import {TaskAddPopup} from "../TaskAddPopup/";
 import {TaskType} from "../TaskOpen/TaskOpenType";
 import {Button, BUTTON_STYLE} from "../../Button";
 
-import { StyledTaskList, StyledCol, StyledRow, StyledPosition, StyledPreview, StyledTitle, StyledLabel } from './style'
+import {
+    StyledTaskList,
+    StyledCol,
+    StyledRow,
+    StyledPosition,
+    StyledPreview,
+    StyledTitle,
+    StyledLabel,
+    StyledCheckbox,
+} from './style'
 
 interface TasksListProps {
     tasks: TaskType[],
@@ -47,12 +56,11 @@ const TasksList = ({tasks, title, isOpenTaskId, onTaskClick, onTaskChecked, onTa
                          onClick={() => onTaskClick(task)}>
                         <StyledRow>
                             {/*TODO перенести checkbox в компоненты*/}
-                            <input type="checkbox"
-                                   onChange={() => handleDone(task)}
-                                   checked={task.isDone}
-                                   className="checkbox"/>
-                            <StyledLabel
-                                   onChange={() => {setActiveTitle(task.title)}}>
+                            <StyledCheckbox
+                                type="checkbox"
+                                onChange={() => handleDone(task)}
+                                checked={task.isDone} />
+                            <StyledLabel onChange={() => {setActiveTitle(task.title)}}>
                                 {task.title}
                             </StyledLabel>
                         </StyledRow>
