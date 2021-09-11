@@ -1,5 +1,5 @@
 import React from 'react'
-import {SidebarMenuProps} from "./SidebarMenuType";
+import { SidebarMenuProps } from './SidebarMenuType'
 import {
     StyledMenu,
     StyledTitle,
@@ -9,26 +9,26 @@ import {
     StyledPreview,
     StyledNotifications,
     StyledUserAvatar,
-    StyledWrap
+    StyledWrap,
 } from './style'
 
-const SidebarMenu = ({title, items, button, addButton}: SidebarMenuProps): JSX.Element => {
+const SidebarMenu = ({ title, items, button, addButton }: SidebarMenuProps): JSX.Element => {
     return (
         <StyledMenu>
             <StyledTitle>
                 {title}
             </StyledTitle>
             <StyledList>
-                {items.map(({title, notificationCount, preview, users}, index) => {
+                {items.map(({
+                                title, notificationCount,
+                                preview, users,
+                            }) => {
                     return (
-                        <StyledListItem key={title}>
-                            {Boolean(preview) && <StyledPreview src={preview} alt="preview"/>}
+                        <StyledListItem key={title}>{Boolean(preview) && <StyledPreview src={preview} alt='preview' />}
                             {title}
-                            {Boolean(notificationCount) &&
-                            <StyledNotifications>{notificationCount}</StyledNotifications>}
-                            {Boolean(users?.length) &&
-                            <StyledWrap>{users?.map((userAvatar, index) =>
-                                <StyledUserAvatar key={userAvatar} src={userAvatar} alt=""/>)}
+                            {Boolean(notificationCount) && <StyledNotifications>{notificationCount}</StyledNotifications>}
+                            {Boolean(users?.length) && <StyledWrap>{users?.map((userAvatar, index) =>
+                                <StyledUserAvatar key={userAvatar} src={userAvatar} alt='userAvatar' />)}
                             </StyledWrap>}
                         </StyledListItem>
                     )
@@ -39,4 +39,4 @@ const SidebarMenu = ({title, items, button, addButton}: SidebarMenuProps): JSX.E
     )
 }
 
-export {SidebarMenu}
+export { SidebarMenu }

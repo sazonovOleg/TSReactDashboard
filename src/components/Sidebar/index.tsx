@@ -21,6 +21,7 @@ const Sidebar = ({showSidebar}: SidebarProps): JSX.Element => {
 
     return (
         <SidebarWrap>
+            {/*TODO переписать SidebarProfile && SidebarTask в один компонент*/}
             <SidebarHeader>
                 <SidebarTitle>
                     <SidebarLogo src={sidebarLogo} alt='logo' />
