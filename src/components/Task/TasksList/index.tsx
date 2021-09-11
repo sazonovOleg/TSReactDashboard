@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {TaskAddPopup} from "../TaskAddPopup/";
+import {TaskAddPopup} from "../TaskAddPopup";
 import {TaskType} from "../TaskOpen/TaskOpenType";
 import {Button, BUTTON_STYLE} from "../../Button";
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeaderSettings } from './HeaderSettings/'
+import { HeaderSettings } from './HeaderSettings'
 
 import { HEADER_MENU, MEN_IN_PROJECT, TITLE_INFO } from './data'
 
@@ -9,23 +9,18 @@ import {
     StyledHeaderMenu,
     StyledHeaderSetup,
     StyledHeaderTitle,
-    StyledLogo } from './style'
+    StyledLogo,
+} from './style'
 
 const Header = (): JSX.Element => {
-    const [title, setNewTitle] = React.useState(TITLE_INFO.title)
-
-    const clickTitle = () => {
-        setNewTitle('Новый Тайтл')
-    }
-
     return (
         <StyledHeader>
             <StyledCol>
                 <StyledHeaderTitle>
                     <StyledLogo src={TITLE_INFO.logo} alt='logo' className='logo' />
-                    {title}
+                    {TITLE_INFO.title}
                 </StyledHeaderTitle>
-                <StyledHeaderSetup onClick={clickTitle}>
+                <StyledHeaderSetup>
                     ...
                 </StyledHeaderSetup>
                 {HEADER_MENU && <StyledHeaderMenu>
