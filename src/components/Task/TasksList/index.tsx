@@ -2,9 +2,8 @@ import React, {useState} from 'react';
 import {TaskAddPopup} from "../TaskAddPopup/";
 import {TaskType} from "../TaskOpen/TaskOpenType";
 import {Button, BUTTON_STYLE} from "../../Button";
-import './style/TasksList.scss';
 
-import { StyledTaskList, StyledCol, StyledRow, StyledPosition, StyledPreview, StyledTitle } from './style'
+import { StyledTaskList, StyledCol, StyledRow, StyledPosition, StyledPreview, StyledTitle, StyledLabel } from './style'
 
 interface TasksListProps {
     tasks: TaskType[],
@@ -46,20 +45,21 @@ const TasksList = ({tasks, title, isOpenTaskId, onTaskClick, onTaskChecked, onTa
                     <StyledCol className={isOpenTaskId === task.id ? "active" : " "}
                          key={task.title}
                          onClick={() => onTaskClick(task)}>
-                        <div className="tasks-list-wrap row">
+                        <StyledRow>
+                            {/*TODO перенести checkbox в компоненты*/}
                             <input type="checkbox"
                                    onChange={() => handleDone(task)}
                                    checked={task.isDone}
                                    className="checkbox"/>
-                            <label className="tasks-list-text"
+                            <StyledLabel
                                    onChange={() => {setActiveTitle(task.title)}}>
                                 {task.title}
-                            </label>
-                        </div>
-                        <div className="tasks-list-wrap row row--ac">
-                            <img className="tasks-list-preview" src={task.avatar} alt=""/>
-                            {task.tag.map((tag) => <span key={tag} className={'tasks-list-position' + ' ' + `tasks-list-position--${tag}`}>{tag}</span>)}
-                        </div>
+                            </StyledLabel>
+                        </StyledRow>
+                        <StyledRow>
+                            <StyledPreview src={task.avatar} alt=""/>
+                            {task.tag.map((tag) => <StyledPosition key={tag} className={tag}>{tag}</StyledPosition>)}
+                        </StyledRow>
                     </StyledCol>
                 )
             })}
