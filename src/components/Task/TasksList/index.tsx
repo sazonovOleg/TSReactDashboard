@@ -55,7 +55,6 @@ const TasksList = ({tasks, title, isOpenTaskId, onTaskClick, onTaskChecked, onTa
                          key={task.title}
                          onClick={() => onTaskClick(task)}>
                         <StyledRow>
-                            {/*TODO перенести checkbox в компоненты*/}
                             <StyledCheckbox
                                 type="checkbox"
                                 onChange={() => handleDone(task)}
