@@ -2,11 +2,6 @@ import styled from 'styled-components'
 
 const StyledBlock = styled.section`
   padding-top: 1rem;
-
-  .comment-btn {
-    padding-top: 1rem;
-    align-self: flex-end;
-  }
 `
 
 const StyledWrap = styled.div`
@@ -35,6 +30,22 @@ const StyledTextarea = styled.textarea`
   }
 `
 
+const StyledBtnWrap = styled.button`
+  padding-top: 1rem;
+  align-self: flex-end;
+`
 
+const StyledPreview = styled.img`
+  max-width: 48px;
+  margin-right: .8rem;
+`
 
-export { StyledBlock, StyledWrap, StyledTextarea }
+const StyledSubtitle = styled.h2`
+  padding-bottom: .8rem;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1.2rem;
+  text-transform: uppercase;
+`
+
+export { StyledBlock, StyledWrap, StyledTextarea, StyledBtnWrap, StyledPreview, StyledSubtitle }

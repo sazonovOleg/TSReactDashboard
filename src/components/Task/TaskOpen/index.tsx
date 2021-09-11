@@ -1,9 +1,29 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 
 import { TaskComment } from './TaskOpenCommment'
 import { TaskType } from './TaskOpenType'
 
-import './style/TaskOpen.scss'
+import {
+    StyledTask,
+    StyledPanel,
+    StyledPanelTitle,
+    StyledAuthor,
+    StyledHeader,
+    StyledPreview,
+    StyledInfo,
+    StyledTaskWrap,
+    StyledTag,
+    StyledFollower,
+    StyledRename,
+    StyledSubtitle,
+    StyledColumn,
+    StyledHeaderWrap,
+    StyledTitle,
+    StyledRow,
+    StyledDescription,
+    StyledDescriptionText,
+    StyledDescriptionTextarea,
+} from './style'
 
 import avatar1 from '../../../assets/taskslist/preview.svg'
 import avatar2 from '../../../assets/taskslist/preview-2.svg'
@@ -25,22 +45,17 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
     const titleRef = React.useRef<HTMLDivElement>(null)
     const descriptionRef = React.useRef<HTMLHeadingElement>(null)
 
-    const [keysHistory, setKeysHistory] = useState<string[]>([])
+    const [keysHistory, setKeysHistory] = React.useState<string[]>([])
 
-
-
-    useEffect(() => {
-
+    React.useEffect(() => {
         const result = keysHistory.join('')
+        const isEnterShiftTaped: boolean = result.includes('ControlEnter') || result.includes('EnterControl')
 
-        const isEnterShiftTaped: boolean = result.includes("ControlEnter") || result.includes("EnterControl")
-
-        if(isEnterShiftTaped) {
+        if (isEnterShiftTaped) {
             setNewInfo()
             setKeysHistory([])
         }
     }, [keysHistory])
-
 
     //TODO заменить на реальный массив
     const allFollowers: string[] = [avatar1, avatar2, avatar3]
@@ -53,71 +68,63 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
         onTaskChecked(newTask)
     }
 
-
     const setNewInfo = (): void => {
         const newTask: TaskType = {
             ...task,
             title: defaultTitle,
             description: defaultDescription,
         }
+        setTimeout(() => {
+            setIsEditTitle(false)
+            setIsEditDescription(false)
+        }, 1)
 
-        setIsEditTitle(false)
-        setIsEditDescription(false)
         renameTaskInfo(newTask)
-
     }
-
     const setFollowers = () => setShowFollowers(!isShowFollowers)
-
     const addNewFollowers = (follower: string) => addNewFollower(task.followers.push(follower))
-
-    const handleKeyboardEvent = (event: any) => {
-
-        setKeysHistory([...keysHistory, event.key])
-    }
+    const handleKeyboardEvent = (event: any) => setKeysHistory([...keysHistory, event.key])
 
     //TODO подрефакторить
-    const titleOutsideClick = (e:any) => !e.path.includes(titleRef.current) ? setIsEditTitle(false)
-        : setIsEditTitle(true)
+    //TODO Пофиксить скрипт
+    const titleOutsideClick = (e: any) => (!e.path.includes(titleRef.current) ? setIsEditTitle(false)
+        : setIsEditTitle(true))
 
-    const descriptionOutsideClick = (e:any) => !e.path.includes(descriptionRef.current) ? setIsEditDescription(false)
+    const descriptionOutsideClick = (e: any) => !e.path.includes(descriptionRef.current) ? setIsEditDescription(false)
         : setIsEditDescription(true)
 
-    useEffect(() => {
+    React.useEffect(() => {
         setNewTitles(task.title || '')
         setNewDescription(task.description || '')
     }, [task])
 
-    React.useEffect(()=>{
-        document.body.addEventListener('click', titleOutsideClick);
-        document.body.addEventListener('click', descriptionOutsideClick);
+    React.useEffect(() => {
+        document.body.addEventListener('click', titleOutsideClick)
+        document.body.addEventListener('click', descriptionOutsideClick)
 
         return () => {
-            document.body.removeEventListener('click', titleOutsideClick);
-            document.body.removeEventListener('click', descriptionOutsideClick);
+            document.body.removeEventListener('click', titleOutsideClick)
+            document.body.removeEventListener('click', descriptionOutsideClick)
         }
-    },[])
+    }, [])
 
     return (
-        <div className='task-open'>
-            <div className='column'>
-                <div className='task-open-header'>
-                    <div ref={titleRef} className='task-open-title'>
-                        {isEditTitle ? (
-                            <div className="edit-panel">
-                            <textarea className='edit-panel-title'
-                                      value={defaultTitle}
-                                      onChange={event => setNewTitles(event.target.value)}
-                                      onKeyUp={event => handleKeyboardEvent(event)}
-                            />
-                            <a className='change-rename' onClick={setNewInfo}>Save</a>
-                        </div>) :
-                            <h2 className='app-title'
-                                dangerouslySetInnerHTML={{__html: defaultTitle}}
-                                onClick={() => setIsEditTitle(true)}/>
-                        }
-                    </div>
-                    <div className='task-open-wrap row'>
+        <StyledTask>
+            <StyledColumn>
+                <StyledHeader>
+                    <StyledHeaderWrap ref={titleRef}>
+                        {isEditTitle ? (<StyledPanel>
+                                <StyledPanelTitle
+                                    onChange={event => setNewTitles(event.target.value)}
+                                    value={defaultTitle}
+                                    onKeyUp={event => handleKeyboardEvent(event)} />
+                                <StyledRename onClick={setNewInfo}>Save</StyledRename>
+                            </StyledPanel>) :
+                            <StyledTitle dangerouslySetInnerHTML={{ __html: defaultTitle }}
+                                         onClick={() => setIsEditTitle(true)} />}
+                    </StyledHeaderWrap>
+                    <StyledRow>
+                        {/*TODO вынести в отдельный компонент checkbox*/}
                         <input
                             className='checkbox checkbox--xl'
                             type='checkbox'
@@ -127,81 +134,83 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
                         <div className='btn-set'>
                             <span>...</span>
                         </div>
-                    </div>
-                </div>
-                <div className='row'>
-                    <span className='task-open-by'>{task.author}</span>
-                    <span className='task-open-by'>{' ' + task.createdAt}</span>
-                </div>
-            </div>
-            <div className='task-open-info'>
+                    </StyledRow>
+                </StyledHeader>
+                <StyledRow>
+                    <StyledAuthor>{task.author}</StyledAuthor>
+                    <StyledAuthor>{' ' + task.createdAt}</StyledAuthor>
+                </StyledRow>
+            </StyledColumn>
+            <StyledInfo>
 
-                <div className='col'>
-                    <h3 className='task-open-subtitle'>
+                <StyledColumn>
+                    <StyledSubtitle>
                         Assign To
-                    </h3>
-                    <div className='row'>
-                        <img src={task.avatar} alt='' />
+                    </StyledSubtitle>
+                    <StyledRow>
+                        <StyledPreview src={task.avatar} alt='' />
                         {task.author}
-                    </div>
-                </div>
+                    </StyledRow>
+                </StyledColumn>
 
-                <div className='col'>
-                    <h3 className='task-open-subtitle'>
+                <StyledColumn>
+                    <StyledSubtitle>
                         Due On
-                    </h3>
-                    <div className='row'>
+                    </StyledSubtitle>
+                    <StyledRow>
                         {task.dueOn}
-                    </div>
-                </div>
+                    </StyledRow>
+                </StyledColumn>
 
-                <div className='col'>
-                    <h3 className='task-open-subtitle'>
+                <StyledColumn>
+                    <StyledSubtitle>
                         Tag
-                    </h3>
-                    {task.tag.map((tag) =>
-                        <span key={tag} className={'task-open-tag' + ' ' + `task-open-tag--${tag}`}>{tag}</span>)}
-                </div>
+                    </StyledSubtitle>
+                    {task.tag.map((tag) => <StyledTag key={tag}>{tag}</StyledTag>)}
+                </StyledColumn>
 
-                <div className='col'>
-                    <h3 className='task-open-subtitle'>
+                <StyledColumn>
+                    <StyledSubtitle>
                         Followers
-                    </h3>
-                    <div className='row'>
+                    </StyledSubtitle>
+                    <StyledRow>
                         {task.followers.map((follower) => <img key={follower} src={follower} />)}
-                        <button className='follower-add' onClick={setFollowers}>+</button>
-                    </div>
-                </div>
+                        <button className='add' onClick={setFollowers}>+</button>
+                    </StyledRow>
+                </StyledColumn>
 
+                {/*TODO Разобраться с followers*/}
                 {isShowFollowers &&
-                <div className='follower-wrap'>{allFollowers.map((followers) =>
+                //TODO добавить StyledFollowers
+                <div className='wrap'>{allFollowers.map((followers) =>
                     <img key={followers} onClick={() => addNewFollowers(followers)} src={followers} />)}
-                    <span className='follower-close' onClick={setFollowers}>&times;</span>
+                    <span className='close' onClick={setFollowers}>&times;</span>
                 </div>}
-            </div>
+            </StyledInfo>
 
-            <div className='description'>
-                <h2 className='task-open-subtitle'>
+            <StyledDescription>
+                <StyledSubtitle>
                     Description
-                </h2>
-                <div ref={descriptionRef} className='column'>
+                </StyledSubtitle>
+                <StyledColumn ref={descriptionRef}>
                     {isEditDescription ? (
-                        <div className="edit-panel">
-                            <textarea
-                                className='description-text description-text--textarea'
-                                value={defaultDescription}
-                                onChange={event => {setNewDescription(event.target.value)}}
-                                onKeyUp={event => handleKeyboardEvent(event)}
-                            />
-                            <a className='change-rename' onClick={setNewInfo}>Save</a>
-                        </div>) :
-                        <div className="description-text" onClick={() => setIsEditDescription(true)
-                    }>{defaultDescription}</div>}
-                </div>
-            </div>
+                            <StyledPanel>
+                                <StyledDescriptionTextarea
+                                    value={defaultDescription}
+                                    onChange={event => {
+                                        setNewDescription(event.target.value)
+                                    }}
+                                    onKeyUp={event => handleKeyboardEvent(event)} />
+                                <StyledRename onClick={setNewInfo}>Save</StyledRename>
+                            </StyledPanel>) :
+                        <StyledDescriptionText onClick={() => setIsEditDescription(true)}>
+                            {defaultDescription}
+                        </StyledDescriptionText>}
+                </StyledColumn>
+            </StyledDescription>
 
             <TaskComment comments={task.comments} />
-        </div>
+        </StyledTask>
     )
 }
 
