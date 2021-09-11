@@ -1,29 +1,27 @@
 import React from 'react';
 import {Header} from "./components/Header/";
 import {Sidebar} from "./components/Sidebar";
-import {Task} from "./components/Task/Task";
+import {Task} from "./components/Task/";
+import {SidebarPopup} from "./components/Sidebar/SidebarPopup/";
 
-import {SIDEBAR} from "./components/Sidebar/data";
-
-import './App.scss';
-import {SidebarPopup} from "./components/Sidebar/SidebarPopup/SidebarPopup";
+import {StyledApp, StyledContent} from './style'
 
 function App() {
     const [sidebarPopup, setShowSidebarPopup] = React.useState<boolean>(true)
 
-    const setSidebarPopup = () => {
+    const setSidebarPopup = ():void => {
         setShowSidebarPopup(!sidebarPopup)
     }
 
     return (
-        <div className="app">
-            <Sidebar showSidebar={setSidebarPopup} menu={SIDEBAR}/>
-            <div className="app-content">
+        <StyledApp>
+            <Sidebar showSidebar={setSidebarPopup}/>
+            <StyledContent>
                 <Header/>
                 <Task/>
-            </div>
+            </StyledContent>
             {!sidebarPopup && <SidebarPopup showSidebar={setSidebarPopup}/>}
-        </div>
+        </StyledApp>
     );
 }
 

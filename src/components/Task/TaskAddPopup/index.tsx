@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import './style/TaskAddPopup.scss';
 import {TaskType} from "../TaskOpen/TaskOpenType";
-import {SIDEBAR_PROFILE} from "../../Sidebar";
-import {TasksButton} from "../TasksButton";
+import {SIDEBAR_PROFILE} from "../../Sidebar/data";
+
+import { StyledForm, StyledPopup, StyledPopupContainer, StyledColumn } from './style'
+import { Button } from '../../Button'
 
 interface TaskAddPopupProps {
     title: string,
@@ -14,6 +15,7 @@ const TaskAddPopup = ({title, onClickCreateTask, onClose}: TaskAddPopupProps): J
     const [taskTitle, setTitle] = useState<string>('')
     const [description, setDescription] = useState<string>('')
 
+    //ToDo переписать таску
     const newAddedTask: TaskType = {
         id: Date.now(),
         category: title,
@@ -32,14 +34,14 @@ const TaskAddPopup = ({title, onClickCreateTask, onClose}: TaskAddPopupProps): J
     }
 
     return (
-        <div className="task-popup">
-            <div className="task-popup-container">
-                <h2 className="task-popup-title">
+        <StyledPopup>
+            <StyledPopupContainer>
+                <h2 className="popup-title">
                     {title}
                 </h2>
-                <span className="task-popup-close" onClick={onClose}>&times;</span>
-                <div className="form">
-                    <div className="form-col">
+                <span className="close" onClick={onClose}>&times;</span>
+                <StyledForm>
+                    <StyledColumn>
                         <h3 className="form-title">
                             Title
                         </h3>
@@ -47,9 +49,9 @@ const TaskAddPopup = ({title, onClickCreateTask, onClose}: TaskAddPopupProps): J
                             onChange={(event => setTitle(event.target.value))}
                             value={taskTitle}
                             type="text"
-                            className="form-input form-input--title"/>
-                    </div>
-                    <div className="form-col">
+                            className="form-input"/>
+                    </StyledColumn>
+                    <StyledColumn>
                         <h3 className="form-title">
                             Description
                         </h3>
@@ -57,16 +59,16 @@ const TaskAddPopup = ({title, onClickCreateTask, onClose}: TaskAddPopupProps): J
                             onChange={(event => setDescription(event.target.value))}
                             value={description}
                             className="form-input form-input--textarea"/>
-                    </div>
-                    <TasksButton
-                        text={'Create Task'}
+                    </StyledColumn>
+                    <Button
                         onClick={() => {onClickCreateTask(newAddedTask)
                             onClose()}}
-                        disabled={!Boolean(taskTitle) || !Boolean(description)}
-                    />
-                </div>
-            </div>
-        </div>
+                        disabled={!Boolean(taskTitle) || !Boolean(description)}>
+                        Create Task
+                    </Button>
+                </StyledForm>
+            </StyledPopupContainer>
+        </StyledPopup>
     );
 };
 

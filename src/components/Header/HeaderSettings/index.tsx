@@ -1,16 +1,15 @@
 import React from "react";
 import {HeaderSetProps} from "../HeaderType";
 import {Button, BUTTON_STYLE} from "components/Button";
-
-import './styles/HeaderSettings.scss'
+import {StyledHeaderSetting} from './style'
 
 const HeaderSettings = ({img}:HeaderSetProps): JSX.Element => {
     return (
-        <div className="header-settings">
-            <div className="header-settings-row">
+        <StyledHeaderSetting>
+            <div className="row">
                 {img?.map(({images},index) => {
                     return (
-                        <img className="header-settings-ava" src={images} key={index} alt=""/>
+                        <img className="member" src={images} key={index} alt=""/>
                     )
                 })}
             </div>
@@ -24,7 +23,7 @@ const HeaderSettings = ({img}:HeaderSetProps): JSX.Element => {
                 </svg>
                 Chat
             </Button>
-        </div>
+        </StyledHeaderSetting>
     )
 }
 

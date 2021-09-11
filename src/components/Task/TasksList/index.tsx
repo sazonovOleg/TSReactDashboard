@@ -1,10 +1,18 @@
 import React, {useState} from 'react';
-
-import {TaskAddPopup} from "../TaskAddPopup/TaskAddPopup";
+import {TaskAddPopup} from "../TaskAddPopup/";
 import {TaskType} from "../TaskOpen/TaskOpenType";
-
-import './style/TasksList.scss';
 import {Button, BUTTON_STYLE} from "../../Button";
+
+import {
+    StyledTaskList,
+    StyledCol,
+    StyledRow,
+    StyledPosition,
+    StyledPreview,
+    StyledTitle,
+    StyledLabel,
+    StyledCheckbox,
+} from './style'
 
 interface TasksListProps {
     tasks: TaskType[],
@@ -32,35 +40,35 @@ const TasksList = ({tasks, title, isOpenTaskId, onTaskClick, onTaskChecked, onTa
     }
     
     return (
-        <div className="tasks-list">
-            <div className="tasks-list-wrap row row--jb">
-                <h2 className="app-title">
+        <StyledTaskList>
+            <StyledRow>
+                <StyledTitle>
                     {title}
-                </h2>
+                </StyledTitle>
                 <Button onClick={() => {
                     setShowModal(true)
                 }} variant={BUTTON_STYLE.SUCCESS}>+ Add Task</Button>
-            </div>
+            </StyledRow>
             {tasks.map((task) => {
                 return (
-                    <div className={"tasks-list-col" + ' ' + `${isOpenTaskId === task.id ? "active" : " "}`}
+                    <StyledCol className={isOpenTaskId === task.id ? "active" : " "}
                          key={task.title}
                          onClick={() => onTaskClick(task)}>
-                        <div className="tasks-list-wrap row">
-                            <input type="checkbox"
-                                   onChange={() => handleDone(task)}
-                                   checked={task.isDone}
-                                   className="checkbox"/>
-                            <label className="tasks-list-text"
-                                   onChange={() => {setActiveTitle(task.title)}}>
+                        <StyledRow>
+                            {/*TODO перенести checkbox в компоненты*/}
+                            <StyledCheckbox
+                                type="checkbox"
+                                onChange={() => handleDone(task)}
+                                checked={task.isDone} />
+                            <StyledLabel onChange={() => {setActiveTitle(task.title)}}>
                                 {task.title}
-                            </label>
-                        </div>
-                        <div className="tasks-list-wrap row row--ac">
-                            <img className="tasks-list-preview" src={task.avatar} alt=""/>
-                            {task.tag.map((tag) => <span key={tag} className={'tasks-list-position' + ' ' + `tasks-list-position--${tag}`}>{tag}</span>)}
-                        </div>
-                    </div>
+                            </StyledLabel>
+                        </StyledRow>
+                        <StyledRow>
+                            <StyledPreview src={task.avatar} alt=""/>
+                            {task.tag.map((tag) => <StyledPosition key={tag} className={tag}>{tag}</StyledPosition>)}
+                        </StyledRow>
+                    </StyledCol>
                 )
             })}
             {isShowModal && (
@@ -68,7 +76,7 @@ const TasksList = ({tasks, title, isOpenTaskId, onTaskClick, onTaskChecked, onTa
                     setShowModal(false)
                 }}/>
             )}
-        </div>
+        </StyledTaskList>
     )
 };
 
