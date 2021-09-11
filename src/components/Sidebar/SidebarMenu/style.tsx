@@ -62,3 +62,8 @@ export const StyledBtn = styled.button`
     opacity: 1;
   }
 `
+
+export const StyledWrap = styled.div`
+  display: block;
+  position: relative;
+`

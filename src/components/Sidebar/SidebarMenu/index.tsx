@@ -7,7 +7,9 @@ import {
     StyledListItem,
     StyledBtn,
     StyledPreview,
-    StyledNotifications, StyledUserAvatar,
+    StyledNotifications,
+    StyledUserAvatar,
+    StyledWrap
 } from './style'
 
 const SidebarMenu = ({title, items, button, addButton}: SidebarMenuProps): JSX.Element => {
@@ -25,9 +27,9 @@ const SidebarMenu = ({title, items, button, addButton}: SidebarMenuProps): JSX.E
                             {Boolean(notificationCount) &&
                             <StyledNotifications>{notificationCount}</StyledNotifications>}
                             {Boolean(users?.length) &&
-                            <div>{users?.map((userAvatar, index) =>
+                            <StyledWrap>{users?.map((userAvatar, index) =>
                                 <StyledUserAvatar key={userAvatar} src={userAvatar} alt=""/>)}
-                            </div>}
+                            </StyledWrap>}
                         </StyledListItem>
                     )
                 })}
