@@ -2,7 +2,7 @@ import React from 'react'
 
 import { TaskComment } from './TaskOpenCommment'
 import { TaskType } from './TaskOpenType'
-
+//TODO решить вопрос с большим импортом
 import {
     StyledTask,
     StyledPanel,
@@ -166,7 +166,7 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
                     <StyledSubtitle>
                         Tag
                     </StyledSubtitle>
-                    {task.tag.map((tag) => <StyledTag key={tag}>{tag}</StyledTag>)}
+                    {task.tag.map((tag) => <StyledTag className={tag} key={tag}>{tag}</StyledTag>)}
                 </StyledColumn>
 
                 <StyledColumn>

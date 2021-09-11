@@ -123,17 +123,17 @@ export const StyledTag = styled.span`
   text-transform: uppercase;
   font-size: .9rem;
 
-  .development {
+  &.development {
     background-color: #FFF1E2;
     color: #ED6400;
   }
 
-  .marketing {
+  &.marketing {
     background-color: #F5F0FF;
     color: #764CED;
   }
 
-  .design {
+  &.design {
     background-color: #E3EFFF;
     color: #1975D0;
   }
@@ -176,17 +176,6 @@ export const StyledInfo = styled.div`
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid #ECECEC;
-
-  .col {
-    display: flex;
-    flex-direction: column;
-    flex: auto;
-  }
-
-  .row {
-    min-height: 20px;
-    align-items: center;
-  }
 `
 
 export const StyledFollower = styled.div`

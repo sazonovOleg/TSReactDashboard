@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
-import {Index} from "../TaskAddPopup/";
+import {TaskAddPopup} from "../TaskAddPopup/";
 import {TaskType} from "../TaskOpen/TaskOpenType";
-import './style/TasksList.scss';
 import {Button, BUTTON_STYLE} from "../../Button";
+import './style/TasksList.scss';
+
+import { StyledTaskList, StyledCol, StyledRow, StyledPosition, StyledPreview, StyledTitle } from './style'
 
 interface TasksListProps {
     tasks: TaskType[],
@@ -30,18 +32,18 @@ const TasksList = ({tasks, title, isOpenTaskId, onTaskClick, onTaskChecked, onTa
     }
     
     return (
-        <div className="tasks-list">
-            <div className="tasks-list-wrap row row--jb">
-                <h2 className="app-title">
+        <StyledTaskList>
+            <StyledRow>
+                <StyledTitle>
                     {title}
-                </h2>
+                </StyledTitle>
                 <Button onClick={() => {
                     setShowModal(true)
                 }} variant={BUTTON_STYLE.SUCCESS}>+ Add Task</Button>
-            </div>
+            </StyledRow>
             {tasks.map((task) => {
                 return (
-                    <div className={"tasks-list-col" + ' ' + `${isOpenTaskId === task.id ? "active" : " "}`}
+                    <StyledCol className={isOpenTaskId === task.id ? "active" : " "}
                          key={task.title}
                          onClick={() => onTaskClick(task)}>
                         <div className="tasks-list-wrap row">
@@ -58,15 +60,15 @@ const TasksList = ({tasks, title, isOpenTaskId, onTaskClick, onTaskChecked, onTa
                             <img className="tasks-list-preview" src={task.avatar} alt=""/>
                             {task.tag.map((tag) => <span key={tag} className={'tasks-list-position' + ' ' + `tasks-list-position--${tag}`}>{tag}</span>)}
                         </div>
-                    </div>
+                    </StyledCol>
                 )
             })}
             {isShowModal && (
-                <Index onClickCreateTask={createTask} title={title} onClose={() => {
+                <TaskAddPopup onClickCreateTask={createTask} title={title} onClose={() => {
                     setShowModal(false)
                 }}/>
             )}
-        </div>
+        </StyledTaskList>
     )
 };
 

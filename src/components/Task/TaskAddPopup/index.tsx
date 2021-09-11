@@ -12,7 +12,7 @@ interface TaskAddPopupProps {
     onClose: () => void
 }
 
-const Index = ({title, onClickCreateTask, onClose}: TaskAddPopupProps): JSX.Element => {
+const TaskAddPopup = ({title, onClickCreateTask, onClose}: TaskAddPopupProps): JSX.Element => {
     const [taskTitle, setTitle] = useState<string>('')
     const [description, setDescription] = useState<string>('')
 
@@ -73,4 +73,4 @@ const Index = ({title, onClickCreateTask, onClose}: TaskAddPopupProps): JSX.Elem
     );
 };
 
-export {Index};
+export {TaskAddPopup};
