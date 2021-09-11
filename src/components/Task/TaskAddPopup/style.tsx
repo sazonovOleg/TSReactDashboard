@@ -61,4 +61,10 @@ const StyledForm = styled.div`
   }
 `
 
+export const StyledColumn = styled.div`
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+`
+
 export { StyledPopup, StyledPopupContainer, StyledForm }

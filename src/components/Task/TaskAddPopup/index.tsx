@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import {TaskType} from "../TaskOpen/TaskOpenType";
 import {SIDEBAR_PROFILE} from "../../Sidebar/data";
 
-import { StyledForm, StyledPopup, StyledPopupContainer } from './style'
-import { StyledColumn } from '../../../commonStyled/StyledCol'
+import { StyledForm, StyledPopup, StyledPopupContainer, StyledColumn } from './style'
 import { Button } from '../../Button'
 
 interface TaskAddPopupProps {
