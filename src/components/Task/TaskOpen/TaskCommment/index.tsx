@@ -1,6 +1,6 @@
 import React from 'react'
 import { CommentType } from '../TaskOpenType'
-import { TaskAddedComment } from '../TaskAddedComment'
+import { TaskAddedComment } from '../AddComment'
 import { SIDEBAR_PROFILE } from '../../../Sidebar/data'
 
 import avatar from '../../../../assets/sidebar/avatar.png'

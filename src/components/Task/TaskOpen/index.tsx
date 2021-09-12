@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { TaskComment } from './TaskOpenCommment'
+import { TaskComment } from './TaskCommment'
 import { TaskType } from './TaskOpenType'
 //TODO решить вопрос с большим импортом
 import {
@@ -41,23 +41,12 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
     const [isShowFollowers, setShowFollowers] = React.useState<boolean>(false)
     const [addedFollower, addNewFollower] = React.useState<number>()
     const [isEditTitle, setIsEditTitle] = React.useState<boolean>(false)
+    const [keysHistory, setKeysHistory] = React.useState<string[]>([])
     const [isEditDescription, setIsEditDescription] = React.useState<boolean>(false)
-    const titleRef = React.useRef<HTMLDivElement>(null)
+
+    const headerWrap = React.useRef<HTMLDivElement>(null)
     const descriptionRef = React.useRef<HTMLHeadingElement>(null)
 
-    const [keysHistory, setKeysHistory] = React.useState<string[]>([])
-
-    React.useEffect(() => {
-        const result = keysHistory.join('')
-        const isEnterShiftTaped: boolean = result.includes('ControlEnter') || result.includes('EnterControl')
-
-        if (isEnterShiftTaped) {
-            setNewInfo()
-            setKeysHistory([])
-        }
-    }, [keysHistory])
-
-    //TODO заменить на реальный массив
     const allFollowers: string[] = [avatar1, avatar2, avatar3]
 
     const handleDone = (task: TaskType): void => {
@@ -85,9 +74,7 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
     const addNewFollowers = (follower: string) => addNewFollower(task.followers.push(follower))
     const handleKeyboardEvent = (event: any) => setKeysHistory([...keysHistory, event.key])
 
-    //TODO подрефакторить
-    //TODO Пофиксить скрипт
-    const titleOutsideClick = (e: any) => (!e.path.includes(titleRef.current) ? setIsEditTitle(false)
+    const titleOutsideClick = (e: any) => (!e.path.includes(headerWrap.current) ? setIsEditTitle(false)
         : setIsEditTitle(true))
 
     const descriptionOutsideClick = (e: any) => !e.path.includes(descriptionRef.current) ? setIsEditDescription(false)
@@ -108,11 +95,21 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
         }
     }, [])
 
+    React.useEffect(() => {
+        const result = keysHistory.join('')
+        const isEnterShiftTaped: boolean = result.includes('ControlEnter') || result.includes('EnterControl')
+
+        if (isEnterShiftTaped) {
+            setNewInfo()
+            setKeysHistory([])
+        }
+    }, [keysHistory])
+
     return (
         <StyledTask>
             <StyledColumn>
                 <StyledHeader>
-                    <StyledHeaderWrap ref={titleRef}>
+                    <StyledHeaderWrap ref={headerWrap}>
                         {isEditTitle ? (<StyledPanel>
                                 <StyledPanelTitle
                                     onChange={event => setNewTitles(event.target.value)}

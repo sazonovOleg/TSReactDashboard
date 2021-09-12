@@ -15,7 +15,6 @@ const TaskAddPopup = ({title, onClickCreateTask, onClose}: TaskAddPopupProps): J
     const [taskTitle, setTitle] = useState<string>('')
     const [description, setDescription] = useState<string>('')
 
-    //ToDo переписать таску
     const newAddedTask: TaskType = {
         id: Date.now(),
         category: title,

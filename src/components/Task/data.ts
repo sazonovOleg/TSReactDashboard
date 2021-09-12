@@ -6,7 +6,6 @@ import avatar3 from '../../assets/taskslist/preview-3.svg';
 import commentAva1 from '../../assets/comments/taskopen/preview-1.png'
 import commentAva2 from '../../assets/comments/taskopen/preview-2.png'
 
-//TODO переделать списки под юзеров
 const TASKS_LIST: TaskType[] = [{
     id: 1,
     category: TASK_CATEGORY.BACKLOG,
