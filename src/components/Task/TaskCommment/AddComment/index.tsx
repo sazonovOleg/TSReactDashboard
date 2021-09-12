@@ -1,5 +1,5 @@
 import React from 'react'
-import { CommentType } from '../TaskOpenType'
+import { CommentType } from '../../type'
 
 import {
     StyledComment,

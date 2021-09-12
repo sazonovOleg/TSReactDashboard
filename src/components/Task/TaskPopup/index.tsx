@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {TaskType} from "../TaskOpen/TaskOpenType";
+import {TaskType} from "../type";
 import {SIDEBAR_PROFILE} from "../../Sidebar/data";
 
 import { StyledForm, StyledPopup, StyledPopupContainer, StyledColumn } from './style'

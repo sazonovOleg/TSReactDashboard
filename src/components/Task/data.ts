@@ -1,4 +1,4 @@
-import {TASK_CATEGORY, TaskType} from "./TaskOpen/TaskOpenType";
+import {TASK_CATEGORY, TaskType} from "./type";
 
 import avatar1 from '../../assets/taskslist/preview.svg';
 import avatar2 from '../../assets/taskslist/preview-2.svg';

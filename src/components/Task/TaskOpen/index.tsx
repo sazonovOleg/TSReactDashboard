@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { TaskComment } from './TaskCommment'
-import { TaskType } from './TaskOpenType'
+import { TaskComment } from '../TaskCommment'
+import { TaskType } from '../type'
 //TODO решить вопрос с большим импортом
 import {
     StyledTask,

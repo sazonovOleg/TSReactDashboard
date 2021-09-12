@@ -1,10 +1,10 @@
 import React from 'react'
-import { CommentType } from '../TaskOpenType'
-import { TaskAddedComment } from '../AddComment'
-import { SIDEBAR_PROFILE } from '../../../Sidebar/data'
+import { CommentType } from '../type'
+import { TaskAddedComment } from './AddComment'
+import { SIDEBAR_PROFILE } from '../../Sidebar/data'
 
-import avatar from '../../../../assets/sidebar/avatar.png'
-import { Button, BUTTON_STYLE } from '../../../Button'
+import avatar from '../../../assets/sidebar/avatar.png'
+import { Button, BUTTON_STYLE } from '../../Button'
 
 import {
     StyledBlock,
@@ -69,7 +69,7 @@ const TaskComment = ({ comments }: TaskCommentProps): JSX.Element => {
                 </StyledSubtitle>
                 <StyledWrap>
                     <StyledPreview src={avatar} alt='' />
-                    <StyledTextarea ref={inputRef} onClick={resizeInputComment}/>
+                    <StyledTextarea ref={inputRef} onClick={resizeInputComment} />
                 </StyledWrap>
 
                 <StyledBtnWrap>

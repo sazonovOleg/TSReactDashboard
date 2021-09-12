@@ -1,7 +1,7 @@
 import React from 'react'
 import { TasksList } from './TasksList'
 import { TaskOpen } from './TaskOpen'
-import { TASK_CATEGORY, TaskType } from './TaskOpen/TaskOpenType'
+import { TASK_CATEGORY, TaskType } from './type'
 import { TASKS_LIST } from './data'
 import { StyledProject, StyledProjectWrap } from './style'
 
