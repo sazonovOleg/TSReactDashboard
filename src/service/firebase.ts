@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 //TODO CreateFirebase
 const firebaseConfig = {
     apiKey: "AIzaSyD6UAptpuq-rRtUTohmAFUwSVrTHqx1wco",
@@ -12,4 +12,14 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const db = getFirestore(app)
+
+async function getTask(db:any) {
+    const task = collection(db, 'TASKS_LIST')
+    const taskCheck = await getDocs(task);
+    const list = taskCheck.docs.map(doc => doc.data());
+    console.log(list[0])
+}
+
+
+export {db, getTask};

@@ -4,9 +4,13 @@ import { TaskOpen } from './TaskOpen'
 import { TASK_CATEGORY, TaskType } from './type'
 import { TASKS_LIST } from './data'
 import { StyledProject, StyledProjectWrap } from './style'
+import { db, getTask } from '../../service/firebase'
 
 const Task = (): JSX.Element => {
     const [tasks, setTasks] = React.useState<TaskType[]>(TASKS_LIST)
+
+    console.log(TASKS_LIST)
+    console.log(getTask(db))
 
     const openedTask = tasks.find(task => task.isOpened) || TASKS_LIST[0]
     const todoTasks = tasks.filter((task) => task.category === TASK_CATEGORY.TODO)
