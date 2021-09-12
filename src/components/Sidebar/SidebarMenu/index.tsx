@@ -1,5 +1,5 @@
 import React from 'react'
-import { SidebarMenuProps } from './SidebarMenuType'
+import { SidebarMenuProps } from './type'
 import {
     StyledMenu,
     StyledTitle,

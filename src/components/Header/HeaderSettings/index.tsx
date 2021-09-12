@@ -1,5 +1,5 @@
 import React from "react";
-import {HeaderSetProps} from "../HeaderType";
+import {HeaderSetProps} from "../type";
 import {Button, BUTTON_STYLE} from "components/Button";
 import {StyledHeaderSetting} from './style'
 

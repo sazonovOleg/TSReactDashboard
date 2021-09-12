@@ -1,4 +1,4 @@
-import {MenuItemType, MenInProject, TitleItemType} from "./HeaderType";
+import {MenuItemType, MenInProject, TitleItemType} from "./type";
 
 import avatar from "../../assets/header/avatar.png";
 import avatar2 from "../../assets/header/avatar-2.png";

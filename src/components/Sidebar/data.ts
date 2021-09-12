@@ -6,7 +6,7 @@ import projectFour from '../../assets/sidebar/projects/Icon-4.svg'
 import teamOne from '../../assets/sidebar/team/logo.svg'
 import teamTwo from '../../assets/sidebar/team/logo-2.svg'
 import teamThree from '../../assets/sidebar/team/logo-3.svg'
-import { SidebarMenuProps } from './SidebarMenu/SidebarMenuType'
+import { SidebarMenuProps } from './SidebarMenu/type'
 import { SidebarHeaderProps } from './SidebarHeader'
 
 const SIDEBAR_PROFILE: SidebarHeaderProps = {
