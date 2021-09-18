@@ -1,7 +1,6 @@
 import React from 'react'
 import { CommentType } from '../type'
 import { TaskAddedComment } from './AddComment'
-import { SIDEBAR_PROFILE } from '../../Sidebar/data'
 
 import avatar from '../../../assets/sidebar/avatar.png'
 import { Button, BUTTON_STYLE } from '../../Button'
@@ -34,10 +33,10 @@ const TaskComment = ({ comments }: TaskCommentProps): JSX.Element => {
     const addNewComment = (): void => {
         if (inputRef.current?.value != '') {
             setComment(comments.unshift({
-                name: SIDEBAR_PROFILE.name,
-                position: SIDEBAR_PROFILE.position,
+                name: 'SIDEBAR_PROFILE.name',
+                position: 'SIDEBAR_PROFILE.position',
                 createdAt: `${dateInfo.day + 'at' + ' ' + dateInfo.hours + ':' + dateInfo.min + 'pm'}`,
-                avatar: SIDEBAR_PROFILE.images,
+                avatar: 'SIDEBAR_PROFILE.images',
                 comment: inputRef.current?.value,
             }))
             inputRef.current?.classList.remove('warning')

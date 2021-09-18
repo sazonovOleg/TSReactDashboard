@@ -15,11 +15,9 @@ import {
 const SidebarMenu = ({ title, items, button, addButton }: SidebarMenuProps): JSX.Element => {
     return (
         <StyledMenu>
-            <StyledTitle>
-                {title}
-            </StyledTitle>
+            <StyledTitle>{title}</StyledTitle>
             <StyledList>
-                {items.map(({
+                {items.map(({ 
                                 title, notificationCount,
                                 preview, users,
                             }) => {

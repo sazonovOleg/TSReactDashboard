@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {TaskType} from "../type";
-import {SIDEBAR_PROFILE} from "../../Sidebar/data";
+
 
 import { StyledForm, StyledPopup, StyledPopupContainer, StyledColumn } from './style'
 import { Button } from '../../Button'
@@ -20,7 +20,7 @@ const TaskAddPopup = ({title, onClickCreateTask, onClose}: TaskAddPopupProps): J
         category: title,
         isDone: false,
         title:taskTitle,
-        author: SIDEBAR_PROFILE.name,
+        author: 'SIDEBAR_PROFILE.name',
         avatar: '',
         createdAt: 'Now',
         assignTo: '',

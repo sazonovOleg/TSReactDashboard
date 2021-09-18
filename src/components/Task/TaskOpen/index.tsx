@@ -28,6 +28,7 @@ import {
 import avatar1 from '../../../assets/taskslist/preview.svg'
 import avatar2 from '../../../assets/taskslist/preview-2.svg'
 import avatar3 from '../../../assets/taskslist/preview-3.svg'
+import { CONFIG } from '../../../config'
 
 interface TaskOpenProps {
     task: TaskType,
@@ -37,6 +38,7 @@ interface TaskOpenProps {
 
 const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.Element => {
     const [defaultTitle, setNewTitles] = React.useState<string>('')
+    document.title = `${defaultTitle} | ${CONFIG.appName}`
     const [defaultDescription, setNewDescription] = React.useState('')
     const [isShowFollowers, setShowFollowers] = React.useState<boolean>(false)
     const [addedFollower, addNewFollower] = React.useState<number>()
@@ -108,37 +110,46 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
     return (
         <StyledTask>
             <StyledColumn>
+
                 <StyledHeader>
                     <StyledHeaderWrap ref={headerWrap}>
-                        {isEditTitle ? (<StyledPanel>
-                                <StyledPanelTitle
-                                    onChange={event => setNewTitles(event.target.value)}
-                                    value={defaultTitle}
-                                    onKeyUp={event => handleKeyboardEvent(event)} />
-                                <StyledRename onClick={setNewInfo}>Save</StyledRename>
-                            </StyledPanel>) :
-                            <StyledTitle dangerouslySetInnerHTML={{ __html: defaultTitle }}
-                                         onClick={() => setIsEditTitle(true)} />}
+                        {isEditTitle
+                            ? (
+                                <StyledPanel>
+                                    <StyledPanelTitle
+                                        onChange={event => setNewTitles(event.target.value)}
+                                        value={defaultTitle}
+                                        onKeyUp={event => handleKeyboardEvent(event)} />
+                                    <StyledRename onClick={setNewInfo}>Save</StyledRename>
+                                </StyledPanel>
+                            ) :
+                            <StyledTitle
+                                dangerouslySetInnerHTML={{ __html: defaultTitle }}
+                                onClick={() => setIsEditTitle(true)}
+                            />
+                        }
                     </StyledHeaderWrap>
                     <StyledRow>
                         {/*TODO вынести в отдельный компонент checkbox*/}
                         <StyledCheckbox
                             type='checkbox'
                             checked={task.isDone}
-                            onChange={() => handleDone(task)} />
+                            onChange={() => handleDone(task)}
+                        />
                         <label></label>
                         <div className='btn-set'>
                             <span>...</span>
                         </div>
                     </StyledRow>
                 </StyledHeader>
+
                 <StyledRow>
                     <StyledAuthor>{task.author}</StyledAuthor>
                     <StyledAuthor>{' ' + task.createdAt}</StyledAuthor>
                 </StyledRow>
             </StyledColumn>
-            <StyledInfo>
 
+            <StyledInfo>
                 <StyledColumn>
                     <StyledSubtitle>
                         Assign To
@@ -189,19 +200,23 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
                     Description
                 </StyledSubtitle>
                 <StyledColumn ref={descriptionRef}>
-                    {isEditDescription ? (
+                    {isEditDescription
+                        ? (
                             <StyledPanel>
                                 <StyledDescriptionTextarea
                                     value={defaultDescription}
                                     onChange={event => {
                                         setNewDescription(event.target.value)
                                     }}
-                                    onKeyUp={event => handleKeyboardEvent(event)} />
+                                    onKeyUp={event => handleKeyboardEvent(event)}
+                                />
                                 <StyledRename onClick={setNewInfo}>Save</StyledRename>
-                            </StyledPanel>) :
+                            </StyledPanel>
+                        ) :
                         <StyledDescriptionText onClick={() => setIsEditDescription(true)}>
                             {defaultDescription}
-                        </StyledDescriptionText>}
+                        </StyledDescriptionText>
+                    }
                 </StyledColumn>
             </StyledDescription>
 

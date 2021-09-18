@@ -13,18 +13,19 @@ import {
 } from './style'
 
 export type TaskInfoType = {
-    taskCount: number,
-    taskText: string
+    countTask: number,
+    nameTask: string
 }
 
 export interface SidebarHeaderProps {
     images: string,
-    name: string,
+    firstName: string,
+    lastName: string,
     position: string,
-    info?: TaskInfoType[]
+    tasksInfo: TaskInfoType[]
 }
 
-const SidebarHeader = ({ images, name, position, info }: SidebarHeaderProps): JSX.Element => {
+const SidebarHeader = ({ images, firstName, lastName,  position, tasksInfo }: SidebarHeaderProps): JSX.Element => {
 
     return (
         <div>
@@ -32,7 +33,7 @@ const SidebarHeader = ({ images, name, position, info }: SidebarHeaderProps): JS
                 <Avatar src={images} alt='ava' />
                 <StyledWrap>
                     <StyledName>
-                        {name}
+                        {firstName + ' ' + lastName}
                     </StyledName>
                     <StyledPosition>
                         {position}
@@ -43,15 +44,15 @@ const SidebarHeader = ({ images, name, position, info }: SidebarHeaderProps): JS
                 </StyledSetup>
             </StyledSidebarProfile>
             <StyledTaskInfo>
-                {info?.map(({ taskCount, taskText }, index) => {
-                    return (
-                        <StyledCol key={index}>
-                            <TaskInfoTitle>{taskCount}</TaskInfoTitle>
-                            <TaskInfoText>{taskText}</TaskInfoText>
-                        </StyledCol>
-                    )
-                })}
-            </StyledTaskInfo>
+                    {tasksInfo.map(({ countTask, nameTask }, index:number) => {
+                        return (
+                            <StyledCol key={index}>
+                                <TaskInfoTitle>{countTask}</TaskInfoTitle>
+                                <TaskInfoText>{nameTask + ' ' + 'Tasks'}</TaskInfoText>
+                            </StyledCol>
+                        )
+                    })}
+                </StyledTaskInfo>
         </div>
     )
 }

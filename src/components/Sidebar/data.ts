@@ -1,4 +1,3 @@
-import avatar from '../../assets/sidebar/avatar.png'
 import projectOne from '../../assets/sidebar/projects/Icon.svg'
 import projectTwo from '../../assets/sidebar/projects/Icon-2.svg'
 import projectThree from '../../assets/sidebar/projects/Icon-3.svg'
@@ -7,17 +6,6 @@ import teamOne from '../../assets/sidebar/team/logo.svg'
 import teamTwo from '../../assets/sidebar/team/logo-2.svg'
 import teamThree from '../../assets/sidebar/team/logo-3.svg'
 import { SidebarMenuProps } from './SidebarMenu/type'
-import { SidebarHeaderProps } from './SidebarHeader'
-
-const SIDEBAR_PROFILE: SidebarHeaderProps = {
-    images: avatar,
-    name: 'Emilee Simchenko',
-    position: 'Product Owner',
-    info: [
-        { taskCount: 372, taskText: 'Completed Tasks' },
-        { taskCount: 11, taskText: 'Open Tasks' },
-    ],
-}
 
 const SIDEBAR: SidebarMenuProps[] = [{
     title: 'MENU',
@@ -66,4 +54,4 @@ const SIDEBAR: SidebarMenuProps[] = [{
         button: '+ Add a Team',
     }]
 
-export { SIDEBAR, SIDEBAR_PROFILE }
+export { SIDEBAR }

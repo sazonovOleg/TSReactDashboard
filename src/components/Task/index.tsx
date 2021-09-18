@@ -4,13 +4,9 @@ import { TaskOpen } from './TaskOpen'
 import { TASK_CATEGORY, TaskType } from './type'
 import { TASKS_LIST } from './data'
 import { StyledProject, StyledProjectWrap } from './style'
-import { db, getTask } from '../../service/firebase'
 
 const Task = (): JSX.Element => {
     const [tasks, setTasks] = React.useState<TaskType[]>(TASKS_LIST)
-
-    console.log(TASKS_LIST)
-    console.log(getTask(db))
 
     const openedTask = tasks.find(task => task.isOpened) || TASKS_LIST[0]
     const todoTasks = tasks.filter((task) => task.category === TASK_CATEGORY.TODO)
@@ -44,8 +40,7 @@ const Task = (): JSX.Element => {
     const changeTaskInfo = (newTaskInfo: TaskType) => {
         const newTasks = tasks.map((task) => {
             if (task.id === newTaskInfo.id) {
-                return newTaskInfo
-            }
+                return newTaskInfo}
             return task
         })
         setTasks(newTasks)
@@ -54,19 +49,23 @@ const Task = (): JSX.Element => {
     return (
         <StyledProject>
             <StyledProjectWrap>
-                <TasksList title={'BACKLOG'}
-                           isOpenTaskId={openedTask.id}
-                           tasks={backlogTasks}
-                           onTaskClick={setOpenedTask}
-                           onTaskChecked={handleDone}
-                           onTaskCreated={createNewTask}
+                <div>
+                </div>
+                <TasksList
+                    title={'BACKLOG'}
+                    isOpenTaskId={openedTask.id}
+                    tasks={backlogTasks}
+                    onTaskClick={setOpenedTask}
+                    onTaskChecked={handleDone}
+                    onTaskCreated={createNewTask}
                 />
-                <TasksList title={'TODO'}
-                           isOpenTaskId={openedTask.id}
-                           tasks={todoTasks}
-                           onTaskClick={setOpenedTask}
-                           onTaskChecked={handleDone}
-                           onTaskCreated={createNewTask}
+                <TasksList
+                    title={'TODO'}
+                    isOpenTaskId={openedTask.id}
+                    tasks={todoTasks}
+                    onTaskClick={setOpenedTask}
+                    onTaskChecked={handleDone}
+                    onTaskCreated={createNewTask}
                 />
             </StyledProjectWrap>
             <TaskOpen task={openedTask} onTaskChecked={handleDone} renameTaskInfo={changeTaskInfo} />

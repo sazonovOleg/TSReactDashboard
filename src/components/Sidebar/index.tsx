@@ -1,7 +1,7 @@
 import React from 'react'
 import { SidebarMenu } from './SidebarMenu'
 
-import { SIDEBAR, SIDEBAR_PROFILE } from './data'
+import { SIDEBAR } from './data'
 
 import {
     StyledSearchIcon,
@@ -15,12 +15,21 @@ import {
 import sidebarLogo from '../../assets/logos/sidebar-logo.svg'
 import searchIcon from '../../assets/sidebar/icon-search.svg'
 import { SidebarHeader } from './SidebarHeader'
+import { getLoginUser } from '../../service/user'
 
 interface SidebarProps {
     showSidebar: () => void
 }
 
 const Sidebar = ({ showSidebar }: SidebarProps): JSX.Element => {
+    const [userInfo, getUserInfo] = React.useState<any | undefined>()
+
+    //TODO разобраться с типизацией documentData
+    React.useEffect(() => {
+        getLoginUser().then(function(documentData: any | undefined) {
+            getUserInfo(documentData)
+        })
+    },[getUserInfo])
 
     return (
         <StyledSidebarWrap>
@@ -33,12 +42,14 @@ const Sidebar = ({ showSidebar }: SidebarProps): JSX.Element => {
                     <StyledSearchIcon src={searchIcon} />
                 </StyledSearchWrap>
             </StyledSidebarHeader>
-            <SidebarHeader
-                images={SIDEBAR_PROFILE.images}
-                name={SIDEBAR_PROFILE.name}
-                position={SIDEBAR_PROFILE.position}
-                info={SIDEBAR_PROFILE.info}
+            {userInfo && <SidebarHeader
+                images={userInfo.avatar}
+                firstName={userInfo.firstName}
+                lastName={userInfo.lastName}
+                position={userInfo.position}
+                tasksInfo={userInfo.tasks}
             />
+            }
             {SIDEBAR && SIDEBAR.map((item) => {
                 return (<SidebarMenu
                         title={item.title}
