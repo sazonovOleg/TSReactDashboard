@@ -1,8 +1,6 @@
 import React from 'react'
 import { SidebarMenu } from './SidebarMenu'
 
-import { SIDEBAR } from './data'
-
 import {
     StyledSearchIcon,
     StyledSidebarLogo,
@@ -22,14 +20,14 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ showSidebar }: SidebarProps): JSX.Element => {
-    const [userInfo, getUserInfo] = React.useState<any | undefined>()
+    const [userInfo, setUserInfo] = React.useState<any | undefined>()
 
     //TODO разобраться с типизацией documentData
     React.useEffect(() => {
-        getLoginUser().then(function(documentData: any | undefined) {
-            getUserInfo(documentData)
+        getLoginUser().then(function(loginUserData: any | undefined) {
+            setUserInfo(loginUserData)
         })
-    },[getUserInfo])
+    },[setUserInfo])
 
     return (
         <StyledSidebarWrap>
@@ -50,16 +48,7 @@ const Sidebar = ({ showSidebar }: SidebarProps): JSX.Element => {
                 tasksInfo={userInfo.tasks}
             />
             }
-            {SIDEBAR && SIDEBAR.map((item) => {
-                return (<SidebarMenu
-                        title={item.title}
-                        items={item.items}
-                        key={item.title}
-                        button={item.button}
-                        addButton={showSidebar}
-                    />
-                )
-            })}
+            <SidebarMenu addButton={showSidebar} />
         </StyledSidebarWrap>
     )
 }

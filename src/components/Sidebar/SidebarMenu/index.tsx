@@ -1,5 +1,7 @@
 import React from 'react'
-import { SidebarMenuProps } from './type'
+import { MAIN_MENU } from '../data'
+import {getMenuProjects} from '../../../service/projects'
+import {getTeams} from '../../../service/teams'
 import {
     StyledMenu,
     StyledTitle,
@@ -12,27 +14,70 @@ import {
     StyledWrap,
 } from './style'
 
-const SidebarMenu = ({ title, items, button, addButton }: SidebarMenuProps): JSX.Element => {
+interface SidebarMenuProps {
+    addButton: () => void
+}
+
+const SidebarMenu = ({addButton}: SidebarMenuProps): JSX.Element => {
+    const [projectsState, setProjects] = React.useState<any | undefined>()
+    const [teamsState, setTeams] = React.useState<any | undefined>()
+
+    React.useEffect(() => {
+        getMenuProjects().then(function(menuProjectsData) {
+            setProjects(menuProjectsData)
+        })
+    },[setProjects])
+    
+    React.useEffect(() => {
+        getTeams().then(function(teamsData) {
+            setTeams(teamsData)
+        })
+    }, [setTeams])
+
     return (
         <StyledMenu>
-            <StyledTitle>{title}</StyledTitle>
-            <StyledList>
-                {items.map(({ 
-                                title, notificationCount,
-                                preview, users,
-                            }) => {
-                    return (
-                        <StyledListItem key={title}>{Boolean(preview) && <StyledPreview src={preview} alt='preview' />}
-                            {title}
-                            {Boolean(notificationCount) && <StyledNotifications>{notificationCount}</StyledNotifications>}
-                            {Boolean(users?.length) && <StyledWrap>{users?.map((userAvatar, index) =>
-                                <StyledUserAvatar key={userAvatar} src={userAvatar} alt='userAvatar' />)}
-                            </StyledWrap>}
-                        </StyledListItem>
-                    )
-                })}
-            </StyledList>
-            {button && <StyledBtn onClick={addButton}>{button}</StyledBtn>}
+            <div className='main-menu'>
+                <StyledTitle>{MAIN_MENU.title}</StyledTitle>
+                <StyledList>
+                    {MAIN_MENU.items?.map(({title, notification}) => {
+                        return (
+                            <StyledListItem>
+                                {title}
+                                {notification && <StyledNotifications>{notification}</StyledNotifications>}
+                            </StyledListItem>
+                        )
+                    })}
+                </StyledList>
+            </div>
+
+            {projectsState && <div className='main-projects'>
+                <StyledTitle>{projectsState.title}</StyledTitle>
+                <StyledList>
+                    {projectsState.projects.map(({projectLogo, projectName}:any) => {
+                        return (
+                            <StyledListItem>
+                                <StyledPreview src={projectLogo} alt='preview' />
+                                {projectName}
+                            </StyledListItem>
+                        )
+                    })}
+                </StyledList>
+                <StyledBtn onClick={addButton}>{projectsState.button}</StyledBtn>
+            </div>}
+
+            {teamsState && <div className='main-team'>
+                <StyledTitle>{teamsState.title}</StyledTitle>
+                <StyledList>
+                    {teamsState.items.map(({teamName}:any) => {
+                        return (
+                            <StyledListItem>
+                                {teamName}
+                            </StyledListItem>
+                        )
+                    })}
+                </StyledList>
+                <StyledBtn onClick={addButton}>{teamsState.button}</StyledBtn>
+            </div>}
         </StyledMenu>
     )
 }

@@ -30,6 +30,7 @@ const TaskComment = ({ comments }: TaskCommentProps): JSX.Element => {
         min: date.getMinutes(),
     }
 
+    //TODO подгрузить правильные данные
     const addNewComment = (): void => {
         if (inputRef.current?.value != '') {
             setComment(comments.unshift({

@@ -2,12 +2,6 @@ import styled from 'styled-components'
 
 export const StyledMenu = styled.nav`
   padding: 2.2rem 1.2rem;
-
-  &:last-child {
-    li {
-      justify-content: space-between;
-    }
-  }
 `
 
 export const StyledPreview = styled.img`

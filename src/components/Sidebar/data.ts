@@ -7,51 +7,14 @@ import teamTwo from '../../assets/sidebar/team/logo-2.svg'
 import teamThree from '../../assets/sidebar/team/logo-3.svg'
 import { SidebarMenuProps } from './SidebarMenu/type'
 
-const SIDEBAR: SidebarMenuProps[] = [{
+const MAIN_MENU: SidebarMenuProps = {
     title: 'MENU',
     items: [
         { title: 'Home' },
         { title: 'My Tasks' },
-        { title: 'Notifications', notificationCount: 3 },
+        { title: 'Notifications', notification: 3 },
     ],
-}, {
-    title: 'PROJECTS',
-    items: [
-        { preview: projectOne, title: 'Dashboard UI Kit' },
-        { preview: projectTwo, title: 'CRM System' },
-        { preview: projectThree, title: 'Website Redesign' },
-        { preview: projectFour, title: 'Communication Tool' }],
-    button: '+ Add a Project',
-},
-    {
-        title: 'Teams',
-        items: [
-            {
-                title: 'Designers',
-                users: [
-                    teamOne,
-                    teamTwo,
-                    teamThree,
-                ],
-            },
-            {
-                title: 'Backend',
-                users: [
-                    teamOne,
-                    teamTwo,
-                    teamThree,
-                ],
-            },
-            {
-                title: 'Frontend',
-                users: [
-                    teamOne,
-                    teamTwo,
-                    teamThree,
-                ],
-            },
-        ],
-        button: '+ Add a Team',
-    }]
+}
 
-export { SIDEBAR }
+
+export { MAIN_MENU }

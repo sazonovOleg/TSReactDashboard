@@ -6,7 +6,7 @@ async function getMenuProjects() {
         const projects = collection(db, FIREBASE_COLLECTION.PROJECTS)
         const projectsCheck = await getDocs(projects)
         const projectsList = projectsCheck.docs.map(doc => doc.data())
-        return projectsList
+        return projectsList[0]
     }
     catch (error) {
         console.error('getMenuProjects error', getMenuProjects)

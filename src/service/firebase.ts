@@ -3,7 +3,8 @@ import { getFirestore} from 'firebase/firestore/lite'
 
 enum FIREBASE_COLLECTION {
     LOGIN_USER = 'LOGIN_USER',
-    PROJECTS = 'PROJECTS'
+    PROJECTS = 'PROJECTS',
+    TEAMS = 'TEAMS'
 }
 
 //TODO CreateFirebase
