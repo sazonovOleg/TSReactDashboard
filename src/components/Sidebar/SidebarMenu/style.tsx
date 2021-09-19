@@ -61,3 +61,7 @@ export const StyledWrap = styled.div`
   display: block;
   position: relative;
 `
+
+export const StyledCol = styled.div`
+    margin-bottom: 3rem;
+`

@@ -24,6 +24,7 @@ export const StyledSetup = styled.div`
 export const Avatar = styled.img`
   max-width: 48px;
   margin-right: .9rem;
+  border-radius: 50%;
 `
 
 export const StyledWrap = styled.div`

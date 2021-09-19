@@ -10,6 +10,7 @@ import {
     StyledBtn,
     StyledPreview,
     StyledNotifications,
+    StyledCol,
     StyledUserAvatar,
     StyledWrap,
 } from './style'
@@ -36,7 +37,7 @@ const SidebarMenu = ({addButton}: SidebarMenuProps): JSX.Element => {
 
     return (
         <StyledMenu>
-            <div className='main-menu'>
+            <StyledCol>
                 <StyledTitle>{MAIN_MENU.title}</StyledTitle>
                 <StyledList>
                     {MAIN_MENU.items?.map(({title, notification}) => {
@@ -48,9 +49,9 @@ const SidebarMenu = ({addButton}: SidebarMenuProps): JSX.Element => {
                         )
                     })}
                 </StyledList>
-            </div>
+            </StyledCol>
 
-            {projectsState && <div className='main-projects'>
+            {projectsState && <StyledCol>
                 <StyledTitle>{projectsState.title}</StyledTitle>
                 <StyledList>
                     {projectsState.projects.map(({projectLogo, projectName}:any) => {
@@ -63,9 +64,9 @@ const SidebarMenu = ({addButton}: SidebarMenuProps): JSX.Element => {
                     })}
                 </StyledList>
                 <StyledBtn onClick={addButton}>{projectsState.button}</StyledBtn>
-            </div>}
+            </StyledCol>}
 
-            {teamsState && <div className='main-team'>
+            {teamsState && <StyledCol>
                 <StyledTitle>{teamsState.title}</StyledTitle>
                 <StyledList>
                     {teamsState.items.map(({teamName}:any) => {
@@ -77,7 +78,7 @@ const SidebarMenu = ({addButton}: SidebarMenuProps): JSX.Element => {
                     })}
                 </StyledList>
                 <StyledBtn onClick={addButton}>{teamsState.button}</StyledBtn>
-            </div>}
+            </StyledCol>}
         </StyledMenu>
     )
 }
