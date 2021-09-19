@@ -2,7 +2,8 @@ import { initializeApp } from 'firebase/app'
 import { getFirestore} from 'firebase/firestore/lite'
 
 enum FIREBASE_COLLECTION {
-    USER_LOGIN = 'LOGIN_USER'
+    LOGIN_USER = 'LOGIN_USER',
+    PROJECTS = 'PROJECTS'
 }
 
 //TODO CreateFirebase

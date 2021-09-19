@@ -40,7 +40,8 @@ const Task = (): JSX.Element => {
     const changeTaskInfo = (newTaskInfo: TaskType) => {
         const newTasks = tasks.map((task) => {
             if (task.id === newTaskInfo.id) {
-                return newTaskInfo}
+                return newTaskInfo
+            }
             return task
         })
         setTasks(newTasks)
