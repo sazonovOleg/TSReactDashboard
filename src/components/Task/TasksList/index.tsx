@@ -71,9 +71,11 @@ const TasksList = ({tasks, title, isOpenTaskId, onTaskClick, onTaskChecked, onTa
                 )
             })}
             {isShowModal && (
-                <TaskAddPopup onClickCreateTask={createTask} title={title} onClose={() => {
-                    setShowModal(false)
-                }}/>
+                <TaskAddPopup
+                    onClickCreateTask={createTask}
+                    title={title}
+                    onClose={() => {setShowModal(false)}}
+                />
             )}
         </StyledTaskList>
     )

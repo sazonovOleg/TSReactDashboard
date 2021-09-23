@@ -1,6 +1,6 @@
 import React from 'react'
 import { MAIN_MENU } from '../data'
-import {getMenuProjects} from '../../../service/projects'
+import {getProjects} from '../../../service/projects'
 import {getTeams} from '../../../service/teams'
 import {
     StyledMenu,
@@ -17,18 +17,19 @@ import {
 
 interface SidebarMenuProps {
     addButton: () => void
+    setNewTitle: any
 }
 
-const SidebarMenu = ({addButton}: SidebarMenuProps): JSX.Element => {
-    const [projectsState, setProjects] = React.useState<any | undefined>()
+const SidebarMenu = ({addButton, setNewTitle}: SidebarMenuProps): JSX.Element => {
     const [teamsState, setTeams] = React.useState<any | undefined>()
+    const [projectsState, setProjects] = React.useState<any | undefined>()
 
     React.useEffect(() => {
-        getMenuProjects().then(function(menuProjectsData) {
+        getProjects().then(function(menuProjectsData) {
             setProjects(menuProjectsData)
         })
     },[setProjects])
-    
+
     React.useEffect(() => {
         getTeams().then(function(teamsData) {
             setTeams(teamsData)
@@ -55,8 +56,9 @@ const SidebarMenu = ({addButton}: SidebarMenuProps): JSX.Element => {
                 <StyledTitle>{projectsState.title}</StyledTitle>
                 <StyledList>
                     {projectsState.projects.map(({projectLogo, projectName}:any) => {
+                        //TODO отрефакторить
                         return (
-                            <StyledListItem>
+                            <StyledListItem onClick={() => setNewTitle([projectName,projectLogo])}>
                                 <StyledPreview src={projectLogo} alt='preview' />
                                 {projectName}
                             </StyledListItem>

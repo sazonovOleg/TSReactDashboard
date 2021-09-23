@@ -49,6 +49,7 @@
     ]
   },
   "devDependencies": {
-    "@types/styled-components": "^5.1.12"
+    "@types/styled-components": "^5.1.12",
+    "babel-plugin-transform-typescript": "^7.0.0-alpha.19"
   }
 }

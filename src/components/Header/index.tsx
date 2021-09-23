@@ -1,7 +1,6 @@
 import React from 'react'
 import { HeaderSettings } from './HeaderSettings'
-
-import { HEADER_MENU, MEN_IN_PROJECT, TITLE_INFO } from './data'
+import { HEADER_MENU } from './data'
 
 import {
     StyledCol,
@@ -12,27 +11,34 @@ import {
     StyledLogo,
 } from './style'
 
-const Header = (): JSX.Element => {
+interface HeaderProps {
+    info: string[]
+}
+
+const Header = ({info}:HeaderProps): JSX.Element => {
+
     return (
-        <StyledHeader>
-            <StyledCol>
-                <StyledHeaderTitle>
-                    <StyledLogo src={TITLE_INFO.logo} alt='logo' className='logo' />
-                    {TITLE_INFO.title}
-                </StyledHeaderTitle>
-                <StyledHeaderSetup>
-                    ...
-                </StyledHeaderSetup>
-                {HEADER_MENU && <StyledHeaderMenu>
-                    {HEADER_MENU.map(({ url, title }, index) => {
-                        return (
-                            <a href={url} key={index}>{title}</a>
-                        )
-                    })}
-                </StyledHeaderMenu>}
-            </StyledCol>
-            <HeaderSettings img={MEN_IN_PROJECT} />
-        </StyledHeader>
+        <div>
+            <StyledHeader>
+                <StyledCol>
+                    <StyledHeaderTitle>
+                        <StyledLogo src={info[1]} alt='logo' className='logo' />
+                        {info[0]}
+                    </StyledHeaderTitle>
+                    <StyledHeaderSetup>
+                        ...
+                    </StyledHeaderSetup>
+                    {HEADER_MENU && <StyledHeaderMenu>
+                        {HEADER_MENU.map(({ url, title }, index) => {
+                            return (
+                                <a href={url} key={index}>{title}</a>
+                            )
+                        })}
+                    </StyledHeaderMenu>}
+                </StyledCol>
+                <HeaderSettings />
+            </StyledHeader>
+        </div>
     )
 }
 

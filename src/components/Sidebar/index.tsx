@@ -16,10 +16,11 @@ import { SidebarHeader } from './SidebarHeader'
 import { getLoginUser } from '../../service/user'
 
 interface SidebarProps {
-    showSidebar: () => void
+    showSidebar: () => void,
+    setNewTitle: any
 }
 
-const Sidebar = ({ showSidebar }: SidebarProps): JSX.Element => {
+const Sidebar = ({ showSidebar, setNewTitle }: SidebarProps): JSX.Element => {
     const [userInfo, setUserInfo] = React.useState<any | undefined>()
 
     //TODO разобраться с типизацией documentData
@@ -27,7 +28,7 @@ const Sidebar = ({ showSidebar }: SidebarProps): JSX.Element => {
         getLoginUser().then(function(loginUserData: any | undefined) {
             setUserInfo(loginUserData)
         })
-    },[setUserInfo])
+    }, [setUserInfo])
 
     return (
         <StyledSidebarWrap>
@@ -48,7 +49,7 @@ const Sidebar = ({ showSidebar }: SidebarProps): JSX.Element => {
                 tasksInfo={userInfo.tasks}
             />
             }
-            <SidebarMenu addButton={showSidebar} />
+            <SidebarMenu setNewTitle={setNewTitle} addButton={showSidebar} />
         </StyledSidebarWrap>
     )
 }

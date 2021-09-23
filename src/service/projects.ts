@@ -1,7 +1,7 @@
 import { collection, getDocs } from 'firebase/firestore/lite'
 import { db, FIREBASE_COLLECTION } from 'service/firebase'
 
-async function getMenuProjects() {
+async function getProjects() {
     try {
         const projects = collection(db, FIREBASE_COLLECTION.PROJECTS)
         const projectsCheck = await getDocs(projects)
@@ -9,10 +9,10 @@ async function getMenuProjects() {
         return projectsList[0]
     }
     catch (error) {
-        console.error('getMenuProjects error', getMenuProjects)
+        console.error('getProjects error', getProjects)
     }
 
 }
 
 
-export { getMenuProjects }
+export { getProjects }
