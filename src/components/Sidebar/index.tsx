@@ -1,53 +1,65 @@
-import React from 'react';
+import React from 'react'
+import { SidebarMenu } from './SidebarMenu'
 
-import {SidebarProfile} from './SidebarProfile'
-import {SidebarMenu} from "./SidebarMenu";
-import {SidebarTask} from "./SidebarTask";
-
-import { SIDEBAR, SIDEBAR_PROFILE, SIDEBAR_TASK_INFO } from './data'
-
-import { SearchIcon, SidebarLogo, SidebarTitle, SidebarWrap, SidebarHeader } from './style'
+import {
+    StyledSearchIcon,
+    StyledSidebarLogo,
+    StyledSidebarTitle,
+    StyledSidebarWrap,
+    StyledSidebarHeader,
+    StyledSearchWrap,
+} from './style'
 
 import sidebarLogo from '../../assets/logos/sidebar-logo.svg'
 import searchIcon from '../../assets/sidebar/icon-search.svg'
+import { SidebarHeader } from './SidebarHeader'
+import { getLoginUser } from '../../service/user'
 
 interface SidebarProps {
-    showSidebar: () => void
+    showSidebar: () => void,
+    setNewTitle: any
 }
 
-//TODO sidebar-header
+interface IFirebaseDataFile {
+    avatar: string
+    firstName: string
+    lastName: string
+    position: string
+    tasks: []
+}
 
-const Sidebar = ({showSidebar}: SidebarProps): JSX.Element => {
+const Sidebar = ({ showSidebar, setNewTitle }: SidebarProps): JSX.Element => {
+    const [userInfo, setUserInfo] = React.useState<IFirebaseDataFile>()
+
+    //TODO разобраться с типизацией documentData
+    React.useEffect(() => {
+        getLoginUser().then(function(loginUserData: any) {
+            setUserInfo(loginUserData)
+        })
+    }, [setUserInfo])
 
     return (
-        <SidebarWrap>
-            <SidebarHeader>
-                <SidebarTitle>
-                    <SidebarLogo src={sidebarLogo} alt='logo' />
+        <StyledSidebarWrap>
+            <StyledSidebarHeader>
+                <StyledSidebarTitle>
+                    <StyledSidebarLogo src={sidebarLogo} alt='logo' />
                     PROJECTUS
-                </SidebarTitle>
-                <div className="search">
-                    <SearchIcon src={searchIcon}/>
-                </div>
-            </SidebarHeader>
-            <SidebarProfile
-                images={SIDEBAR_PROFILE.images}
-                name={SIDEBAR_PROFILE.name}
-                position={SIDEBAR_PROFILE.position}
+                </StyledSidebarTitle>
+                <StyledSearchWrap>
+                    <StyledSearchIcon src={searchIcon} />
+                </StyledSearchWrap>
+            </StyledSidebarHeader>
+            {userInfo && <SidebarHeader
+                images={userInfo.avatar}
+                firstName={userInfo.firstName}
+                lastName={userInfo.lastName}
+                position={userInfo.position}
+                tasksInfo={userInfo.tasks}
             />
-            <SidebarTask info={SIDEBAR_TASK_INFO}/>
-            {SIDEBAR && SIDEBAR.map((item) => {
-                return (<SidebarMenu
-                        title={item.title}
-                        items={item.items}
-                        key={item.title}
-                        button={item.button}
-                        addButton={showSidebar}
-                    />
-                )
-            })}
-        </SidebarWrap>
+            }
+            <SidebarMenu setNewTitle={setNewTitle} addButton={showSidebar} />
+        </StyledSidebarWrap>
     )
 }
 
-export {Sidebar}
+export { Sidebar }

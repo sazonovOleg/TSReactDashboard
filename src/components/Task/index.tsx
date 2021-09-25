@@ -1,7 +1,7 @@
 import React from 'react'
 import { TasksList } from './TasksList'
 import { TaskOpen } from './TaskOpen'
-import { TASK_CATEGORY, TaskType } from './TaskOpen/TaskOpenType'
+import { TASK_CATEGORY, TaskType } from './type'
 import { TASKS_LIST } from './data'
 import { StyledProject, StyledProjectWrap } from './style'
 
@@ -50,19 +50,23 @@ const Task = (): JSX.Element => {
     return (
         <StyledProject>
             <StyledProjectWrap>
-                <TasksList title={'BACKLOG'}
-                           isOpenTaskId={openedTask.id}
-                           tasks={backlogTasks}
-                           onTaskClick={setOpenedTask}
-                           onTaskChecked={handleDone}
-                           onTaskCreated={createNewTask}
+                <div>
+                </div>
+                <TasksList
+                    title={'BACKLOG'}
+                    isOpenTaskId={openedTask.id}
+                    tasks={backlogTasks}
+                    onTaskClick={setOpenedTask}
+                    onTaskChecked={handleDone}
+                    onTaskCreated={createNewTask}
                 />
-                <TasksList title={'TODO'}
-                           isOpenTaskId={openedTask.id}
-                           tasks={todoTasks}
-                           onTaskClick={setOpenedTask}
-                           onTaskChecked={handleDone}
-                           onTaskCreated={createNewTask}
+                <TasksList
+                    title={'TODO'}
+                    isOpenTaskId={openedTask.id}
+                    tasks={todoTasks}
+                    onTaskClick={setOpenedTask}
+                    onTaskChecked={handleDone}
+                    onTaskCreated={createNewTask}
                 />
             </StyledProjectWrap>
             <TaskOpen task={openedTask} onTaskChecked={handleDone} renameTaskInfo={changeTaskInfo} />

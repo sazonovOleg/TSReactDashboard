@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {TaskAddPopup} from "../TaskAddPopup/";
-import {TaskType} from "../TaskOpen/TaskOpenType";
+import {TaskAddPopup} from "../TaskPopup";
+import {TaskType} from "../type";
 import {Button, BUTTON_STYLE} from "../../Button";
 
 import {
@@ -55,7 +55,6 @@ const TasksList = ({tasks, title, isOpenTaskId, onTaskClick, onTaskChecked, onTa
                          key={task.title}
                          onClick={() => onTaskClick(task)}>
                         <StyledRow>
-                            {/*TODO перенести checkbox в компоненты*/}
                             <StyledCheckbox
                                 type="checkbox"
                                 onChange={() => handleDone(task)}
@@ -72,9 +71,11 @@ const TasksList = ({tasks, title, isOpenTaskId, onTaskClick, onTaskChecked, onTa
                 )
             })}
             {isShowModal && (
-                <TaskAddPopup onClickCreateTask={createTask} title={title} onClose={() => {
-                    setShowModal(false)
-                }}/>
+                <TaskAddPopup
+                    onClickCreateTask={createTask}
+                    title={title}
+                    onClose={() => {setShowModal(false)}}
+                />
             )}
         </StyledTaskList>
     )

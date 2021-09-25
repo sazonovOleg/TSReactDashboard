@@ -1,17 +1,12 @@
 import React from "react";
-import {HeaderSetProps} from "../HeaderType";
 import {Button, BUTTON_STYLE} from "components/Button";
 import {StyledHeaderSetting} from './style'
 
-const HeaderSettings = ({img}:HeaderSetProps): JSX.Element => {
+const HeaderSettings = (): JSX.Element => {
     return (
         <StyledHeaderSetting>
             <div className="row">
-                {img?.map(({images},index) => {
-                    return (
-                        <img className="member" src={images} key={index} alt=""/>
-                    )
-                })}
+
             </div>
 
             <Button onClick={()=>{}}>Share</Button>

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const SidebarWrap = styled.div`
+export const StyledSidebarWrap = styled.div`
   max-width: 270px;
   width: 100%;
   height: 100vh;
@@ -8,7 +8,7 @@ const SidebarWrap = styled.div`
   overflow-y: scroll;
 `
 
-const SidebarHeader = styled.div`
+export const StyledSidebarHeader = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -16,19 +16,22 @@ const SidebarHeader = styled.div`
   padding: 2rem 1.2rem;
 `
 
-const SidebarLogo = styled.img`
+export const StyledSidebarLogo = styled.img`
   margin-right: 1rem;
 `
 
-const SearchIcon = styled.img`
+export const StyledSearchWrap = styled.div`
+  position: relative;  
+  display: block;
+`
+
+export const StyledSearchIcon = styled.img`
   max-width: 20px;
 `
 
-const SidebarTitle = styled.title`
+export const StyledSidebarTitle = styled.title`
   display: inline-flex;
   align-items: center;
   font-size: 16px;
   color: #fff;
 `
-
-export { SidebarLogo, SearchIcon, SidebarWrap, SidebarTitle, SidebarHeader }

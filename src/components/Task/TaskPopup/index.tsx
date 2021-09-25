@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {TaskType} from "../TaskOpen/TaskOpenType";
-import {SIDEBAR_PROFILE} from "../../Sidebar/data";
+import {TaskType} from "../type";
+
 
 import { StyledForm, StyledPopup, StyledPopupContainer, StyledColumn } from './style'
 import { Button } from '../../Button'
@@ -15,13 +15,12 @@ const TaskAddPopup = ({title, onClickCreateTask, onClose}: TaskAddPopupProps): J
     const [taskTitle, setTitle] = useState<string>('')
     const [description, setDescription] = useState<string>('')
 
-    //ToDo переписать таску
     const newAddedTask: TaskType = {
         id: Date.now(),
         category: title,
         isDone: false,
         title:taskTitle,
-        author: SIDEBAR_PROFILE.name,
+        author: 'SIDEBAR_PROFILE.name',
         avatar: '',
         createdAt: 'Now',
         assignTo: '',

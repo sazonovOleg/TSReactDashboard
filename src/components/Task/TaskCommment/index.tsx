@@ -1,10 +1,9 @@
 import React from 'react'
-import { CommentType } from '../TaskOpenType'
-import { TaskAddedComment } from '../TaskAddedComment'
-import { SIDEBAR_PROFILE } from '../../../Sidebar/data'
+import { CommentType } from '../type'
+import { TaskAddedComment } from './AddComment'
 
-import avatar from '../../../../assets/sidebar/avatar.png'
-import { Button, BUTTON_STYLE } from '../../../Button'
+import avatar from '../../../assets/sidebar/avatar.png'
+import { Button, BUTTON_STYLE } from '../../Button'
 
 import {
     StyledBlock,
@@ -31,13 +30,14 @@ const TaskComment = ({ comments }: TaskCommentProps): JSX.Element => {
         min: date.getMinutes(),
     }
 
+    //TODO подгрузить правильные данные
     const addNewComment = (): void => {
         if (inputRef.current?.value != '') {
             setComment(comments.unshift({
-                name: SIDEBAR_PROFILE.name,
-                position: SIDEBAR_PROFILE.position,
+                name: 'SIDEBAR_PROFILE.name',
+                position: 'SIDEBAR_PROFILE.position',
                 createdAt: `${dateInfo.day + 'at' + ' ' + dateInfo.hours + ':' + dateInfo.min + 'pm'}`,
-                avatar: SIDEBAR_PROFILE.images,
+                avatar: 'SIDEBAR_PROFILE.images',
                 comment: inputRef.current?.value,
             }))
             inputRef.current?.classList.remove('warning')
@@ -69,7 +69,7 @@ const TaskComment = ({ comments }: TaskCommentProps): JSX.Element => {
                 </StyledSubtitle>
                 <StyledWrap>
                     <StyledPreview src={avatar} alt='' />
-                    <StyledTextarea ref={inputRef} onClick={resizeInputComment}/>
+                    <StyledTextarea ref={inputRef} onClick={resizeInputComment} />
                 </StyledWrap>
 
                 <StyledBtnWrap>

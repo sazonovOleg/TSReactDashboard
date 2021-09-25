@@ -2,12 +2,6 @@ import styled from 'styled-components'
 
 export const StyledMenu = styled.nav`
   padding: 2.2rem 1.2rem;
-
-  &:last-child {
-    li {
-      justify-content: space-between;
-    }
-  }
 `
 
 export const StyledPreview = styled.img`
@@ -38,6 +32,11 @@ export const StyledListItem = styled.li`
   align-items: center;
   font-size: .9rem;
   color: #fff;
+  cursor: pointer;
+  transition: .2s all ease;
+  :hover {
+    color: rgb(255, 197, 0);
+  }
 `
 
 export const StyledNotifications = styled.span`
@@ -66,4 +65,8 @@ export const StyledBtn = styled.button`
 export const StyledWrap = styled.div`
   display: block;
   position: relative;
+`
+
+export const StyledCol = styled.div`
+    margin-bottom: 3rem;
 `
