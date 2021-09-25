@@ -43,7 +43,7 @@ const SidebarMenu = ({addButton, setNewTitle}: SidebarMenuProps): JSX.Element =>
                 <StyledList>
                     {MAIN_MENU.items?.map(({title, notification}) => {
                         return (
-                            <StyledListItem>
+                            <StyledListItem key={title}>
                                 {title}
                                 {notification && <StyledNotifications>{notification}</StyledNotifications>}
                             </StyledListItem>
@@ -58,7 +58,7 @@ const SidebarMenu = ({addButton, setNewTitle}: SidebarMenuProps): JSX.Element =>
                     {projectsState.projects.map(({projectLogo, projectName}:any) => {
                         //TODO отрефакторить
                         return (
-                            <StyledListItem onClick={() => setNewTitle([projectName,projectLogo])}>
+                            <StyledListItem key={projectName} onClick={() => setNewTitle([projectName,projectLogo])}>
                                 <StyledPreview src={projectLogo} alt='preview' />
                                 {projectName}
                             </StyledListItem>
@@ -73,7 +73,7 @@ const SidebarMenu = ({addButton, setNewTitle}: SidebarMenuProps): JSX.Element =>
                 <StyledList>
                     {teamsState.items.map(({teamName}:any) => {
                         return (
-                            <StyledListItem>
+                            <StyledListItem key={teamName}>
                                 {teamName}
                             </StyledListItem>
                         )

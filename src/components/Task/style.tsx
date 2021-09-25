@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const StyledProject = styled.section`
   position: relative;
-  height: 100%;
+  height: 100vh;
   padding: 1.8rem;
   flex-direction: row;
   display: flex;
@@ -19,6 +19,7 @@ const StyledProjectWrap = styled.div`
   flex-direction: column;
   background-color: #fff;
   border-radius: .3rem;
+  overflow-y: scroll;
 `
 
 export { StyledProject, StyledProjectWrap }

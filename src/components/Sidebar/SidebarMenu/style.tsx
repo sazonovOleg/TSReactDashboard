@@ -32,6 +32,11 @@ export const StyledListItem = styled.li`
   align-items: center;
   font-size: .9rem;
   color: #fff;
+  cursor: pointer;
+  transition: .2s all ease;
+  :hover {
+    color: rgb(255, 197, 0);
+  }
 `
 
 export const StyledNotifications = styled.span`

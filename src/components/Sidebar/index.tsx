@@ -20,12 +20,20 @@ interface SidebarProps {
     setNewTitle: any
 }
 
+interface IFirebaseDataFile {
+    avatar: string
+    firstName: string
+    lastName: string
+    position: string
+    tasks: []
+}
+
 const Sidebar = ({ showSidebar, setNewTitle }: SidebarProps): JSX.Element => {
-    const [userInfo, setUserInfo] = React.useState<any | undefined>()
+    const [userInfo, setUserInfo] = React.useState<IFirebaseDataFile>()
 
     //TODO разобраться с типизацией documentData
     React.useEffect(() => {
-        getLoginUser().then(function(loginUserData: any | undefined) {
+        getLoginUser().then(function(loginUserData: any) {
             setUserInfo(loginUserData)
         })
     }, [setUserInfo])
