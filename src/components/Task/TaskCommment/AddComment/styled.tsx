@@ -17,6 +17,7 @@ export const StyledComment = styled.div`
 export const StyledPreview = styled.img`
   max-width: 53px;
   z-index: 0;
+  border-radius: 50%;
 `
 
 export const StyledWrapper = styled.div`

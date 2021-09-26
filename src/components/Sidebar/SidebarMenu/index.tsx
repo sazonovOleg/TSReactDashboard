@@ -1,5 +1,5 @@
 import React from 'react'
-import { MAIN_MENU } from '../data'
+import { MAIN_MENU } from './data'
 import {getProjects} from '../../../service/projects'
 import {getTeams} from '../../../service/teams'
 import {
@@ -56,7 +56,6 @@ const SidebarMenu = ({addButton, setNewTitle}: SidebarMenuProps): JSX.Element =>
                 <StyledTitle>{projectsState.title}</StyledTitle>
                 <StyledList>
                     {projectsState.projects.map(({projectLogo, projectName}:any) => {
-                        //TODO отрефакторить
                         return (
                             <StyledListItem key={projectName} onClick={() => setNewTitle([projectName,projectLogo])}>
                                 <StyledPreview src={projectLogo} alt='preview' />

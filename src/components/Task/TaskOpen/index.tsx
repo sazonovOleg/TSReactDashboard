@@ -1,8 +1,6 @@
 import React from 'react'
-
 import { TaskComment } from '../TaskCommment'
 import { TaskType } from '../type'
-//TODO решить вопрос с большим импортом
 import {
     StyledTask,
     StyledPanel,
@@ -130,7 +128,6 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
                         }
                     </StyledHeaderWrap>
                     <StyledRow>
-                        {/*TODO вынести в отдельный компонент checkbox*/}
                         <StyledCheckbox
                             type='checkbox'
                             checked={task.isDone}

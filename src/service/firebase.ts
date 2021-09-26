@@ -4,10 +4,10 @@ import { getFirestore} from 'firebase/firestore/lite'
 enum FIREBASE_COLLECTION {
     LOGIN_USER = 'LOGIN_USER',
     PROJECTS = 'PROJECTS',
-    TEAMS = 'TEAMS'
+    TEAMS = 'TEAMS',
+    TASKS = 'TASKS'
 }
 
-//TODO CreateFirebase
 const config = {
     apiKey: 'AIzaSyD6UAptpuq-rRtUTohmAFUwSVrTHqx1wco',
     authDomain: 'dashboard-1eeac.firebaseapp.com',

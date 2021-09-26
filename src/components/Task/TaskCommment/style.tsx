@@ -38,6 +38,7 @@ export const StyledBtnWrap = styled.button`
 export const StyledPreview = styled.img`
   max-width: 48px;
   margin-right: .8rem;
+  border-radius: 50%;
 `
 
 export const StyledSubtitle = styled.h2`
