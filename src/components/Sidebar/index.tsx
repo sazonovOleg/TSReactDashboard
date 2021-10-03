@@ -13,7 +13,7 @@ import {
 import sidebarLogo from '../../assets/logos/sidebar-logo.svg'
 import searchIcon from '../../assets/sidebar/icon-search.svg'
 import { SidebarHeader } from './SidebarHeader'
-import { getLoginUser } from '../../service/user'
+import { getLoginUser } from '../../service/login_user'
 
 interface SidebarProps {
     showSidebar: () => void,

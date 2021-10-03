@@ -14,7 +14,7 @@ import {
     StyledBtnWrap,
     StyledColumn,
 } from './style'
-import { getLoginUser } from '../../../service/user'
+import { getLoginUser } from '../../../service/login_user'
 
 interface TaskCommentProps {
     comments: CommentType[]

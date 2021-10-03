@@ -5,7 +5,8 @@ enum FIREBASE_COLLECTION {
     LOGIN_USER = 'LOGIN_USER',
     PROJECTS = 'PROJECTS',
     TEAMS = 'TEAMS',
-    TASKS = 'TASKS'
+    TASKS = 'TASKS',
+    ALL_USERS = 'USERS'
 }
 
 const config = {

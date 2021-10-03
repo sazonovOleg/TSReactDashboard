@@ -18,7 +18,6 @@ interface TaskAddedCommentProps {
 }
 
 const TaskAddedComment = ({ comments }: TaskAddedCommentProps): JSX.Element => {
-    console.log(comments )
     return (
         <StyledSection>
             {comments?.map(comment => {
