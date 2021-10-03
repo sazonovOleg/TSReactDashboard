@@ -5,11 +5,9 @@ import { TASK_CATEGORY, TaskType } from './type'
 import { TASKS_LIST } from './data'
 import { StyledProject, StyledProjectWrap } from './style'
 import {getTasks} from '../../service/tasks'
-import { getAllUsers } from '../../service/all_users'
 
 const Task = (): JSX.Element => {
     const [tasks, setTasks] = React.useState<TaskType[]>(TASKS_LIST)
-    const [users, setUsers] = React.useState()
 
     const openedTask = tasks.find(task => task.isOpened) || TASKS_LIST[0]
     const todoTasks = tasks.filter((task) => task.category === TASK_CATEGORY.TODO)
@@ -22,15 +20,6 @@ const Task = (): JSX.Element => {
         })
     }, [setTasks])
 
-    React.useEffect(() => {
-        getAllUsers().then(function(usersData: any) {
-            setUsers(usersData)
-        })
-    }, [setUsers])
-
-    if (users) {
-        console.log(users)
-    }
 
     const handleDone = (checkedTask: TaskType) => {
         const newTasks = tasks.map((task) => {
