@@ -64,8 +64,8 @@ const TasksList = ({tasks, title, isOpenTaskId, onTaskClick, onTaskChecked, onTa
                             </StyledLabel>
                         </StyledRow>
                         <StyledRow>
-                            <StyledPreview src={task.avatar} alt=""/>
-                            {task.tag.map((tag) => <StyledPosition key={tag} className={tag}>{tag}</StyledPosition>)}
+                            <StyledPreview src={task.preview} alt=""/>
+                            <StyledPosition key={task.tag} className={task.tag}>{task.tag}</StyledPosition>
                         </StyledRow>
                     </StyledCol>
                 )

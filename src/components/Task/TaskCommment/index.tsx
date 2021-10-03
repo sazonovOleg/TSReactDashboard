@@ -46,7 +46,7 @@ const TaskComment = ({ comments }: TaskCommentProps): JSX.Element => {
                 name: userInfo.firstName,
                 position: userInfo.position,
                 createdAt: `${dateInfo.day + 'at' + ' ' + dateInfo.hours + ':' + dateInfo.min + 'pm'}`,
-                avatar: userInfo.avatar,
+                preview: userInfo.preview,
                 comment: inputRef.current?.value,
             }))
             inputRef.current?.classList.remove('warning')

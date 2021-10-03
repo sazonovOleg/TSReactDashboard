@@ -35,9 +35,9 @@ interface TaskOpenProps {
 }
 
 const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.Element => {
+    // document.title = `${defaultTitle} | ${CONFIG.appName}`
     const [defaultTitle, setNewTitles] = React.useState<string>('')
-    document.title = `${defaultTitle} | ${CONFIG.appName}`
-    const [defaultDescription, setNewDescription] = React.useState('')
+    const [defaultDescription, setNewDescription] = React.useState<string>('')
     const [isShowFollowers, setShowFollowers] = React.useState<boolean>(false)
     const [addedFollower, addNewFollower] = React.useState<number>()
     const [isEditTitle, setIsEditTitle] = React.useState<boolean>(false)
@@ -152,7 +152,7 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
                         Assign To
                     </StyledSubtitle>
                     <StyledRow>
-                        <StyledPreview src={task.avatar} alt='' />
+                        <StyledPreview src={task.preview} alt='' />
                         {task.author}
                     </StyledRow>
                 </StyledColumn>
@@ -170,7 +170,7 @@ const TaskOpen = ({ task, onTaskChecked, renameTaskInfo }: TaskOpenProps): JSX.E
                     <StyledSubtitle>
                         Tag
                     </StyledSubtitle>
-                    {task.tag.map((tag) => <StyledTag className={tag} key={tag}>{tag}</StyledTag>)}
+                    <StyledTag className={task.tag} key={task.tag}>{task.tag}</StyledTag>
                 </StyledColumn>
 
                 <StyledColumn>

@@ -8,23 +8,21 @@ import {getTasks} from '../../service/tasks'
 
 const Task = (): JSX.Element => {
     const [tasks, setTasks] = React.useState<TaskType[]>(TASKS_LIST)
-    const [tasksData, setTasksData] = React.useState()
-
+    // const [tasksData, setTasksData] = React.useState<TaskType[]>(TASKS_LIST)
 
     const openedTask = tasks.find(task => task.isOpened) || TASKS_LIST[0]
     const todoTasks = tasks.filter((task) => task.category === TASK_CATEGORY.TODO)
     const backlogTasks = tasks.filter((task) => task.category === TASK_CATEGORY.BACKLOG)
 
-
     //TODO разобраться с типизацией documentData
     React.useEffect(() => {
         getTasks().then(function(tasksData: any) {
-            setTasksData(tasksData)
+            setTasks(tasksData.WEBSITE)
         })
-    }, [setTasksData])
+    }, [setTasks])
     
-    if (tasksData) {
-        console.log(tasksData)
+    if (tasks) {
+        console.log(tasks)
     }
 
     const handleDone = (checkedTask: TaskType) => {
