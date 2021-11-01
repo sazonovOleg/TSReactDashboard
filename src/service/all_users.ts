@@ -6,7 +6,7 @@ async function getAllUsers() {
         const users = collection(db, FIREBASE_COLLECTION.ALL_USERS)
         const usersCheck = await getDocs(users)
         const usersInfo = usersCheck.docs.map(doc => doc.data())
-        return usersInfo[0]
+        return usersInfo
     }
     catch (error) {
         console.error('getAllUsers error', getAllUsers)

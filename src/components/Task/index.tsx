@@ -4,7 +4,7 @@ import { TaskOpen } from './TaskOpen'
 import { TASK_CATEGORY, TaskType } from './type'
 import { TASKS_LIST } from './data'
 import { StyledProject, StyledProjectWrap } from './style'
-import {getTasks} from '../../service/tasks'
+import { getTasks } from '../../service/tasks'
 
 const Task = (): JSX.Element => {
     const [tasks, setTasks] = React.useState<TaskType[]>(TASKS_LIST)
@@ -16,10 +16,9 @@ const Task = (): JSX.Element => {
     //TODO разобраться с типизацией documentData
     React.useEffect(() => {
         getTasks().then(function(tasksData: any) {
-            setTasks(tasksData.WEBSITE)
+            setTasks(tasksData)
         })
     }, [setTasks])
-
 
     const handleDone = (checkedTask: TaskType) => {
         const newTasks = tasks.map((task) => {

@@ -6,13 +6,11 @@ async function getTasks() {
         const tasks = collection(db, FIREBASE_COLLECTION.TASKS)
         const tasksCheck = await getDocs(tasks)
         const tasksMaps = tasksCheck.docs.map(doc => doc.data())
-        return tasksMaps[0]
+        return tasksMaps
     }
     catch (error) {
         console.error('getProjects error', getTasks)
     }
-
 }
-
 
 export { getTasks }

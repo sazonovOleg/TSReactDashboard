@@ -25,7 +25,7 @@ export interface SidebarHeaderProps {
     tasksInfo: TaskInfoType[]
 }
 
-const SidebarHeader = ({ images, firstName, lastName,  position, tasksInfo }: SidebarHeaderProps): JSX.Element => {
+const SidebarHeader = ({ images, firstName, lastName, position, tasksInfo }: SidebarHeaderProps): JSX.Element => {
 
     return (
         <div>
@@ -44,15 +44,15 @@ const SidebarHeader = ({ images, firstName, lastName,  position, tasksInfo }: Si
                 </StyledSetup>
             </StyledSidebarProfile>
             <StyledTaskInfo>
-                    {tasksInfo.map(({ countTask, nameTask }, index:number) => {
-                        return (
-                            <StyledCol key={index}>
-                                <TaskInfoTitle>{countTask}</TaskInfoTitle>
-                                <TaskInfoText>{nameTask + ' ' + 'Tasks'}</TaskInfoText>
-                            </StyledCol>
-                        )
-                    })}
-                </StyledTaskInfo>
+                {tasksInfo.map(({ countTask, nameTask }, index: number) => {
+                    return (
+                        <StyledCol key={index}>
+                            <TaskInfoTitle>{countTask}</TaskInfoTitle>
+                            <TaskInfoText>{nameTask + ' ' + 'Tasks'}</TaskInfoText>
+                        </StyledCol>
+                    )
+                })}
+            </StyledTaskInfo>
         </div>
     )
 }

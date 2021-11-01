@@ -4,7 +4,7 @@ import { getAllUsers } from '../../service/all_users'
 interface UsersListProps {}
 
 const UsersList = ({}: UsersListProps): JSX.Element => {
-    const [users, setUsers] = React.useState()
+    const [users, setUsers] = React.useState<any | undefined>()
 
     React.useEffect(() => {
         getAllUsers().then(function(usersData: any) {
