@@ -2,7 +2,7 @@ export type CommentType = {
     name: string,
     position: string,
     createdAt: string | number
-    avatar: string,
+    preview: string,
     comment: string | undefined
 }
 
@@ -15,11 +15,11 @@ export type TaskType = {
     isDone: boolean,
     title: string | undefined,
     author: string,
-    avatar: string,
+    preview: string,
     createdAt: string,
     assignTo: string,
     dueOn: string,
-    tag:string[],
+    tag:string,
     followers: string[]
     description: string | undefined
     comments: CommentType[]

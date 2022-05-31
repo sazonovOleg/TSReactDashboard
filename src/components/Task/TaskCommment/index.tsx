@@ -14,6 +14,7 @@ import {
     StyledBtnWrap,
     StyledColumn,
 } from './style'
+import { getLoginUser } from '../../../service/login_user'
 
 interface TaskCommentProps {
     comments: CommentType[]
@@ -21,23 +22,31 @@ interface TaskCommentProps {
 
 const TaskComment = ({ comments }: TaskCommentProps): JSX.Element => {
     const [comment, setComment] = React.useState<number>()
+    const [userInfo, setUserInfo] = React.useState<any | undefined>()
     const inputRef = React.useRef<HTMLTextAreaElement>(null)
-    const date: Date = new Date()
 
-    const dateInfo = {
-        day: date.getDate(),
-        hours: date.getHours(),
-        min: date.getMinutes(),
-    }
-
-    //TODO подгрузить правильные данные
+    //TODO разобраться с типизацией documentData
+    React.useEffect(() => {
+        getLoginUser().then(function(loginUserData: any) {
+            setUserInfo(loginUserData)
+        })
+    }, [setUserInfo])
+    
     const addNewComment = (): void => {
-        if (inputRef.current?.value != '') {
+        const date: Date = new Date()
+
+        const dateInfo = {
+            day: date.getDate(),
+            hours: date.getHours(),
+            min: date.getMinutes(),
+        }
+
+        if (inputRef.current?.value != '' && userInfo) {
             setComment(comments.unshift({
-                name: 'SIDEBAR_PROFILE.name',
-                position: 'SIDEBAR_PROFILE.position',
+                name: userInfo.firstName,
+                position: userInfo.position,
                 createdAt: `${dateInfo.day + 'at' + ' ' + dateInfo.hours + ':' + dateInfo.min + 'pm'}`,
-                avatar: 'SIDEBAR_PROFILE.images',
+                preview: userInfo.preview,
                 comment: inputRef.current?.value,
             }))
             inputRef.current?.classList.remove('warning')
@@ -63,12 +72,13 @@ const TaskComment = ({ comments }: TaskCommentProps): JSX.Element => {
 
     return (
         <StyledBlock>
+
             <StyledColumn>
                 <StyledSubtitle>
                     Discussion
                 </StyledSubtitle>
                 <StyledWrap>
-                    <StyledPreview src={avatar} alt='' />
+                    {userInfo && <StyledPreview src={userInfo.avatar} alt='' />}
                     <StyledTextarea ref={inputRef} onClick={resizeInputComment} />
                 </StyledWrap>
 

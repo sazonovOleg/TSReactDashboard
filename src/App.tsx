@@ -9,7 +9,11 @@ import { StyledApp, StyledContent } from './style'
 
 function App() {
     const [sidebarPopup, setShowSidebarPopup] = React.useState<boolean>(true)
-    //TODO  стейт до рендеринга
+    //TODO сделать ASSIGN TO + FOLLOWERS
+    //TODO подключить skeleton-react
+    //TODO доделать комментарии
+    //TODO доделать создание таски
+    //TODO доделать создание нового проекта
     const [projectStateInfo, setProjectTitleState] = React.useState(['Website', avatar])
 
     const setSidebarPopup = (): void => {

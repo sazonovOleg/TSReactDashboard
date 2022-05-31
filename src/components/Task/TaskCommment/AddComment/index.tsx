@@ -23,7 +23,7 @@ const TaskAddedComment = ({ comments }: TaskAddedCommentProps): JSX.Element => {
             {comments?.map(comment => {
                 return (
                     <StyledComment key={comment.name}>
-                        <StyledPreview src={comment.avatar} alt='preview' />
+                        <StyledPreview src={comment.preview} alt='preview' />
                         <StyledWrapper>
                             <StyledHeader>
                                 <StyledInfo>

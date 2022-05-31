@@ -1,5 +1,5 @@
 import React from 'react'
-import { MAIN_MENU } from '../data'
+import { MAIN_MENU } from './data'
 import {getProjects} from '../../../service/projects'
 import {getTeams} from '../../../service/teams'
 import {
@@ -23,6 +23,8 @@ interface SidebarMenuProps {
 const SidebarMenu = ({addButton, setNewTitle}: SidebarMenuProps): JSX.Element => {
     const [teamsState, setTeams] = React.useState<any | undefined>()
     const [projectsState, setProjects] = React.useState<any | undefined>()
+
+    // TODO затипизировать teamTitle & projectTitle
 
     React.useEffect(() => {
         getProjects().then(function(menuProjectsData) {
@@ -53,10 +55,9 @@ const SidebarMenu = ({addButton, setNewTitle}: SidebarMenuProps): JSX.Element =>
             </StyledCol>
 
             {projectsState && <StyledCol>
-                <StyledTitle>{projectsState.title}</StyledTitle>
+                <StyledTitle>Projects</StyledTitle>
                 <StyledList>
-                    {projectsState.projects.map(({projectLogo, projectName}:any) => {
-                        //TODO отрефакторить
+                    {projectsState.map(({projectLogo, projectName}:any) => {
                         return (
                             <StyledListItem key={projectName} onClick={() => setNewTitle([projectName,projectLogo])}>
                                 <StyledPreview src={projectLogo} alt='preview' />
@@ -65,13 +66,13 @@ const SidebarMenu = ({addButton, setNewTitle}: SidebarMenuProps): JSX.Element =>
                         )
                     })}
                 </StyledList>
-                <StyledBtn onClick={addButton}>{projectsState.button}</StyledBtn>
+                <StyledBtn onClick={addButton}>+ Add a project</StyledBtn>
             </StyledCol>}
 
             {teamsState && <StyledCol>
-                <StyledTitle>{teamsState.title}</StyledTitle>
+                <StyledTitle>Team</StyledTitle>
                 <StyledList>
-                    {teamsState.items.map(({teamName}:any) => {
+                    {teamsState.map(({teamName}:any) => {
                         return (
                             <StyledListItem key={teamName}>
                                 {teamName}
@@ -79,7 +80,7 @@ const SidebarMenu = ({addButton, setNewTitle}: SidebarMenuProps): JSX.Element =>
                         )
                     })}
                 </StyledList>
-                <StyledBtn onClick={addButton}>{teamsState.button}</StyledBtn>
+                <StyledBtn onClick={addButton}>+ Add a team</StyledBtn>
             </StyledCol>}
         </StyledMenu>
     )

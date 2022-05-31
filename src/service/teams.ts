@@ -6,7 +6,7 @@ async function getTeams() {
         const teams = collection(db, FIREBASE_COLLECTION.TEAMS)
         const teamsCheck = await getDocs(teams)
         const teamsList =teamsCheck.docs.map(doc => doc.data())
-        return teamsList[0]
+        return teamsList
     }
     catch (error) {
         console.error('getTeams error', getTeams)
